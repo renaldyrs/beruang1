@@ -33,7 +33,7 @@ body {
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="index.php">Home</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="features.php">Features</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php">About Us</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="contact-us.php">Login</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="login">Login</a></li>
                     
                 </ul>
                 
