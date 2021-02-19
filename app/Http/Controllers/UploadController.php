@@ -1,16 +1,16 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
-
+ 
 use Illuminate\Http\Request;
-use App\Models\Barang;
-
-class AdminBarangController extends Controller
+ 
+use App\Models\barang;
+ 
+class UploadController extends Controller
 {
-    //
-    public function adminbarang(){
+	public function upload(){
 		$barang = barang::get();
-		return view('adminbarang',['barangs' => $barang]);
+		return view('halaman-awal',['barangs' => $barang]);
 	}
  
 	public function proses_upload(Request $request){
@@ -18,6 +18,7 @@ class AdminBarangController extends Controller
 			'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
             'nama' => 'required',
             'harga' => 'required',
+			'stock' => 'required',
 			'keterangan' => 'required',
 		]);
  
@@ -41,12 +42,4 @@ class AdminBarangController extends Controller
 		return redirect()->back();
 	}
 
-    public function delete($id)
-        {
-            $barang = barang::find($id);
-            $barang->delete();
-            return redirect()->back();
-        }
-
-	
 }
