@@ -28,6 +28,8 @@ Route::get('/login1', 'App\HTTP\Controllers\HalamanAwalController@login1');
 Route::get('/adminbarang', 'App\HTTP\Controllers\AdminBarangController@adminbarang');
 Route::post('/adminbarang/proses', 'App\HTTP\Controllers\AdminBarangController@proses_upload');
 Route::get('/adminbarang/hapus/{id}', 'App\HTTP\Controllers\AdminBarangController@delete');
+Route::get('/adminbarang/update/{id}', 'App\HTTP\Controllers\AdminBarangController@update');
+Route::post('/adminbarang/update/proses/{id}', 'App\HTTP\Controllers\AdminBarangController@proses_update');
 
 Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome');
 

@@ -17,7 +17,7 @@
 				</div>
 				@endif
 
-				<form action="/adminbarang/proses" method="POST" enctype="multipart/form-data">
+				<form action="/adminbarang/update" method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
 
 					<div class="form-group">
@@ -77,7 +77,7 @@
 							<td>
 							<a class="btn btn-danger" href="/adminbarang/hapus/{{ $g->id }}">HAPUS</a>
 						
-							<a class="btn btn-success" href="/adminbarang/update/{{ $g->id }}">EDIT</a>
+							<a class="btn btn-success" href="/adminbarang/edit/{{ $g->id }}">EDIT</a>
 							</td>
 							
 						</tr>
