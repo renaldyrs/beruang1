@@ -18,6 +18,7 @@ class CreateBarangsTable extends Migration
             $table->string('nama');
             $table->string('harga');
             $table->string('file');
+            $table->int('stock');
             $table->string('keterangan');
             $table->timestamps();
         });
