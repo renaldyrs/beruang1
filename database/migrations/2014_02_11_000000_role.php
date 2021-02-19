@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBarangsTable extends Migration
+class Role extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateBarangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('barangs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nama');
-            $table->string('harga');
-            $table->string('file');
-            $table->integer('stock');
-            $table->string('keterangan');
+        //
+        Schema::create('roles', function (Blueprint $table) {
+            $table->increments('id_role');
+            $table->string('role',45);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -31,6 +29,8 @@ class CreateBarangsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('barangs');
+        //
+        Schema::dropIfExists('roles');
+        
     }
 }

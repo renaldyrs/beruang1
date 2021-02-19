@@ -47,7 +47,5 @@ class AdminBarangController extends Controller
             return redirect()->back();
         }
 
-	public function viewadminhome(){
-		return view('adminhome');
-	}
+	
 }

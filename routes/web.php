@@ -13,11 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 //---------------------------------USER------------------------------------------------------------------------------
-Route::get('/viewawal', 'App\HTTP\Controllers\HalamanAwalController@viewawal');
+Route::get('/','App\HTTP\Controllers\HalamanAwalController@viewawal' );
 Route::get('/viewbeli', 'App\HTTP\Controllers\HalamanAwalController@viewbeli');
 
 Route::get('/login1', 'App\HTTP\Controllers\HalamanAwalController@login1');
