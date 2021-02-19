@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Hash;
+use Auth;
 
+use App\Models\User;
 class LoginController extends Controller
 {
     /*
@@ -37,4 +41,32 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function authenticated($request, $user)
+    {
+        if($user->id_role == 1) {
+            return redirect()->intended('/adminhome');
+        }
+
+        return redirect()->intended('home');
+    }
+    public function login(Request $request){
+        $data = User::where('email','=',$request->email)->first();
+        if($data){
+            if(Hash::check($request->password,$data->password)){
+                Auth::login($data);
+                // dd($data);
+                if(Auth::user()->role->role=='admin'){
+                    return redirect('adminhome');
+                }
+                return redirect('/');
+    
+            }
+            return redirect()->back()->withErrors('password', 'The Message');
+        }
+        return redirect()->back()->withErrors('username', 'The Message');
+
+        
+    }
+
 }

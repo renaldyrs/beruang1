@@ -21,6 +21,7 @@ class CreateBarangsTable extends Migration
             $table->integer('stock');
             $table->string('keterangan');
             $table->timestamps();
+            
         });
     }
 

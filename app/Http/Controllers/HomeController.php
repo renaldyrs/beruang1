@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-
+use App\Models\barang;
 class HomeController extends Controller
 {
     /**
@@ -25,8 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = user::all();
-        return view ('adminhome',['user' =>$user]);
+        $barang = barang::get();
+		return view('halaman-awal',['barangs' => $barang]);
     }
 
     

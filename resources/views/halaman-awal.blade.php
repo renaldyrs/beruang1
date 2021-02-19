@@ -1,5 +1,6 @@
 @extends('layouts.user')
 @section('content')
+@include('layouts.partial.navbar')
     <header>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
