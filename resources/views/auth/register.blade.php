@@ -60,7 +60,7 @@
                   </div>
                   <input name="register" id="register" class="btn btn-block login-btn mb-4" type="button" value="Register">
                 </form>
-                <p class="login-card-footer-text">You have an account? <a href="login.blade.php" class="text-reset">Login here</a></p>
+                <p class="login-card-footer-text">You have an account? <a href="login" class="text-reset">Login here</a></p>
                 <nav class="login-card-footer-nav">
                   <a href="#!">Terms of use.</a>
                   <a href="#!">Privacy policy</a>
