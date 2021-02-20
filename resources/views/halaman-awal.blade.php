@@ -71,3 +71,6 @@ body {
 		
 	</section>
 @endsection
+@push('scripts')
+	@include('layouts.partial.script')
+	@endpush
