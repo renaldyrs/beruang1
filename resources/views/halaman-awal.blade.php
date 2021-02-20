@@ -1,4 +1,11 @@
 @extends('layouts.admin')
+@push('style')
+    <style>
+body {
+  background-color: #f7ebd3;
+}
+</style>
+@endpush
 @section('content')
 @include('layouts.partial.navbar')
     <header>
