@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@include('layouts.partial.navbar_admin')
+@include('layouts.partial.navbar')
 	<div class="row">
 		<div class="container">
 
@@ -19,7 +19,7 @@
 
 				<form action="/adminbarang/update" method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
-
+        			@method('PUT')
 					<div class="form-group">
 						<b>File Gambar</b><br/>
 						<input type="file" name="file">
@@ -55,21 +55,10 @@
                 
 
 			</div>
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th width="1%">File</th>
-							<th width="1%">Nama</th>
-							<th width="1%">Harga</th>
-							<th width="1%">Stock</th>
-							<th>Keterangan</th>
-							<th width="17%">Aksi</th>
-						</tr>
-					</thead>
-					<tbody>
+				
 						@foreach($barangs as $g)
 						<tr>
-							<td><img width="150px" src="{{ url('/data_file/'.$g->file) }}"></td>
+							
 							<td>{{$g->nama}}</td>
 							<td>{{$g->harga}}</td>
 							<td>{{$g->stock}}</td>
@@ -88,5 +77,5 @@
 	</div>
     @endsection
 	@push('scripts')
-	@include('layouts.partial.navbar_admin')
+	@include('layouts.partial.navbar')
 	@endpush
