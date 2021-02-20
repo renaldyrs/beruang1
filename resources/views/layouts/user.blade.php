@@ -19,29 +19,7 @@ body {
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">Gudang Beruang</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                        <button type="button" class="btn btn-outline-primary">search</button>
-                    
     
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.php">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="features.php">Features</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php">About Us</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="login">Login</a></li>
-                    
-                </ul>
-                
-            </div>
-        </div>
-        </div>
-    </nav>
-
     @yield('content')
 
 

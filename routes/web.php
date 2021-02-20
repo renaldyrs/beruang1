@@ -12,16 +12,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::group(['middleware' => 'guest'], function () {
+    
 
+// });
 
 //---------------------------------USER------------------------------------------------------------------------------
+
+// Route::get('/viewbeli', 'App\HTTP\Controllers\HalamanAwalController@viewbeli');
+
+// Route::get('/login1', 'App\HTTP\Controllers\HalamanAwalController@login1');
+
+
 Route::get('/','App\HTTP\Controllers\HalamanAwalController@viewawal' );
-Route::get('/viewbeli', 'App\HTTP\Controllers\HalamanAwalController@viewbeli');
-
-Route::get('/login1', 'App\HTTP\Controllers\HalamanAwalController@login1');
-
-
-
 
 
 //---------------------------------ADMIN------------------------------------------------------------------------------
@@ -31,7 +34,7 @@ Route::get('/adminbarang/hapus/{id}', 'App\HTTP\Controllers\AdminBarangControlle
 Route::get('/adminbarang/update/{id}', 'App\HTTP\Controllers\AdminBarangController@update');
 Route::post('/adminbarang/update/proses/{id}', 'App\HTTP\Controllers\AdminBarangController@proses_update');
 
-Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome');
+Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->middleware(['role','auth']);
 
 
 
@@ -49,30 +52,3 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

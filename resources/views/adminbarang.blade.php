@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@include('layouts.partial.navbar_admin')
+
 	<div class="row">
 		<div class="container">
 
@@ -88,5 +88,5 @@
 	</div>
     @endsection
 	@push('scripts')
-	@include('layouts.partial.navbar_admin')
+	@include('layouts.partial.script')
 	@endpush
