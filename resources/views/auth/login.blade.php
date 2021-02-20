@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @push('style')
     <link rel="stylesheet" href="{{asset('New/assets/css/login.css')}}">
+    
 @endpush
 
 @section('content')
