@@ -69,7 +69,14 @@
                                 <a class="nav-link" href="#">Selamat datang Admin, </a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Logout</a>
+                                
+                                <a class="dropdown-item nav-link" href="{{route('logout')}}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();" >
+                                            <i class="fa fa-power-off mr-3 ml-1"></i> Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                             </li>
                         </ul>
                     </div>
