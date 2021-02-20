@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.admin')
 @section('content')
 @include('layouts.partial.navbar')
     <header>
@@ -64,3 +64,6 @@
 		
 	</section>
 @endsection
+@push('scripts')
+	@include('layouts.partial.script')
+	@endpush
