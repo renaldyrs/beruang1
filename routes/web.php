@@ -37,7 +37,9 @@ Route::post('/adminbarang/update/proses/{id}', 'App\HTTP\Controllers\AdminBarang
 
 Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->middleware(['role','auth']);
 
-
+Route::get('/testing', function () {
+    return view ('testing');
+});
 
 
 

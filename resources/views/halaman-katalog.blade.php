@@ -56,5 +56,10 @@ body {
 @endsection
 @push('scripts')
 	@include('layouts.partial.script')
+<<<<<<< HEAD
 	@endpush 
            
+=======
+@endpush 
+           
+>>>>>>> pr/6
