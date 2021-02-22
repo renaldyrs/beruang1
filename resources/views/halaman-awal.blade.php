@@ -8,7 +8,8 @@ body {
 @endpush
 @section('content')
 @include('layouts.partial.navbar')
-    <header>
+<div class="container" style="heigth=100px">
+<header>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -41,6 +42,8 @@ body {
         </a>
         </div>
     </header>
+</div>
+    
 	<br>
 			
 		
@@ -59,7 +62,7 @@ body {
                       <p class="card-text" >{{$g->keterangan}}</p>
                       <p class="card-text"><small class="text-muted">{{$g->harga}}</small></p>
                       <p class="card-text"><small class="text-muted float-left">Stock Tersedia {{$g->stock}}</small></p>
-                      <button type="button" class="btn btn-outline-primary float-right">Beli</button>
+          
                     </div>
               </div>
            </div>
