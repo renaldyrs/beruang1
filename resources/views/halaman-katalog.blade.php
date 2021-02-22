@@ -9,27 +9,27 @@ body {
 
 @section('content')
 @include('layouts.partial.navbar')
-    <header>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <br>
-        <br>
-        
-    </header>
-	<br>
+    <br>
+    <br>
   <br>
 			
 		
 	<section>
-  <div class="container">
+
+                <div class="card-body" align="right">
+                <a class="btn btn-outline-dark">Secondary</a>
+                
+                <button type="button" class="btn btn-secondary">Secondary</button>
+                <button type="button" class="btn btn-secondary">Secondary</button>
+                <button type="button" class="btn btn-secondary">Secondary</button>
+                <button type="button" class="btn btn-secondary">Secondary</button>
+                <button type="button" class="btn btn-secondary">Secondary</button>
+
+                </div>
+                <!-- </nav> -->
+  <div class="conatiner">
   <div class="row">
   @foreach($barangs as $g)
-          
-           
            
            <div class="col-md-3">
               <div class="card" style="height: 98%;">
@@ -44,10 +44,8 @@ body {
               </div>
            </div>
            
-           
   @endforeach
-  
-  <br>
+ 
 	</div>		
   </div>
 	
@@ -56,10 +54,5 @@ body {
 @endsection
 @push('scripts')
 	@include('layouts.partial.script')
-<<<<<<< HEAD
 	@endpush 
            
-=======
-@endpush 
-           
->>>>>>> pr/6

@@ -21,7 +21,7 @@ body {
         <div class="carousel-inner">
             <div class="carousel-item active">
             <center>
-            <img class="d-block" width="87%"src="new\assets\img\avatars\avatar1.jpg" alt="First slide">
+            <img class="d-block" src="new\assets\img\avatars\avatar1.jpg"  height="400px"alt="First slide">
             </center>
             </div>
 
