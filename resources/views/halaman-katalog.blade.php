@@ -109,5 +109,5 @@ body {
 @endsection
 @push('scripts')
 	@include('layouts.partial.script')
-	@endpush 
+@endpush 
            
