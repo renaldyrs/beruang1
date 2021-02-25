@@ -15,23 +15,19 @@ body {
 			
 		
 	<section>
-
-                <div class="card-body" align="right">
-                <a class="btn btn-outline-dark">Secondary</a>
+  <div class="card-body" align="right">
+  @foreach($category as $c)
+               
+                <a class="btn btn-outline-dark">{{$c->nama}}</a>
                 
-                <button type="button" class="btn btn-secondary">Secondary</button>
-                <button type="button" class="btn btn-secondary">Secondary</button>
-                <button type="button" class="btn btn-secondary">Secondary</button>
-                <button type="button" class="btn btn-secondary">Secondary</button>
-                <button type="button" class="btn btn-secondary">Secondary</button>
-
-                </div>
+  @endforeach
+  </div>
                 <!-- </nav> -->
   <div class="conatiner">
   <div class="row">
   @foreach($barangs as $g)
            
-           <div class="col-md-3">
+           <div class="col-md-3 col-sm-5 col-xs-11">
               <div class="card" style="height: 98%;">
                   <img src="{{ url('/data_file/'.$g->file) }}" class="card-img-top" width="150px" height="150px" alt="...">
                     <div class="card-body">
