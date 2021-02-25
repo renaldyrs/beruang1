@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-
+@include('layouts.partial.sidebar_admin')
 	<div class="row">
 		<div class="container">
 
-			<h2 class="text-center my-5">Admin Barang</h2>
+			<h2 class="text-center my-5">Admin Produk</h2>
 			
 			<div class="col-lg-8 mx-auto my-5">	
 

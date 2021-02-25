@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">Gudang Beruang</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand logo" href="/">Gudang Beruang</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <div class="input-group">
@@ -9,12 +9,22 @@
     
                 <ul class="nav navbar-nav ml-auto">
                     @if(Auth::check())
-                        <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="catalog">Catalog</a></li>
                     @else
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="/"></a></li>  -->
+                    <li class="nav-item ml-4 active"><a class="nav-link" href="catalog">Catalog</a></li>
                     @endif
                     
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="features.php">Features</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Category
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php">About Us</a></li>
                     @if(Auth::check())
                         <li class="nav-item"><a class="nav-link"href="#">My Order</a></li>

@@ -21,7 +21,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Poduk</a>
+                    <a href="adminbarang">Poduk</a>
                 </li>
                 <li>
                     <a href="#">Supplier</a>

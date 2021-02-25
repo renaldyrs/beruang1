@@ -8,7 +8,8 @@ body {
 @endpush
 @section('content')
 @include('layouts.partial.navbar')
-    <header>
+<div class="container" style="heigth=100px">
+<header>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -20,15 +21,15 @@ body {
         <div class="carousel-inner">
             <div class="carousel-item active">
             <center>
-            <img class="d-block" width="87%"src="new\assets\img\avatars\avatar1.jpg" alt="First slide">
+            <img class="d-block" width="100%" height="400px" src="new\assets\img\avatars\avatar1.jpg"  alt="First slide">
             </center>
             </div>
 
             <div class="carousel-item"><center>
-            <img class="d-block " width="87%" src="new\assets\img\avatars\avatar2.jpg" alt="Second slide"></center>
+            <img class="d-block " width="100%" height="400px" src="new\assets\img\avatars\avatar2.jpg"  alt="Second slide"></center>
             </div>
             <div class="carousel-item"><center>
-            <img class="d-block h-75" width="87%" src="new\assets\img\avatars\avatar3.jpg" alt="Third slide"></center>
+            <img class="d-block" width="100%" height="400px" src="new\assets\img\avatars\avatar3.jpg"  alt="Third slide"></center>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -41,6 +42,8 @@ body {
         </a>
         </div>
     </header>
+</div>
+    
 	<br>
 			
 		
@@ -51,7 +54,7 @@ body {
           
            
            
-           <div class="col-md-3">
+           <div class="col-md-3 col-sm-5 col-xs-11" >
               <div class="card" style="height: 98%;">
                   <img src="{{ url('/data_file/'.$g->file) }}" class="card-img-top" width="150px" height="150px" alt="...">
                     <div class="card-body">
@@ -59,12 +62,14 @@ body {
                       <p class="card-text" >{{$g->keterangan}}</p>
                       <p class="card-text"><small class="text-muted">{{$g->harga}}</small></p>
                       <p class="card-text"><small class="text-muted float-left">Stock Tersedia {{$g->stock}}</small></p>
-                      <button type="button" class="btn btn-outline-primary float-right">Beli</button>
+          
                     </div>
               </div>
            </div>
            
+           
   @endforeach
+  
   <br>
 	</div>		
   </div>

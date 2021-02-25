@@ -25,8 +25,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/','App\HTTP\Controllers\HalamanAwalController@viewawal' );
+Route::get('/katalog','App\HTTP\Controllers\HalamanAwalController@viewkatalog' );
 
-
+Route::get('/catalog','App\HTTP\Controllers\HalamanAwalController@catalog' );
 //---------------------------------ADMIN------------------------------------------------------------------------------
 Route::get('/adminbarang', 'App\HTTP\Controllers\AdminBarangController@adminbarang');
 Route::post('/adminbarang/proses', 'App\HTTP\Controllers\AdminBarangController@proses_upload');
@@ -36,7 +37,9 @@ Route::post('/adminbarang/update/proses/{id}', 'App\HTTP\Controllers\AdminBarang
 
 Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->middleware(['role','auth']);
 
-
+Route::get('/testing', function () {
+    return view ('testing');
+});
 
 
 
