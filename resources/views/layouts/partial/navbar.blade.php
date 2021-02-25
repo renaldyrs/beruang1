@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">Gudang Beruang</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand logo" href="/">Gudang Beruang</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <div class="input-group">
@@ -9,10 +9,10 @@
     
                 <ul class="nav navbar-nav ml-auto">
                     @if(Auth::check())
-                        <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Catalog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="catalog">Catalog</a></li>
                     @else
                     <!-- <li class="nav-item"><a class="nav-link" href="/"></a></li>  -->
-                    <li class="nav-item ml-4 active"><a class="nav-link" href="/">Catalog</a></li>
+                    <li class="nav-item ml-4 active"><a class="nav-link" href="catalog">Catalog</a></li>
                     @endif
                     
                     <li class="nav-item dropdown">

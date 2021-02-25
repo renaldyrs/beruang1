@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/','App\HTTP\Controllers\HalamanAwalController@viewawal' );
+Route::get('/katalog','App\HTTP\Controllers\HalamanAwalController@viewkatalog' );
 
 Route::get('/catalog','App\HTTP\Controllers\HalamanAwalController@catalog' );
 //---------------------------------ADMIN------------------------------------------------------------------------------

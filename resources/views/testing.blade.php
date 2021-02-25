@@ -32,7 +32,16 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="contact-us.php">Login</a></li>
                     
                 </ul>
-                
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.php">Catalog</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="features.php">Category</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php">AboutUS</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="contact-us.php">Login</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="features.php">Category</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php">AboutUS</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="contact-us.php">Login</a></li>
+                </ul>
             </div>
         </div>
         </div>

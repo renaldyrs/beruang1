@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\barang;
-
+use App\Models\category;
 class HalamanAwalController extends Controller
 {
     //
@@ -21,9 +21,11 @@ class HalamanAwalController extends Controller
 
 	//catalog
 	public function catalog(){
-		// $catalog = catalog::get();
-		return view('halaman-katalog');
+		$barang = barang::get();
+		$category = category::get();
+		return view('halaman-katalog',['barangs' => $barang, 'category' => $category]);
 	}
+	
 
 
 }
