@@ -25,9 +25,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/','App\HTTP\Controllers\HalamanAwalController@viewawal' );
-Route::get('/katalog','App\HTTP\Controllers\HalamanAwalController@viewkatalog' );
-
 Route::get('/catalog','App\HTTP\Controllers\HalamanAwalController@catalog' );
+Route::get('/keranjang','App\HTTP\Controllers\HalamanAwalController@keranjang' );
+Route::get('/produk','App\HTTP\Controllers\HalamanAwalController@produk' );
+Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profile' );
 //---------------------------------ADMIN------------------------------------------------------------------------------
 Route::get('/adminbarang', 'App\HTTP\Controllers\AdminBarangController@adminbarang');
 Route::post('/adminbarang/proses', 'App\HTTP\Controllers\AdminBarangController@proses_upload');

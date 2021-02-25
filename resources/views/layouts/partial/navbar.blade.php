@@ -11,9 +11,9 @@
                 <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="catalog"><i class="fa fa-book"> Catalog</i></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php"><i class="fa fa-id-badge" aria-hidden="true"> About Us</i></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href=""><i class="fa fa-id-badge" aria-hidden="true"> About Us</i></a></li>
                     @if(Auth::check())
-                        <li class="nav-item"><a class="nav-link"href="#"><i class="fa fa-shopping-basket" aria-hidden="true"> My Order</i></a></li>
+                        <li class="nav-item"><a class="nav-link"href="keranjang"><i class="fa fa-shopping-basket" aria-hidden="true"> My Order</i></a></li>
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="btn dropdown-toggle text-center pr-3 nav-link bg-transparent text-dark" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -24,7 +24,7 @@
                                     <!-- dropdown profile -->
                                     <a class="dropdown-item nav-link" href="{{route('logout')}}" onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();" >
-                                                <i class="fa fa-user-circle mr-3 ml-1"></i> Profile
+                                                <i class="fa fa-user-circle mr-3 ml-1"><a href="profile">Profile</a></i> 
 
                                     </a>
                                     <!-- dropdown Logout -->

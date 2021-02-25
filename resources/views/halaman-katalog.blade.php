@@ -35,7 +35,7 @@ body {
                       <p class="card-text" >{{$g->keterangan}}</p>
                       <p class="card-text"><small class="text-muted">{{$g->harga}}</small></p>
                       <p class="card-text"><small class="text-muted float-left">Stock Tersedia {{$g->stock}}</small></p>
-                      <button type="button"  class="btn btn-outline-primary float-right"><a href="halaman-beli">Beli</a></button>
+                     
                     </div>
               </div>
            </div>
