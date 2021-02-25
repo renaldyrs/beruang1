@@ -5,12 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Gudang Beruang</title>
-    <link rel="stylesheet" href="New/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('New/assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
-    <link rel="stylesheet" href="New/assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="{{asset('New/assets/fonts/simple-line-icons.min.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
-    <link rel="stylesheet" href="New/assets/css/smoothproducts.css">
-    <link rel="stylesheet" href="New/assets/css/sidebar.css">
+    <link rel="stylesheet" href="{{asset('New/assets/css/smoothproducts.css')}}">
+    <link rel="stylesheet" href="{{asset('New/assets/css/sidebar.css')}}">
     @stack('style')
 
 

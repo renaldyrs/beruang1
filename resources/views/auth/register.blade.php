@@ -13,9 +13,7 @@
           </div>
           <div class="col-md-7">
             <div class="card-body">
-              <div class="brand-wrapper">
-                <img src="new/assets/img/logo.svg" alt="logo" class="logo">
-              </div>
+              
               <p class="login-card-description">Make your account</p>
               <form  method="POST" action="{{ route('register') }}">
                 @csrf
