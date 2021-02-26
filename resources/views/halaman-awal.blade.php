@@ -45,9 +45,16 @@ body {
 </div>
     
 	<br>
-			
-		
-	<section>
+	<div class="container">
+      <div class="card-body" align="right">
+      @foreach($category as $c)
+       <a class="btn btn-outline-dark" value="{{$c->id}}">{{$c->nama}}</a>
+                    
+      @endforeach
+      </div>
+
+  </div>
+ 	<section>
   <div class="container">
   <div class="row">
   @foreach($barangs as $g)

@@ -10,15 +10,16 @@ class HalamanAwalController extends Controller
     //
     public function viewawal(){
 		$barang = barang::get();
-		return view('halaman-awal',['barangs' => $barang]);
+		$category = category::get();
+		return view('halaman-awal',['barangs' => $barang, 'category' => $category]);
 	}
 	
 
 	//catalog
 	public function catalog(){
 		$barang = barang::get();
-		$category = category::get();
-		return view('halaman-katalog',['barangs' => $barang, 'category' => $category]);
+		
+		return view('halaman-katalog',['barangs' => $barang]);
 	}
 	//keranjang
 	public function keranjang(){

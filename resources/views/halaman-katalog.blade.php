@@ -15,13 +15,7 @@ body {
 			
 		
 	<section>
-  <div class="card-body" align="right">
-  @foreach($category as $c)
-               
-                <a class="btn btn-outline-dark">{{$c->nama}}</a>
-                
-  @endforeach
-  </div>
+  
                 <!-- </nav> -->
   <div class="conatiner">
   <div class="row">
