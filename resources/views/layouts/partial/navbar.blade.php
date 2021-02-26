@@ -24,7 +24,7 @@
                                     <!-- dropdown profile -->
                                     <a class="dropdown-item nav-link" href="{{route('logout')}}" onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();" >
-                                                <i class="fa fa-user-circle mr-3 ml-1"><a href="profile">Profile</a></i> 
+                                                <i class="fa fa-user-circle mr-3 ml-1"></i> Profile  
 
                                     </a>
                                     <!-- dropdown Logout -->
