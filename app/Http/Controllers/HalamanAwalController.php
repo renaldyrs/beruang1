@@ -23,7 +23,8 @@ class HalamanAwalController extends Controller
 	}
 	//keranjang
 	public function keranjang(){
-		return view('halaman-keranjang');
+		$barang = barang::get();
+		return view('halaman-keranjang',['barangs' => $barang]);
 	}
 	//profil
 	public function profil(){
