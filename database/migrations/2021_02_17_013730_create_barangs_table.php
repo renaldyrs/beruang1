@@ -15,12 +15,16 @@ class CreateBarangsTable extends Migration
     {
         Schema::create('barangs', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_category')->unsigned();
             $table->string('nama');
             $table->string('harga');
             $table->string('file');
-            $table->int('stock');
+            $table->integer('stock');
             $table->string('keterangan');
             $table->timestamps();
+            $table->foreign('id_category')->references('id')->on('category')->onUpdate('cascade')->onDelete('restrict');
+        
+            
         });
     }
 

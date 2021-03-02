@@ -18,6 +18,7 @@ class AdminBarangController extends Controller
 			'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
             'nama' => 'required',
             'harga' => 'required',
+			'stock' => 'required',
 			'keterangan' => 'required',
 		]);
  
@@ -34,6 +35,7 @@ class AdminBarangController extends Controller
 			'file' => $nama_file,
             'nama' => $request->nama,
             'harga' => $request->harga,
+			'stock' => $request->stock,
 			'keterangan' => $request->keterangan,
 		]);
  
@@ -47,5 +49,10 @@ class AdminBarangController extends Controller
             return redirect()->back();
         }
 
+	public function update($id){
+		$barang = barang::find($id);
+		
+		return view('adminbarangupdate',['barangs' => $barang]);
+	}
 	
 }

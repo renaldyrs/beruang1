@@ -4,18 +4,38 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\barang;
-
+use App\Models\category;
 class HalamanAwalController extends Controller
 {
     //
     public function viewawal(){
 		$barang = barang::get();
-		return view('halaman-awal',['barangs' => $barang]);
+		$category = category::get();
+		return view('halaman-awal',['barangs' => $barang, 'category' => $category]);
 	}
-	public function viewbeli(){
-		return view('halaman-beli');
+	
+
+	//catalog
+	public function catalog(){
+		$barang = barang::get();
+		
+		return view('halaman-katalog',['barangs' => $barang]);
 	}
-	public function login1(){
-		return view('login1');
+	//keranjang
+	public function keranjang(){
+		return view('halaman-keranjang');
 	}
+	//profil
+	public function profil(){
+		
+		return view('halaman-profil');
+	}
+	//produk
+	public function produk(){
+		
+		return view('halaman-produk');
+	}
+	
+
+
 }

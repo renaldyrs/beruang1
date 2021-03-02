@@ -1,10 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+@include('layouts.partial.sidebar_admin')
 	<div class="row">
 		<div class="container">
 
-			<h2 class="text-center my-5">Admin Barang</h2>
+			<h2 class="text-center my-5">Admin Produk</h2>
 			
 			<div class="col-lg-8 mx-auto my-5">	
 
@@ -16,7 +17,7 @@
 				</div>
 				@endif
 
-				<form action="/upload/proses" method="POST" enctype="multipart/form-data">
+				<form action="/adminbarang/proses" method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
 
 					<div class="form-group">
@@ -76,7 +77,7 @@
 							<td>
 							<a class="btn btn-danger" href="/adminbarang/hapus/{{ $g->id }}">HAPUS</a>
 						
-							<a class="btn btn-success" href="/adminbarang/edit/{{ $g->id }}">EDIT</a>
+							<a class="btn btn-success" href="/adminbarang/update/{{ $g->id }}">EDIT</a>
 							</td>
 							
 						</tr>
@@ -86,3 +87,6 @@
 		</div>
 	</div>
     @endsection
+	@push('scripts')
+	@include('layouts.partial.script')
+	@endpush
