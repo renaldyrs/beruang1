@@ -35,7 +35,7 @@ body {
                         <div class="card-body">
                             <div class="card-horizontal">
                                 <div class="img-square-wrapper">
-                                    <img class="" src="http://via.placeholder.com/300x180" alt="Card image cap">
+                                    <img class="imageproduct" src="http://via.placeholder.com/300x180" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <a href=""><i class="fa fa-trash mr-3 ml-4 float-right"></i></a>
