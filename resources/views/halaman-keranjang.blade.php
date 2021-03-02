@@ -37,11 +37,7 @@ body {
                         <div class="card-body">
                             <div class="card-horizontal">
                                 <div class="img-square-wrapper">
-<<<<<<< HEAD
                                     <img class="" src="{{ url('/data_file/'.$g->file) }}" width="170PX" height="100%" alt="Card image cap">
-=======
-                                    <img class="imageproduct" src="http://via.placeholder.com/300x180" alt="Card image cap">
->>>>>>> pr/11
                                 </div>
                                 <div class="card-body">
                                     <a href=""><i class="fa fa-trash mr-3 ml-4 float-right"></i></a>

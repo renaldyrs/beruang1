@@ -27,14 +27,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','App\HTTP\Controllers\HalamanAwalController@viewawal' );
 Route::get('/catalog','App\HTTP\Controllers\HalamanAwalController@catalog' );
 Route::get('/keranjang','App\HTTP\Controllers\HalamanAwalController@keranjang' );
-<<<<<<< HEAD
 Route::get('/produk/{id}','App\HTTP\Controllers\HalamanAwalController@produk' );
 Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profile' );
 Route::get('/category/{id_category}', 'App\HTTP\Controllers\HalamanAwalController@category');
-=======
-Route::get('/produk','App\HTTP\Controllers\HalamanAwalController@produk' );
-Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profil' );
->>>>>>> pr/11
 //---------------------------------ADMIN------------------------------------------------------------------------------
 Route::get('/adminbarang', 'App\HTTP\Controllers\AdminBarangController@adminbarang');
 Route::post('/adminbarang/proses', 'App\HTTP\Controllers\AdminBarangController@proses_upload');
