@@ -10,5 +10,5 @@ class barang extends Model
     use HasFactory;
     protected $table = "barangs";
  
-    protected $fillable = ['file','nama','harga','stock','keterangan'];
+    protected $fillable = ['id','id_category','file','nama','harga','stock','keterangan'];
 }

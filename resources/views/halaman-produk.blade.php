@@ -19,6 +19,7 @@
                                     <div class="sp-wrap"><a href="assets/img/tech/image1.jpg"><img class="img-fluid d-block mx-auto" src="assets/img/tech/image1.jpg"></a><a href="assets/img/tech/image1.jpg"><img class="img-fluid d-block mx-auto" src="assets/img/tech/image1.jpg"></a><a href="assets/img/tech/image1.jpg"><img class="img-fluid d-block mx-auto" src="assets/img/tech/image1.jpg"></a></div>
                                 </div>
                             </div>
+                            @foreach($barangs as $g)
                             <div class="col-md-6">
                                 <div class="info">
                                     <h3>NAMA</h3>
@@ -42,6 +43,7 @@
                                     <button class="btn btn-primary" type="button"><i class="icon-basket"></i>Beli Sekarang</button>
                                 </div>
                             </div>
+                            $endforeach
                         </div>
                     </div>
                     <div class="product-info">
