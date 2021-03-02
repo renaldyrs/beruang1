@@ -15,15 +15,26 @@ class HalamanAwalController extends Controller
 	}
 	
 
+	public function category($id){
+		// $category = category::find($id);
+		$category = category::all();
+		$barang = barang::where('id_category', $id)->get();
+		return view('halaman-awal',['barangs' => $barang, 'category' => $category]);
+		// dd($barang);
+	}
+
 	//catalog
 	public function catalog(){
 		$barang = barang::get();
 		
 		return view('halaman-katalog',['barangs' => $barang]);
 	}
+
+	
 	//keranjang
 	public function keranjang(){
-		return view('halaman-keranjang');
+		$barang = barang::get();
+		return view('halaman-keranjang',['barangs' => $barang]);
 	}
 	//profil
 	public function profil(){
@@ -32,8 +43,10 @@ class HalamanAwalController extends Controller
 	}
 	//produk
 	public function produk(){
+		$barang = barang::find($id);
 		
-		return view('halaman-produk');
+		return view('halaman-produk',['barangs' => $barang]);
+		
 	}
 	
 

@@ -27,8 +27,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','App\HTTP\Controllers\HalamanAwalController@viewawal' );
 Route::get('/catalog','App\HTTP\Controllers\HalamanAwalController@catalog' );
 Route::get('/keranjang','App\HTTP\Controllers\HalamanAwalController@keranjang' );
-Route::get('/produk','App\HTTP\Controllers\HalamanAwalController@produk' );
-Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profil' );
+Route::get('/produk/{id}','App\HTTP\Controllers\HalamanAwalController@produk' );
+Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profile' );
+Route::get('/category/{id_category}', 'App\HTTP\Controllers\HalamanAwalController@category');
 //---------------------------------ADMIN------------------------------------------------------------------------------
 Route::get('/adminbarang', 'App\HTTP\Controllers\AdminBarangController@adminbarang');
 Route::post('/adminbarang/proses', 'App\HTTP\Controllers\AdminBarangController@proses_upload');
@@ -49,7 +50,6 @@ Route::get('/awal','App\HTTP\Controllers\UploadController@awal');
 Route::get('/upload', 'App\HTTP\Controllers\UploadController@upload');
 Route::post('/upload/proses', 'App\HTTP\Controllers\UploadController@proses_upload');
 
-Route::get('/category','CategoryController@index');
 
 Route::get('home','App\HTTP\Controllers\HomeController@home');
 Auth::routes();

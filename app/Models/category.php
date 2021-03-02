@@ -10,5 +10,8 @@ class category extends Model
     use HasFactory;
     protected $table = "category";
  
-    protected $fillable = ['id_category','nama'];
+    protected $fillable = ['id','nama'];
+    public function user(){
+        return $this->hasMany('App\Models\barang' ,'id_category');
+    }
 }

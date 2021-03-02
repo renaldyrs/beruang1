@@ -26,43 +26,34 @@ body {
         <br>
         <!-- isi keranjang -->
     <div class="container" >
-    
+    <div class="card">
             <!-- isi1 -->
         <div class="container-fluid">
                 <div class="row">
+                
+                @foreach($barangs as $g)
                     <div class="col-11 mt-3">
-                        <div class="card">
+                        
                         <div class="card-body">
                             <div class="card-horizontal">
                                 <div class="img-square-wrapper">
-                                    <img class="imageproduct" src="http://via.placeholder.com/300x180" alt="Card image cap">
+                                    <img class="" src="{{ url('/data_file/'.$g->file) }}" width="170PX" height="100%" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <a href=""><i class="fa fa-trash mr-3 ml-4 float-right"></i></a>
-                                    <h4 class="card-title">Card title</h4>
-                                    
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h4 class="card-title">{{$g->nama}}</h4>
+
+                                    <p class="card-text"><small class="text-muted">{{$g->keterangan}}</small></p>
+                                    <p class="card-text"><small class="text-muted">{{$g->harga}}</small></p>
+                                    <label for="catatan">Catatan</label>
+                                <input type="text">
+                                </div>
                                 
-                                </div>
-                            </div>
-                            <br>
-                            <div class="card-horizontal">
-                                <div class="img-square-wrapper">
-                                    <img class="" src="http://via.placeholder.com/300x180" alt="Card image cap">
-                                </div>
-                                <div class="card-body">
-                                    <a href=""><i class="fa fa-trash mr-3 ml-4 float-right"></i></a>
-                                    <h4 class="card-title">Card title</h4>
-                                    
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                
-                                </div>
-                            </div>
-                        </div>
-                        
+                            </div>                        
                     </div>
                 </div>
-
+                @endforeach
+                </div>
         </div>    
     </div>
     </div>

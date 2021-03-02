@@ -21,32 +21,40 @@
 					{{ csrf_field() }}
 
 					<div class="form-group">
-						<b>File Gambar</b><br/>
-						<input type="file" name="file">
+						<label for="exampleFormControlFile1"> File Gambar</label>
+						<input class="form-control-file" type="file" name="file">
 					</div>
 
                     <div class="form-group">
-						<b>Nama Barang</b><br/>
-						<input type="text" name="nama">
+						<label for="exampleFormControlFile1">Nama Barang </label>
+						<input class="form-control" type="text" name="nama">
 					</div>
-
+					<div class="form-group">
+					<label for="exampleFormControlFile1">Category Barang </label>
+						<select class="form-control" id="exampleFormControlSelect1" name="category">
+						@foreach($category as $a)
+							<option value="{{$a->id}}">{{$a->nama}}</option>
+						@endforeach
+					</select>
+					</div>
+					
 
                     <div class="form-group">
-						<b>Harga</b><br/>
-						<input type="number" name="harga">
+					<label for="exampleFormControlFile1">Harga </label>
+						<input class="form-control" type="number" name="harga">
 					</div>
 
 					<div class="form-group">
-						<b>Stock</b><br/>
-						<input type="number" name="stock">
+					<label for="exampleFormControlFile1">Stock </label>
+						<input class="form-control" type="number" name="stock">
 					</div>
 
 					<div class="form-group">
-						<b>Keterangan</b>
-						<textarea class="form-control" name="keterangan"></textarea>
+					<label for="exampleFormControlFile1">Keterangan </label>
+						<textarea class="form-control" class="form-control" name="keterangan"></textarea>
 					</div>
 
-					<input type="submit" value="Upload" class="btn btn-primary">
+					<input type="submit" value="Upload" c	lass="btn btn-primary">
 				</form>
 				
 				<h4 class="my-5">Data</h4>
