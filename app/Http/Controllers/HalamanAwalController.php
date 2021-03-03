@@ -30,7 +30,13 @@ class HalamanAwalController extends Controller
 		return view('halaman-katalog',['barangs' => $barang]);
 	}
 
-	
+	//pembayaran
+	public function pembayaran(){
+		return view('halaman-pembayaran');
+	}
+	public function code(){
+		return view('halaman-pembayaran1');
+	}
 	//keranjang
 	public function keranjang(){
 		$barang = barang::get();

@@ -30,6 +30,8 @@ Route::get('/keranjang','App\HTTP\Controllers\HalamanAwalController@keranjang' )
 Route::get('/produk/{id}','App\HTTP\Controllers\HalamanAwalController@produk' );
 Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profile' );
 Route::get('/category/{id_category}', 'App\HTTP\Controllers\HalamanAwalController@category');
+Route::get('/pembayaran', 'App\HTTP\Controllers\HalamanAwalController@pembayaran');
+Route::get('/pembayaran/code', 'App\HTTP\Controllers\HalamanAwalController@code');
 //---------------------------------ADMIN------------------------------------------------------------------------------
 Route::get('/adminbarang', 'App\HTTP\Controllers\AdminBarangController@adminbarang');
 Route::post('/adminbarang/proses', 'App\HTTP\Controllers\AdminBarangController@proses_upload');
