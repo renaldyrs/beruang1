@@ -33,6 +33,7 @@ Route::get('/category/{id_category}', 'App\HTTP\Controllers\HalamanAwalControlle
 Route::post('/add-to-cart','App\HTTP\Controllers\CartController@add')->name('cart.add')->middleware('auth');
 Route::get('/keranjang','App\HTTP\Controllers\CartController@index')->name('keranjang')->middleware('auth');
 Route::get('/keranjang/change/{id}/{nilai}','App\HTTP\Controllers\CartController@change')->name('change')->middleware('auth');
+Route::get('/keranjang/delete/{id}','App\HTTP\Controllers\CartController@delete')->name('delete')->middleware('auth');
 
 //---------------------------------ADMIN------------------------------------------------------------------------------
 Route::get('/adminbarang', 'App\HTTP\Controllers\AdminBarangController@adminbarang');

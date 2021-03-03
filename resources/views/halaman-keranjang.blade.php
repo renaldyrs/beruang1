@@ -30,7 +30,7 @@ body {
             <!-- isi1 -->
         <div class="container-fluid">
                 <div class="row">
-                
+                @if($cartItems)
                     <div class="col-11 mt-3">        
                         <!-- <div class="card-body"> -->
                             <table class="table">
@@ -44,35 +44,36 @@ body {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($cartItems as $item)
+                                
+                                    @foreach ($cartItems as $item)
 
-                                <tr>
-                                    <td class="row">
-                                    <div class="col-md-6 ">
-                                         <img class="" src="{{ url('/data_file/'.$item['product_image']) }}" width="170PX" height="100%" alt="Card image cap">
-                                    </div>
-                                    <div class="col-md-5">
-                                    {{ $item['product_name'] }}
-                                    </div>
-                                       
-                                    </td>
-                                    <td >
-                                        
-                                        <span id="price{{ $item['product_id'] }}">{{ $item['product_price'] }}</span>
-                                    </td>
-                                    <td>
-                                        <div class="row form-goup">
-                                            <input name="quantity" class="form-control col-md-8" id="qty" type="number" value="{{ $item['qty'] }}" onchange="a(this,{{$item['product_id']}})"> 
+                                    <tr>
+                                        <td class="row">
+                                        <div class="col-md-6 ">
+                                            <img class="" src="{{ url('/data_file/'.$item['product_image']) }}" width="170PX" height="100%" alt="Card image cap">
                                         </div>
-                                    </td>
-                                    <td>
-                                        <span id="sub{{ $item['product_id'] }}">{{ $item['qty']* $item['product_price'] }}</span> 
-                                    </td>
-                                    <td >
-                                        <a href=""><i class="fa fa-trash  mr-4 float-right fa-2x"></i></a>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                        <div class="col-md-5">
+                                            {{ $item['product_name'] }}
+                                        </div>
+                                        
+                                        </td>
+                                        <td >
+                                            <span id="price{{ $item['product_id'] }}">{{ $item['product_price'] }}</span>
+                                        </td>
+                                        <td>
+                                            <div class="row form-goup">
+                                                <input name="quantity" class="form-control col-md-8" id="qty" type="number" value="{{ $item['qty'] }}" onchange="a(this,{{$item['product_id']}})"> 
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span id="sub{{ $item['product_id'] }}">{{ $item['qty']* $item['product_price'] }}</span> 
+                                        </td>
+                                        <td >
+                                            <a href="{{route('delete',$item['product_id'])}}"><i class="fa fa-trash  mr-4 float-right fa-2x"></i></a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                
                             </tbody>
                         </table>                       
                     <!-- </div> -->
@@ -96,6 +97,19 @@ body {
                         
                     </div>
                 </div>
+                @else
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>subtotal</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>  
+                @endif
             </div>
 
         </div> 
@@ -110,7 +124,7 @@ body {
   
   function a(nilai,id){
            
-            var jum = "{{count(json_decode(app('request')->cookie('dw-carts'), true))}}";
+            // 
             var n = $(nilai).val();
             if(n==0){
                 var konfir = confirm("Anda yakin menghapus produk ini?")

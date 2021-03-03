@@ -49,7 +49,7 @@ class CartController extends Controller
             ];
             echo "a";
         }
-        $cookie = cookie('dw-carts', json_encode($carts), 100);
+        $cookie = cookie('dw-carts', json_encode($carts), 2880);
         // Cookie::queue($cookie);
         return redirect()->back()->cookie($cookie); 
         
@@ -94,7 +94,7 @@ class CartController extends Controller
             ];
             echo "a";
         }
-        $cookie = cookie('dw-carts', json_encode($carts), 100);
+        $cookie = cookie('dw-carts', json_encode($carts), 2880);
         Cookie::queue($cookie);
         
         // return redirect()->back()->cookie($cookie); 
@@ -110,7 +110,7 @@ class CartController extends Controller
             
             echo "halo";
             
-            $cookie = cookie('dw-carts', json_encode($carts), 100);
+            $cookie = cookie('dw-carts', json_encode($carts), 2880);
             Cookie::queue($cookie);
         } else {
             //SELAIN ITU, BUAT QUERY UNTUK MENGAMBIL PRODUK BERDASARKAN PRODUCT_ID
@@ -126,7 +126,8 @@ class CartController extends Controller
             // ];
             $cookie = \Cookie::forget('dw-carts');
             Cookie::queue($cookie);
-            echo "a";
+            // echo "a";
+            return redirect('keranjang');
         }
     }
 }
