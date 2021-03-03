@@ -90,7 +90,13 @@ body {
                       <br>
                    <div class="card-footer">
                       <button type="button"  class="btn btn-outline-primary float-right"><a href="/produk">Cek</a></button>
-                      <button type="button"  class="btn btn-outline-primary float-right"><a href="halaman-beli">Beli</a></button>
+                      <form action="{{ route('cart.add') }}" method="post">
+                        @csrf
+                        
+                        <input type="hidden" name="product_id" value="{{ $g->id }}" class="form-control">
+                        <button  class="btn btn-outline-primary float-right">Beli</button>
+                        </form>
+                      
                    </div>
                       
                     </div>
