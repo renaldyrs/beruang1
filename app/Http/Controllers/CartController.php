@@ -108,10 +108,11 @@ class CartController extends Controller
             //MAKA UPDATE QTY-NYA BERDASARKAN PRODUCT_ID YANG DIJADIKAN KEY ARRAY
             // $carts[$request->product_id]['qty'] += 1;
             
-            echo "halo";
+            // echo "halo";
             
             $cookie = cookie('dw-carts', json_encode($carts), 2880);
             Cookie::queue($cookie);
+            return redirect('keranjang');
         } else {
             //SELAIN ITU, BUAT QUERY UNTUK MENGAMBIL PRODUK BERDASARKAN PRODUCT_ID
             // $product = barang::find($request->product_id);

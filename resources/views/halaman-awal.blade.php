@@ -23,15 +23,15 @@ body {
         <div class="carousel-inner">
             <div class="carousel-item active">
             <center>
-            <img class="d-block" width="100%" height="400px" src="new\assets\img\avatars\avatar1.jpg"  alt="First slide">
+            <img class="d-block" width="100%" height="400px" src="{{asset('New\assets\img\avatars\avatar1.jpg')}}"  alt="First slide">
             </center>
             </div>
 
             <div class="carousel-item"><center>
-            <img class="d-block " width="100%" height="400px" src="new\assets\img\avatars\avatar2.jpg"  alt="Second slide"></center>
+            <img class="d-block " width="100%" height="400px" src="{{asset('new\assets\img\avatars\avatar2.jpg')}}"  alt="Second slide"></center>
             </div>
             <div class="carousel-item"><center>
-            <img class="d-block" width="100%" height="400px" src="new\assets\img\avatars\avatar3.jpg"  alt="Third slide"></center>
+            <img class="d-block" width="100%" height="400px" src="{{asset('new\assets\img\avatars\avatar2.jpg')}}"  alt="Third slide"></center>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
