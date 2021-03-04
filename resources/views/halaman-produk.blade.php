@@ -1,6 +1,7 @@
+<!--  -->
+
 @extends('layouts.admin')
 @push('style')
-
 
 @endpush
 @section('content')
@@ -59,7 +60,15 @@
                                         
                                         <br>
                                     </div>
-                                    <button class="btn btn-primary" type="button"><i class="icon-basket"></i>Masukkan Keranjang</button>
+                                    
+                                <form action="{{ route('cart.add') }}" method="post">
+                                    @csrf
+                                    
+                                    <input type="hidden" name="product_id" value="{{ $barang->id }}" class="form-control">
+                                    <button class="btn btn-primary" ><i class="icon-basket"></i>Masukkan Keranjang</button>
+                                </form>
+                      
+                                    
                                     <button class="btn btn-primary" type="button"><i class="icon-basket"></i>Beli Sekarang</button>
                                 </div>
                             </div>

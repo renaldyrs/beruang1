@@ -17,7 +17,23 @@
                     <li class="nav-item"><a class="nav-link" href="/catalog"><i class="fa fa-book"> Catalog</i></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php"><i class="fa fa-id-badge" aria-hidden="true"> About Us</i></a></li>
                     @if(Auth::check())
-                        <li class="nav-item"><a class="nav-link"href="/keranjang"><i class="fa fa-shopping-basket" aria-hidden="true"> My Order</i></a></li>
+                        <li class="nav-item">
+                            <a class="nav-link"href="{{ route('keranjang') }}">
+                                <i class="fa fa-shopping-basket" aria-hidden="true">
+                                 My Order</i>
+                                 <div class="badge badge-danger">
+                                        @auth
+                                            @if(json_decode(app('request')->cookie('dw-carts'), true))
+                                                {{count(json_decode(app('request')->cookie('dw-carts'), true))}}
+                                            @else
+                                                0
+                                            @endif
+                                        @else
+                                        0
+                                        @endauth
+                                    </div>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="btn dropdown-toggle text-center pr-3 nav-link bg-transparent text-dark" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
