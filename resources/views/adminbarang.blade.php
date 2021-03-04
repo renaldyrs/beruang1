@@ -4,7 +4,8 @@
 @include('layouts.partial.sidebar_admin')
 	<div class="row">
 		<div class="container">
-
+		<div class="card">
+        <div class="card-body">
 			<h2 class="text-center my-5">Admin Produk</h2>
 			
 			<div class="col-lg-8 mx-auto my-5">	
@@ -54,15 +55,12 @@
 						<textarea class="form-control" class="form-control" name="keterangan"></textarea>
 					</div>
 
-					<input type="submit" value="Upload" c	lass="btn btn-primary">
+					<input type="submit" value="Upload" class="btn btn-primary">
 				</form>
-				
-				<h4 class="my-5">Data</h4>
-
-                
-                
-
 			</div>
+			</div>
+			</div>
+				<h4 class="my-5">Data</h4>
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
@@ -92,6 +90,7 @@
 						@endforeach
 					</tbody>
 				</table>
+		
 		</div>
 	</div>
     @endsection

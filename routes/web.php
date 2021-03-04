@@ -30,6 +30,9 @@ Route::get('/keranjang','App\HTTP\Controllers\HalamanAwalController@keranjang' )
 Route::get('/produk/{id}','App\HTTP\Controllers\HalamanAwalController@produk' );
 Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profile' );
 Route::get('/category/{id_category}', 'App\HTTP\Controllers\HalamanAwalController@category');
+
+Route::get('/pembayaran', 'App\HTTP\Controllers\HalamanAwalController@pembayaran');
+Route::get('/pembayaran/code', 'App\HTTP\Controllers\HalamanAwalController@code');
 Route::post('/add-to-cart','App\HTTP\Controllers\CartController@add')->name('cart.add')->middleware('auth');
 Route::get('/keranjang','App\HTTP\Controllers\CartController@index')->name('keranjang')->middleware('auth');
 Route::get('/keranjang/change/{id}/{nilai}','App\HTTP\Controllers\CartController@change')->name('change')->middleware('auth');
@@ -43,6 +46,8 @@ Route::get('/adminbarang/update/{id}', 'App\HTTP\Controllers\AdminBarangControll
 Route::post('/adminbarang/update/proses/{id}', 'App\HTTP\Controllers\AdminBarangController@proses_update');
 
 Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->middleware(['role','auth']);
+Route::get('/adminsupplier', 'App\HTTP\Controllers\AdminController@viewadminsup')->middleware(['role','auth']);
+Route::get('/laporan', 'App\HTTP\Controllers\AdminController@laporan')->middleware(['role','auth']);
 
 Route::get('/testing', function () {
     return view ('testing');
