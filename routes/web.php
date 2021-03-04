@@ -40,6 +40,8 @@ Route::get('/adminbarang/update/{id}', 'App\HTTP\Controllers\AdminBarangControll
 Route::post('/adminbarang/update/proses/{id}', 'App\HTTP\Controllers\AdminBarangController@proses_update');
 
 Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->middleware(['role','auth']);
+Route::get('/adminsupplier', 'App\HTTP\Controllers\AdminController@viewadminsup')->middleware(['role','auth']);
+Route::get('/laporan', 'App\HTTP\Controllers\AdminController@laporan')->middleware(['role','auth']);
 
 Route::get('/testing', function () {
     return view ('testing');
