@@ -60,7 +60,7 @@ body {
             @foreach($category as $c)
                       <ul class="nav nav-pills" role="tablist">
                         <li class="nav-item">
-                        <a href="{{ url('category/'.$c->id) }}" class="dropdown-item" name="id_category" id="id_category">{{$c->nama}}</a>
+                        <a href="{{ url('/category/'.$c->id) }}" class="dropdown-item" name="id_category" id="id_category">{{$c->nama}}</a>
                       </li>
                       </ul>
             @endforeach
@@ -89,14 +89,8 @@ body {
                       <p class="card-text"><small class="text-muted float-left">Stock Tersedia {{$g->stock}}</small></p>
                       <br>
                    <div class="card-footer">
-                      <button type="button"  class="btn btn-outline-primary float-right"><a href="/produk">Cek</a></button>
-                      <form action="{{ route('cart.add') }}" method="post">
-                        @csrf
-                        
-                        <input type="hidden" name="product_id" value="{{ $g->id }}" class="form-control">
-                        <button  class="btn btn-outline-primary float-right">Beli</button>
-                        </form>
-                      
+                      <button type="button"  class="btn btn-outline-primary float-right"><a href="/produk/{{$g->id}}">Cek</a></button>
+                     
                    </div>
                       
                     </div>

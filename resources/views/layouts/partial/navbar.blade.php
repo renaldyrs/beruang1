@@ -14,7 +14,7 @@
     
                 <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="catalog"><i class="fa fa-book"> Catalog</i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/catalog"><i class="fa fa-book"> Catalog</i></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php"><i class="fa fa-id-badge" aria-hidden="true"> About Us</i></a></li>
                     @if(Auth::check())
                         <li class="nav-item">
