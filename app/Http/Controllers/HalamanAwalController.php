@@ -49,11 +49,15 @@ class HalamanAwalController extends Controller
 		return view('halaman-profil');
 	}
 	//produk
-	public function produk(){
+	public function produk($id){
+		
 		$barang = barang::find($id);
-		
-		return view('halaman-produk',['barangs' => $barang]);
-		
+		// dd($barang);
+		// foreach($barang as $a){
+		// 	echo $a->id;
+		// }
+		return view('halaman-produk',['barang' => $barang]);
+		// echo $barang->id;
 	}
 	
 

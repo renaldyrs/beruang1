@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/viewbeli', 'App\HTTP\Controllers\HalamanAwalController@viewbeli');
 
 // Route::get('/login1', 'App\HTTP\Controllers\HalamanAwalController@login1');
-
+// ----------------------------------------------Customer-----------------------------------------------------------
 
 Route::get('/','App\HTTP\Controllers\HalamanAwalController@viewawal' );
 Route::get('/catalog','App\HTTP\Controllers\HalamanAwalController@catalog' );
@@ -30,8 +30,14 @@ Route::get('/keranjang','App\HTTP\Controllers\HalamanAwalController@keranjang' )
 Route::get('/produk/{id}','App\HTTP\Controllers\HalamanAwalController@produk' );
 Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profile' );
 Route::get('/category/{id_category}', 'App\HTTP\Controllers\HalamanAwalController@category');
+
 Route::get('/pembayaran', 'App\HTTP\Controllers\HalamanAwalController@pembayaran');
 Route::get('/pembayaran/code', 'App\HTTP\Controllers\HalamanAwalController@code');
+Route::post('/add-to-cart','App\HTTP\Controllers\CartController@add')->name('cart.add')->middleware('auth');
+Route::get('/keranjang','App\HTTP\Controllers\CartController@index')->name('keranjang')->middleware('auth');
+Route::get('/keranjang/change/{id}/{nilai}','App\HTTP\Controllers\CartController@change')->name('change')->middleware('auth');
+Route::get('/keranjang/delete/{id}','App\HTTP\Controllers\CartController@delete')->name('delete')->middleware('auth');
+
 //---------------------------------ADMIN------------------------------------------------------------------------------
 Route::get('/adminbarang', 'App\HTTP\Controllers\AdminBarangController@adminbarang');
 Route::post('/adminbarang/proses', 'App\HTTP\Controllers\AdminBarangController@proses_upload');
