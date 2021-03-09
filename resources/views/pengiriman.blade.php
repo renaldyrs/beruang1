@@ -127,7 +127,7 @@
                                     </div>
                                     <div class="col-md-2 " >
                                         <p class="text-right">Rp. {{$subtotal}} </p>
-                                        <input type="hidden" value = "{{ $subtotal}}" id="total">
+                                        <input type="hidden" name="total" value = "{{ $subtotal}}" id="total">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
