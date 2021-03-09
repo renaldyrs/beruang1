@@ -37,6 +37,15 @@ Route::post('/add-to-cart','App\HTTP\Controllers\CartController@add')->name('car
 Route::get('/keranjang','App\HTTP\Controllers\CartController@index')->name('keranjang')->middleware('auth');
 Route::get('/keranjang/change/{id}/{nilai}','App\HTTP\Controllers\CartController@change')->name('change')->middleware('auth');
 Route::get('/keranjang/delete/{id}','App\HTTP\Controllers\CartController@delete')->name('delete')->middleware('auth');
+Route::get('/keranjang/beli','App\HTTP\Controllers\CartController@beli')->name('beli')->middleware('auth');
+Route::get('/checkout','App\HTTP\Controllers\CheckoutController@index')->name('checkout')->middleware('auth');
+Route::get('/pengiriman','App\HTTP\Controllers\CheckoutController@pengiriman')->name('pengiriman')->middleware('auth');
+
+Route::get('/getProvince','App\HTTP\Controllers\LocationController@getProvince')->name('provinsi');
+Route::get('/getkota/{id}','App\HTTP\Controllers\LocationController@getkota')->name('kota');
+Route::post('/getService','App\HTTP\Controllers\LocationController@getService')->name('rajaongkir.service');
+Route::post('/getCost', 'App\HTTP\Controllers\LocationController@getCost')->name('rajaongkir.cost');
+// Route::get('/tes','App\HTTP\Controllers\LocationController@getService');
 
 //---------------------------------ADMIN------------------------------------------------------------------------------
 Route::get('/adminbarang', 'App\HTTP\Controllers\AdminBarangController@adminbarang');
