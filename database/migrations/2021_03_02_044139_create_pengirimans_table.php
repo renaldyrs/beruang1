@@ -16,21 +16,17 @@ class CreatePengirimansTable extends Migration
         Schema::create('pengiriman', function (Blueprint $table) {
             $table->increments('id_pengiriman');
             $table->integer('id_kurir')->unsigned();
-            $table->integer('id_provinsi')->unsigned();
-            $table->integer('id_kota')->unsigned();
             $table->integer('id_pesanan')->unsigned();
             $table->string('nama_penerima');
             $table->string('no_hp');
             $table->string('kode_pos');
-            $table->string('alamat');
             $table->string('jenis_pengiriman');
             $table->string('bianya_pengiriman');
             $table->string('no_resi');
             $table->timestamps();
             $table->foreign('id_kurir')->references('id_kurir')->on('kurirs')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_pesanan')->references('id_pesanan')->on('pesanan')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('id_kota')->references('id_kota')->on('kota')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('id_provinsi')->references('id_provinsi')->on('provinsi')->onUpdate('cascade')->onDelete('restrict');
+            
         });
     }
 

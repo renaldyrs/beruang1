@@ -1,20 +1,28 @@
 @extends('layouts.admin')
 @push('style')
     <style>
-body {
-  background-color: #f7ebd3;
-}
-.card-horizontal {
-    display: flex;
-    flex: 1 1 auto;
-    box-shadow: 1px 1px 3px grey;
-}
-.fa.fa-trash {
-  color: red;
-}
-.card {
-    box-shadow: 1px 1px 3px grey;
-}
+    body {
+    background-color: #f7ebd3;
+    }
+    .card-horizontal {
+        display: flex;
+        flex: 1 1 auto;
+        box-shadow: 1px 1px 3px grey;
+    }
+    .fa.fa-trash {
+    color: red;
+    }
+    .card {
+        box-shadow: 1px 1px 3px grey;
+    }
+    .swal-button--confirm{
+        /* padding: 7px 19px; */
+        /* border-radius: 2px; */
+        background-color: #007bff;
+        /* font-size: 18px; */
+        /* border: 1px solid #007bff; */
+        /* text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3); */
+    }
 
 </style>
 @endpush
@@ -33,7 +41,7 @@ body {
                 @if($cartItems)
                     <div class="col-11 mt-3">        
                         <!-- <div class="card-body"> -->
-                            <table class="table">
+                            <table class="table" id="table">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -47,7 +55,7 @@ body {
                                 
                                     @foreach ($cartItems as $item)
 
-                                    <tr>
+                                    <tr id="table{{$item['product_id']}}">
                                         <td class="row">
                                         <div class="col-md-6 ">
                                             <img class="" src="{{ url('/data_file/'.$item['product_image']) }}" width="170PX" height="100%" alt="Card image cap">
@@ -99,7 +107,7 @@ body {
                             </div>
                             
                             <div class=" form-goup p-2">
-                                <a  class="btn btn-primary" href="#" role="button">Proceed to checkout</a>   
+                                <a  class="btn btn-primary" href="{{route('checkout')}}" id="check" role="button">Proceed to checkout</a>   
                             </div>
                         </div>
                         
@@ -189,6 +197,30 @@ body {
                 });
         }
 
+        function deleted(id){
+            // console.log("a");
+            $.get({
+                    url:"{{url('/keranjang/delete')}}"+"/"+id,
+                    type:'GET',
+                    // dataType: 'json',
+                    data: 
+                        {
+                            // "id_calon_karyawan": kar, 
+                            "_token": "{{ csrf_token() }}",
+                        },
+                    success:function(response){
+                        x = document.getElementById("table"+fieldName).rowIndex;
+                        // alert( x);
+                        document.getElementById("check").remove();
+                        $("#total").remove();
+                        
+                        $(".badge-danger").html("0");
+                        document.getElementById("table").deleteRow(x);
+                    }    
+                });
+        }
+
+
         jQuery(document).ready(function(){
     // This button will increment the value
     $('[data-quantity="plus"]').click(function(e){
@@ -224,8 +256,22 @@ body {
                 $('input[name='+fieldName+']').val(currentVal - 1);
                 tambah(fieldName,currentVal-1);
             }else{
-                $('input[name='+fieldName+']').val(1);
-                // tambah(fieldName,currentVal-1);
+                // $('input[name='+fieldName+']').val(1);
+                // // tambah(fieldName,currentVal-1);
+                // x = document.getElementById("table"+fieldName).rowIndex;
+                // // alert( x);
+                // document.getElementById("table").deleteRow(x);
+                swal({
+                    title: 'Apakah Kamu Yakin?',
+                    text: 'Produk ini akan terhapus dari keranjang!',
+                    icon: 'warning',
+                    buttons: ["Cancel", "Delete!"],
+                }).then(function(value) {
+                    if (value) {
+                        // console.log("a");
+                        deleted(fieldName);
+                    }
+                });
             }
            
         } else {

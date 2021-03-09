@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePembayaransTable extends Migration
+class CreatePesananItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreatePembayaransTable extends Migration
      */
     public function up()
     {
-        Schema::create('pembayarans', function (Blueprint $table) {
-            $table->increments('id_pembayaran');
+        Schema::create('pesanan_item', function (Blueprint $table) {
+            $table->increments('id_pesan_item');
+            $table->integer('id_barang')->unsigned();
             $table->integer('id_pesanan')->unsigned();
-            $table->date('tanggal_pembayaran');
-            $table->string('status');
-            $table->string('bukti_pembayaran');
-            $table->timestamps();
+            $table->integer('jumlah_barang');
+            $table->integer('harga_barang');
+            $table->foreign('id_barang')->references('id')->on('barangs')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_pesanan')->references('id_pesanan')->on('pesanan')->onUpdate('cascade')->onDelete('restrict');
+            $table->timestamps();
         });
     }
 
@@ -31,6 +32,6 @@ class CreatePembayaransTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pembayarans');
+        Schema::dropIfExists('pesanan_item');
     }
 }

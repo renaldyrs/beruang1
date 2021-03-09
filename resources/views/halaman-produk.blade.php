@@ -68,8 +68,13 @@
                                     <button class="btn btn-primary" ><i class="icon-basket"></i>Masukkan Keranjang</button>
                                 </form>
                       
+                                <form action="{{ route('beli') }}" method="get">
+                                    @csrf
                                     
-                                    <button class="btn btn-primary" type="button"><i class="icon-basket"></i>Beli Sekarang</button>
+                                    <input type="hidden" name="product_id" value="{{ $barang->id }}" class="form-control">
+                                    <button class="btn btn-primary" ><i class="icon-basket"></i>Beli Sekarang</button>
+                                </form>
+                                    
                                 </div>
                             </div>
                             
