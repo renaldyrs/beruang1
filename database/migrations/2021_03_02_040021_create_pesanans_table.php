@@ -15,15 +15,15 @@ class CreatePesanansTable extends Migration
     {
         Schema::create('pesanan', function (Blueprint $table) {
             $table->increments('id_pesanan');
-            $table->integer('id_barang')->unsigned();
             $table->integer('id_kota')->unsigned();
             $table->integer('id_provinsi')->unsigned();
             $table->integer('id_pelanggan')->unsigned();
             $table->date('tanggal_pesanan');
+            $table->string('alamat');
             $table->string('status');
-            $table->string('keterangan');
+            $table->integer('total');
+            $table->integer('grantotal');
             $table->timestamps();
-            $table->foreign('id_barang')->references('id')->on('barangs')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_kota')->references('id_kota')->on('kota')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_provinsi')->references('id_provinsi')->on('provinsi')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_pelanggan')->references('id_pelanggan')->on('pelanggan')->onUpdate('cascade')->onDelete('restrict');
