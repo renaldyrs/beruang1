@@ -20,7 +20,7 @@
 						<input class="form-control" type="text" name="nama" value="">
                     </div>
 					</div>
-					<input type="submit" value="Daftar" class="btn btn-primary">
+					<input type="submit" value="Tambah" class="btn btn-primary">
 				</form>
                 </div>
     <center><h4>Data Kurir</h4></center> 

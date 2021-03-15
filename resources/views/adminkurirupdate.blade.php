@@ -9,17 +9,17 @@
 					{{ csrf_field() }}
                     
                     <div class="form-group row">
-    @foreach($kurirs as $k)
+                    
                     <div class="col-md-3">
                     <label for="exampleFormControlFile1">Kode Kurir </label>
-						<input class="form-control" type="text" name="kode" value="{{$k->kode_kurir}}">
+						<input class="form-control" type="text" name="kode" value="{{$kurirs->kode_kurir}}">
                     </div>
 
                     <div class="col-md">
                     <label for="exampleFormControlFile1">Nama Kurir</label>
-						<input class="form-control" type="text" name="nama" value="{{$k->nama_kurir}}">
+						<input class="form-control" type="text" name="nama" value="{{$kurirs->nama_kurir}}">
                     </div>
-                    @endforeach
+                    
 					</div>
 					<input type="submit" value="Daftar" class="btn btn-primary">
 				</form>

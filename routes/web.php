@@ -48,14 +48,29 @@ Route::post('/getCost', 'App\HTTP\Controllers\LocationController@getCost')->name
 // Route::get('/tes','App\HTTP\Controllers\LocationController@getService');
 
 //---------------------------------ADMIN------------------------------------------------------------------------------
+//barang
 Route::get('/adminbarang', 'App\HTTP\Controllers\AdminBarangController@adminbarang');
 Route::post('/adminbarang/proses', 'App\HTTP\Controllers\AdminBarangController@proses_upload');
 Route::get('/adminbarang/hapus/{id}', 'App\HTTP\Controllers\AdminBarangController@delete');
 Route::get('/adminbarang/update/{id}', 'App\HTTP\Controllers\AdminBarangController@update');
 Route::post('/adminbarang/update/proses/{id}', 'App\HTTP\Controllers\AdminBarangController@proses_update');
 
-Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->middleware(['role','auth']);
+//kurir
+Route::get('/adminkurir', 'App\HTTP\Controllers\AdminController@viewadminkurir');
+Route::get('/adminkurir/hapus/{id_kurir}', 'App\HTTP\Controllers\AdminController@deletekurir');
+Route::get('/adminkurir/update/{id_kurir}', 'App\HTTP\Controllers\AdminController@updatekurir');
+Route::post('/adminkurir/tambah', 'App\HTTP\Controllers\AdminController@tambah');
+Route::post('/adminkurir/update/proses/{id}', 'App\HTTP\Controllers\AdminController@proses_update');
+
+//suplier
 Route::get('/adminsupplier', 'App\HTTP\Controllers\AdminController@viewadminsup')->middleware(['role','auth']);
+Route::get('/adminsupplier/hapus/{id_suplier}', 'App\HTTP\Controllers\AdminController@delete');
+Route::get('/adminsupplier/update/{id_suplier}', 'App\HTTP\Controllers\AdminController@update');
+Route::post('/adminsupplier/tambah', 'App\HTTP\Controllers\AdminController@tambah');
+Route::post('/adminsupplier/update/proses/{id}', 'App\HTTP\Controllers\AdminController@proses_update');
+
+Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->middleware(['role','auth']);
+
 Route::get('/laporan', 'App\HTTP\Controllers\AdminController@laporan')->middleware(['role','auth']);
 
 Route::get('/testing', function () {
