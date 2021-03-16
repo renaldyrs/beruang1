@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\supplier;
 use App\Models\Kurir;
+use App\Models\bank;
 use DB;
 
 class AdminController extends Controller
@@ -72,6 +73,28 @@ class AdminController extends Controller
     return view('adminkurirupdate',['kurirs' => $kurir]);
     }
     
+  //bank
+  public function viewadminbank(){
+    $bank = bank::get();
+	
+    return view('adminbank',['bank' => $bank]);
+    }
+
+    public function tambahbank(Request $request){
+      DB::table('bank')->insert([
+     
+      'kode_bank' => $request->kode_bank,
+      'nama_bank' => $request->nama
+      ]);
+      // alihkan halaman ke halaman pegawai
+      return redirect('/adminbank');
+      
+      }
+      public function deletebank($id_bank){
+        $bank = bank::find($id_bank);
+        $bank->delete();
+        return redirect()->back();
+  }
 
   //laporan
   public function laporan(){
