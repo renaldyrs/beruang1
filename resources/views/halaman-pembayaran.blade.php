@@ -34,19 +34,9 @@ body {
                         <div class="card">
                             <div class="card-body">
                             <h5><i class="fa fa-map-marker" aria-hidden="true"></i>  Alamat pengiriman</h5>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Daftar Alamat
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="Alamat">
-                                        <button class="dropdown-item btn-block" type="button">Action</button>
-                                        <button class="dropdown-item btn-block" type="button">Another action</button>
-                                        <button class="dropdown-item btn-block" type="button">Something else here</button>
-                                        <button class="dropdown-item btn-block" type="button">
-                                            <center><i class="fa fa-plus" aria-hidden="true"></i></center>
-                                        </button>
-                                    </div>
-                                </div>
+                               @foreach($alamat as $a)
+                               <input type="text" value="Provinsi {{$a->nama_provinsi}}, Kota {{$a->nama_kota}}, {{$a->alamat}}" id="alamat" name="alamat" class="form-control " readonly required>
+                               @endforeach
                             </div>
                             <br>
                         </div>
@@ -65,14 +55,23 @@ body {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($produk as $b)
                                         <tr>
                                         <th scope="row">1</th>
-                                        <td>Gambar dan nama</td>
-                                        <td>Rp 100.000</td>
-                                        <td>1</td>
-                                        <td>Rp 100.000</td>
-                                        </tr>
+                                        <td class="row">
+                                        <div class="col-md-6 ">
+                                            <img class="" src="{{ url('/data_file/'.$b->file) }}" width="170PX" height="100%" alt="Card image cap">
+                                        </div>
+                                        <div class="col-md-5">
+                                            {{ $b->nama}}
+                                        </div>
                                         
+                                        </td>
+                                        <td>{{ $b->harga}}</td>
+                                        <td>{{$b->qty}}</td>
+                                        <td>{{ $b->qty * $b->harga}}</td>
+                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -82,6 +81,7 @@ body {
                         <div class="card">
                             <div class="card-body">
                             <h5><i class="fa fa-money" aria-hidden="true"></i>  Metode Pembayaran</h5>
+<<<<<<< HEAD
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-outline-secondary btn-block" data-toggle="modal" data-target="#pilih_pembayaran">pilih metode pembayaran</button>
                                 <!-- Modal -->
@@ -126,6 +126,21 @@ body {
                                 </div>
                                 </div>
 
+=======
+                               <!-- <label for="inputState">State</label> -->
+                               <form action="/bayar" method="get">
+                               <div class="form-group">
+                                <select id="inputState" name="bank" class="form-control">
+                                    @foreach($bank as $b)
+                                        <option value="{{$b->id_bank}}">{{$b->nama_bank}} </option>
+
+                                        
+                                    @endforeach
+                                </select>
+                               </div>
+                                <button type="submit" class="btn btn-primary">Bayar</button>
+                                </form>
+>>>>>>> rey
                             </div>
                             <br>
                         </div>

@@ -28,10 +28,12 @@ Route::get('/','App\HTTP\Controllers\HalamanAwalController@viewawal' );
 Route::get('/catalog','App\HTTP\Controllers\HalamanAwalController@catalog' );
 Route::get('/keranjang','App\HTTP\Controllers\HalamanAwalController@keranjang' );
 Route::get('/produk/{id}','App\HTTP\Controllers\HalamanAwalController@produk' );
-Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profile' );
+Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profil' );
 Route::get('/category/{id_category}', 'App\HTTP\Controllers\HalamanAwalController@category');
+Route::get('/pembayaran', 'App\HTTP\Controllers\HalamanAwalController@pembayaran')->middleware('auth');
+Route::get('/bayar', 'App\HTTP\Controllers\HalamanAwalController@bayar')->middleware('auth');
+Route::get('/bayar/upload', 'App\HTTP\Controllers\HalamanAwalController@upload')->middleware('auth');
 
-Route::get('/pembayaran', 'App\HTTP\Controllers\HalamanAwalController@pembayaran');
 Route::get('/pembayaran/code', 'App\HTTP\Controllers\HalamanAwalController@code');
 Route::post('/add-to-cart','App\HTTP\Controllers\CartController@add')->name('cart.add')->middleware('auth');
 Route::get('/keranjang','App\HTTP\Controllers\CartController@index')->name('keranjang')->middleware('auth');
@@ -48,14 +50,34 @@ Route::post('/getCost', 'App\HTTP\Controllers\LocationController@getCost')->name
 // Route::get('/tes','App\HTTP\Controllers\LocationController@getService');
 
 //---------------------------------ADMIN------------------------------------------------------------------------------
+//barang
 Route::get('/adminbarang', 'App\HTTP\Controllers\AdminBarangController@adminbarang');
 Route::post('/adminbarang/proses', 'App\HTTP\Controllers\AdminBarangController@proses_upload');
 Route::get('/adminbarang/hapus/{id}', 'App\HTTP\Controllers\AdminBarangController@delete');
 Route::get('/adminbarang/update/{id}', 'App\HTTP\Controllers\AdminBarangController@update');
 Route::post('/adminbarang/update/proses/{id}', 'App\HTTP\Controllers\AdminBarangController@proses_update');
 
-Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->middleware(['role','auth']);
+//kurir
+Route::get('/adminkurir', 'App\HTTP\Controllers\AdminController@viewadminkurir');
+Route::get('/adminkurir/hapus/{id_kurir}', 'App\HTTP\Controllers\AdminController@deletekurir');
+Route::get('/adminkurir/update/{id_kurir}', 'App\HTTP\Controllers\AdminController@updatekurir');
+Route::post('/adminkurir/tambah', 'App\HTTP\Controllers\AdminController@tambah');
+Route::post('/adminkurir/update/proses/{id}', 'App\HTTP\Controllers\AdminController@proses_update');
+
+//suplier
 Route::get('/adminsupplier', 'App\HTTP\Controllers\AdminController@viewadminsup')->middleware(['role','auth']);
+Route::get('/adminsupplier/hapus/{id_suplier}', 'App\HTTP\Controllers\AdminController@delete');
+Route::get('/adminsupplier/update/{id_suplier}', 'App\HTTP\Controllers\AdminController@update');
+Route::post('/adminsupplier/tambah', 'App\HTTP\Controllers\AdminController@tambah');
+Route::post('/adminsupplier/update/proses/{id}', 'App\HTTP\Controllers\AdminController@proses_update');
+
+//bank
+Route::get('/adminbank', 'App\HTTP\Controllers\AdminController@viewadminbank')->middleware(['role','auth']);
+Route::get('/adminbank/hapus/{id_bank}', 'App\HTTP\Controllers\AdminController@deletebank');
+Route::post('/adminbank/tambah', 'App\HTTP\Controllers\AdminController@tambahbank');
+
+Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->middleware(['role','auth']);
+
 Route::get('/laporan', 'App\HTTP\Controllers\AdminController@laporan')->middleware(['role','auth']);
 
 Route::get('/testing', function () {

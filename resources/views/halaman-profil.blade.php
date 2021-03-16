@@ -34,7 +34,7 @@ body {
                         <div class="card">
                         <div class="card-body">
                             <div class="img-bullet-wrapper">
-                                <img class="image-profil" src="New/assets/img/avatars/avatar1.jpg" height="100%" width="100% " alt="Foto Profil">
+                                <img class="image-profil" src="{{asset('New/assets/img/avatars/avatar1.jpg')}}" height="100%" width="100% " alt="Foto Profil">
                                 <br><hr>
                                 <p>Nama</p>
                                 <p>DLL</p>
@@ -58,15 +58,15 @@ body {
                                 </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    <p>Pengaturan Profil</p>
-                                </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <p>Daftar Alamat</p>
-                                </div>
-                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                    <p>Keamanan</p>
-                                </div>
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <p>Pengaturan Profil</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <p>Daftar Alamat</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                        <p>Keamanan</p>
+                                    </div>
                                 </div>
                         </div>
                         </div>
