@@ -21,6 +21,7 @@ class BarangSeeder extends Seeder
             'harga' =>'25000',
             'file' => '1613623718_tas selempang.jpg',
             'stock' =>'10',
+            'id_suplier'=>1,
             'keterangan' =>'Stock barang ready',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -28,6 +29,7 @@ class BarangSeeder extends Seeder
         DB::table('barangs')->insert([
             'id_category' => '2',
             'nama' => 'Sepatu Casual',
+            'id_suplier'=>1,
             'harga' =>'560000',
             'file' => '1613624110_sepatu.png',
             'stock' =>'5',
@@ -38,6 +40,7 @@ class BarangSeeder extends Seeder
         DB::table('barangs')->insert([
             'id_category' => '3',
             'nama' => 'Kaos Polos',
+            'id_suplier'=>1,
             'harga' =>'15000',
             'file' => '1613624198_kaos.jpg',
             'stock' =>'15',

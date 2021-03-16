@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="{{asset('New/assets/css/smoothproducts.css')}}">
     <link rel="stylesheet" href="{{asset('New/assets/css/sidebar.css')}}">
+    <link rel="stylesheet" href="{{asset('New/assets/font-awesome/css/font-awesome.min.css')}}">
     @stack('style')
 
 

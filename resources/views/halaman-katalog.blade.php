@@ -15,7 +15,9 @@ body {
 			
 		
 	<section>
+  <div class="card-body" align="right">
   
+  </div>
                 <!-- </nav> -->
   <div class="conatiner">
   <div class="row">
@@ -29,7 +31,7 @@ body {
                       <p class="card-text" >{{$g->keterangan}}</p>
                       <p class="card-text"><small class="text-muted">{{$g->harga}}</small></p>
                       <p class="card-text"><small class="text-muted float-left">Stock Tersedia {{$g->stock}}</small></p>
-                     
+                      
                     </div>
               </div>
            </div>

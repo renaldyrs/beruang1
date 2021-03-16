@@ -7,9 +7,8 @@ body {
 </style>
 @endpush
 @section('content')
+
 @include('layouts.partial.navbar')
-<br>
-<br>
 <div class="container" style="heigth=100px">
 <header>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -23,15 +22,15 @@ body {
         <div class="carousel-inner">
             <div class="carousel-item active">
             <center>
-            <img class="d-block" width="100%" height="400px" src="{{asset('New\assets\img\avatars\avatar1.jpg')}}"  alt="First slide">
+            <img class="d-block" width="100%" height="400px" src="new\assets\img\avatars\avatar1.jpg"  alt="First slide">
             </center>
             </div>
 
             <div class="carousel-item"><center>
-            <img class="d-block " width="100%" height="400px" src="{{asset('new\assets\img\avatars\avatar2.jpg')}}"  alt="Second slide"></center>
+            <img class="d-block " width="100%" height="400px" src="new\assets\img\avatars\avatar2.jpg"  alt="Second slide"></center>
             </div>
             <div class="carousel-item"><center>
-            <img class="d-block" width="100%" height="400px" src="{{asset('new\assets\img\avatars\avatar2.jpg')}}"  alt="Third slide"></center>
+            <img class="d-block" width="100%" height="400px" src="new\assets\img\avatars\avatar3.jpg"  alt="Third slide"></center>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -47,65 +46,50 @@ body {
 </div>
     
 	<br>
-  
+
 	<div class="container">
       <div class="card-body" align="right">
+      
       <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Kategori
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <?php if(is_array($category) || is_object($category)){ ?>
-            @foreach($category as $c)
-                      <ul class="nav nav-pills" role="tablist">
-                        <li class="nav-item">
-                        <a href="{{ url('/category/'.$c->id) }}" class="dropdown-item" name="id_category" id="id_category">{{$c->nama}}</a>
-                      </li>
-                      </ul>
-            @endforeach
-          <?php }; ?>
+          <!-- @foreach($category as $c) -->
+          <a href="" class="dropdown-item" name="id_category" id="id_category"   ></a>
+          <!-- @endforeach -->
         </div>
-     
       </div>           
+     
       </div>
-  
+
   </div>
  	<section>
   <div class="container">
-  
-  
   <div class="row">
   @foreach($barangs as $g)
-    
-    
-    <div id="{{ url('category/'.$c->id) }}" class="col-md-3 col-sm-3 col-xs-11" >
-              <div class="card" style="height: 98%;" href="/produk">
+  
+           <div class="col-md-3 col-sm-5 col-xs-11" >
+              <div class="card" style="height: 98%;">
                   <img src="{{ url('/data_file/'.$g->file) }}" class="card-img-top" width="150px" height="150px" alt="...">
                     <div class="card-body">
                       <h5 class="card-title"><b>{{$g->nama}}</b></h5>
                       <p class="card-text" >{{$g->keterangan}}</p>
                       <p class="card-text"><small class="text-muted">{{$g->harga}}</small></p>
                       <p class="card-text"><small class="text-muted float-left">Stock Tersedia {{$g->stock}}</small></p>
-                      <br>   
+                      <button type="button"  class="btn btn-outline-primary float-right"><a href="halaman-beli">Beli</a></button>
                     </div>
-                    <div class="card-footer d-flex justify-content-center">
-                       <a href="/produk/{{$g->id}}" class="btn btn-outline-primary ">Cek</a>
-                     
-                   </div>
               </div>
-           </div> 
-    
-      
-      
-                    
+           </div>          
   @endforeach
   
   <br>
 	</div>		
-  </div> 
+  </div>
 		
 	</section>
+  
 @endsection
 @push('scripts')
 	@include('layouts.partial.script')
