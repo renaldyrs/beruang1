@@ -72,7 +72,7 @@ body {
   
   </div>
  	<section>
-  <div class="continer">
+  <div class="container">
   
   
   <div class="row">
@@ -87,13 +87,12 @@ body {
                       <p class="card-text" >{{$g->keterangan}}</p>
                       <p class="card-text"><small class="text-muted">{{$g->harga}}</small></p>
                       <p class="card-text"><small class="text-muted float-left">Stock Tersedia {{$g->stock}}</small></p>
-                      <br>
-                   <div class="card-footer">
-                      <button type="button"  class="btn btn-outline-primary float-right"><a href="/produk/{{$g->id}}">Cek</a></button>
+                      <br>   
+                    </div>
+                    <div class="card-footer d-flex justify-content-center">
+                       <a href="/produk/{{$g->id}}" class="btn btn-outline-primary ">Cek</a>
                      
                    </div>
-                      
-                    </div>
               </div>
            </div> 
     
