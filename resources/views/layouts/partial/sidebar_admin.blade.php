@@ -30,6 +30,9 @@
                     <a href="adminsupplier"><i class="fa fa-industry" aria-hidden="true"></i> Supplier</a>
                 </li>
                 <li>
+                    <a href="adminkurir"><i class="fa fa-industry" aria-hidden="true"></i> Kurir</a>
+                </li>
+                <li>
                     <a href="laporan"><i class="fa fa-file-text-o" aria-hidden="true"></i> Laporan</a>
                 </li>
             </ul>
