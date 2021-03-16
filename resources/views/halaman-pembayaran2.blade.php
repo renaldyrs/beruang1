@@ -32,14 +32,27 @@ body {
         <div class="card-body">
               <div class="card text-center">
                 <div class="card-header">
-                  <h4 class="judul">Kode Pembayaran</h4>
+                  <h4 class="judul">Kode Bank / No Rekening</h4>
                 </div>
                 <div class="card-block">
                   <br>
-                  <h3 class="card-text">7892378272892843</h3>
+                  @foreach($bank as $b)
+                  <h3 class="card-text">{{$b->no_rekening}}</h3>
+                  @endforeach
                   <br><br>
                 </div>
+                <div class="card-body">
+                  
+                </div>
               </div>
+              <br>
+                <form method="get" action="/bayar/upload">
+                  <div class="form-group">
+                    <label for="exampleFormControlFile1">Bukti Pembayaran</label>
+                    <input type="file" class="form-control-file" name="bukti" id="exampleFormControlFile1">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
               <br>
               <p>Peraturan :</p>
         </div>
