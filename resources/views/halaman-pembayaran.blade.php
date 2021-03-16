@@ -81,52 +81,6 @@ body {
                         <div class="card">
                             <div class="card-body">
                             <h5><i class="fa fa-money" aria-hidden="true"></i>  Metode Pembayaran</h5>
-<<<<<<< HEAD
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-outline-secondary btn-block" data-toggle="modal" data-target="#pilih_pembayaran">pilih metode pembayaran</button>
-                                <!-- Modal -->
-                                <div class="modal fade" id="pilih_pembayaran" tabindex="-1" role="dialog" aria-labelledby="pilih_metode_pembayaran" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="pilih_metode_pembayaran">Pilih Metode Pembayaran</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <b>Transaksi melalui Virtual Account</b> 
-                                                <hr>
-                                                <div class="row">
-                                                <div class="col-3 col-sm-3">
-                                                    Foto
-                                                </div>
-                                                <div class="col-12 col-sm-9">
-                                                <button type="button" class="btn btn-link" btn-block>Bank Central Asia (BCA)</button>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-12"> 
-                                                <div class="row">
-                                                <div class="col-3 col-sm-3">
-                                                    Foto
-                                                </div>
-                                                <div class="col-12 col-sm-9">
-                                                <button type="button" class="btn btn-link" btn-block>Bank Rakyat Indonesia (BRI)</button>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
-
-=======
                                <!-- <label for="inputState">State</label> -->
                                <form action="/bayar" method="get">
                                <div class="form-group">
@@ -140,7 +94,6 @@ body {
                                </div>
                                 <button type="submit" class="btn btn-primary">Bayar</button>
                                 </form>
->>>>>>> rey
                             </div>
                             <br>
                         </div>
