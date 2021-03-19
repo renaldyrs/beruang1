@@ -6,6 +6,7 @@ use App\Models\bank;
 use Illuminate\Http\Request;
 use App\Models\barang;
 use App\Models\category;
+use App\Models\pelanggan;
 use App\Models\pembayaran;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -41,14 +42,14 @@ class HalamanAwalController extends Controller
 		->join('kota as k','pe.id_kota','=','k.id_kota')
 		->join('provinsi as pr','k.id_provinsi','=','pr.id_provinsi')
 		->select('alamat','nama_kota','nama_provinsi')
-		->where('p.id',Auth::user()->id )
+		->where('p.id',Auth::user()->id )->where('tanggal_pesanan',date('Y-m-d'))
 		->get();
 		$produk=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
 		->join('pesanan_item as i','pe.id_pesanan','=','i.id_pesanan')
 		->join('barangs as b','i.id_barang','=','b.id')
 		->select('b.nama','i.jumlah_barang as qty','i.harga_barang as harga','b.file')
 		->where('p.id',Auth::user()->id )
-		->where('pe.status','Belum dibayar')
+		->where('pe.status','Belum dibayar')->where('tanggal_pesanan',date('Y-m-d'))
 		->get();
 		$bank = bank::get();
 		// dd($produk);
@@ -65,6 +66,7 @@ class HalamanAwalController extends Controller
 	}
 	//profil
 	public function profil(){
+		$user = pelanggan::where('id',Auth::user()->id)->get();
 		
 		return view('halaman-profil');
 	}

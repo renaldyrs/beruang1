@@ -42,8 +42,7 @@
 
                                 <div class="dropdown-menu item-dropdown" aria-labelledby="dropdownMenuLink">
                                     <!-- dropdown profile -->
-                                    <a class="dropdown-item nav-link" href="profile" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();" >
+                                    <a class="dropdown-item nav-link" href="{{route('profile')}}" >
 
                                                 <i class="fa fa-user-circle mr-3 ml-1"></i>Profile
 

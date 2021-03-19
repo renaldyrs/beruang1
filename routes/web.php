@@ -28,7 +28,7 @@ Route::get('/','App\HTTP\Controllers\HalamanAwalController@viewawal' );
 Route::get('/catalog','App\HTTP\Controllers\HalamanAwalController@catalog' );
 Route::get('/keranjang','App\HTTP\Controllers\HalamanAwalController@keranjang' );
 Route::get('/produk/{id}','App\HTTP\Controllers\HalamanAwalController@produk' );
-Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profil' );
+Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profil' )->name('profile')->middleware('auth');
 Route::get('/category/{id_category}', 'App\HTTP\Controllers\HalamanAwalController@category');
 Route::get('/pembayaran', 'App\HTTP\Controllers\HalamanAwalController@pembayaran')->middleware('auth');
 Route::get('/bayar', 'App\HTTP\Controllers\HalamanAwalController@bayar')->middleware('auth');

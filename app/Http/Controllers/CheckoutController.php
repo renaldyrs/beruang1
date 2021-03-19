@@ -58,7 +58,7 @@ class CheckoutController extends Controller
             $cookie = \Cookie::forget('dw-carts');
             Cookie::queue($cookie);
             
-            return redirect('/');
+            return redirect('/pembayaran');
         }else{
             // return($cek);
             $pelanggan = [
