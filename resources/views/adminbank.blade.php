@@ -2,36 +2,36 @@
 
 @section('content')
 @include('layouts.partial.sidebar_admin')
-    <div class="container">
-    
-        <h4>Kurir</h4>
-        <form action="/adminkurir/tambah" method="POST" enctype="multipart/form-data">
-					{{ csrf_field() }}
-                    
+<div class="container">
+<h4>Bank</h4>
+                <form action="/adminbank/tambah" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}            
                     <div class="form-group row">
                     
-                    <div class="col-md-3">
-                    <label for="exampleFormControlFile1">Kode Kurir </label>
-						<input class="form-control" type="text" name="kode" value="{{$kurirs->kode_kurir}}">
+                    <div class="col-md">
+                    <label for="exampleFormControlFile1">Nama Bank</label>
+						<input class="form-control" type="text" name="nama" value="">
                     </div>
 
-                    <div class="col-md">
-                    <label for="exampleFormControlFile1">Nama Kurir</label>
-						<input class="form-control" type="text" name="nama" value="{{$kurirs->nama_kurir}}">
+                    <div class="col-md-3">
+                    <label for="exampleFormControlFile1">Kode Bank</label>
+						<input class="form-control" type="text" name="kode_bank" value="">
                     </div>
                     
 					</div>
-					<input type="submit" value="Daftar" class="btn btn-primary">
+					<input type="submit" value="Tambah" class="btn btn-primary">
 				</form>
-                </div>
-    <center><h4>Data Kurir</h4></center> 
+</div>
+                
+                
+    <center><h4>Data Supplier</h4></center> 
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Tabel Kurir</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Tabel Bank</h6>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -68,35 +68,32 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Id Kurir</th>
-                                            <th>Nama Kurir</th>
-                                            <th>Kode Kurir</th>
+                                            <th>Id Bank</th>
+                                            <th>Nama Bank</th>
+                                            <th>Kode Bank</th>
                                             <th>Actions</th>
-                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Id Kurir</th>
-                                            <th>Nama Kurir</th>
-                                            <th>Kode Kurir</th>
+                                            <th>Id Bank</th>
+                                            <th>Nama Bank</th>
+                                            <th>Kode Bank</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    @foreach($kurirs as $k)
+                                    @foreach($bank as $b)
                                         <tr>
-                                            <td>{{$k->id_kurir}}</td>
-                                            <td>{{$k->nama_kurir}}</td>
-                                            <td>{{$k->kode_kurir}}</td>
-                                            
+                                            <td>{{$b->id_bank}}</td>
+                                            <td>{{$b->nama_bank}}</td>
+                                            <td>{{$b->kode_bank}}</td>
                                             
                                             <td>
                                                 <div class="d-flex flex-row">
-                                                    <div class="p-2"><button type="button" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Ubah</button></div>
+                                                <div class="p-2"><a class="btn btn-info fa fa-pencil-square-o"  aria-hidden="true" href="/adminsupplier/update/"> EDIT</a></div>
                                                     
-                                                <div class="p-2"><a class="btn btn-danger fa fa-eraser"  aria-hidden="true" href="/adminkurir/hapus/{{ $k->id_kurir }}"> HAPUS</a></div>
-                                                
+                                                <div class="p-2"><a class="btn btn-danger fa fa-eraser"  aria-hidden="true" href="/adminbank/hapus/{{$b->id_bank}}"> HAPUS</a></div>    
                                                 </div>                
                                             </td>
                                         </tr>
