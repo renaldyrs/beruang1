@@ -53,7 +53,7 @@ class HalamanAwalController extends Controller
 		$bank = bank::get();
 		$category = category::get();
 		// dd($produk);
-		return view('halaman-pembayaran',['alamat'=>$alamat,'produk'=>$produk,'bank'=>$bank,'category'=>$category]);
+		return view('halaman-pembayaran',['alamat' => $alamat,'produk' => $produk,'bank' => $bank,'category'=>$category]);
 	}
 	public function code(){
 		$barang = barang::get();
@@ -84,6 +84,7 @@ class HalamanAwalController extends Controller
 	}
 	
 	public function bayar(Request $request){
+		$category = category::get();
 		$bank = bank::where('id_bank',$request->bank)->get();
 		$produk=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
 		->where('p.id',Auth::user()->id )
@@ -102,7 +103,7 @@ class HalamanAwalController extends Controller
 					'status'=>'belum dibayar'
 				]
 				);
-		return view('halaman-pembayaran2',['bank'=>$bank]);
+		return view('halaman-pembayaran2',['bank'=>$bank,'category' => $category]);
 	}
 	public function upload(Request $request){
 		// $bank = bank::where('id_bank',$request->bank)->get();
