@@ -33,42 +33,28 @@
         <br>
         <br>
         <!-- isi keranjang -->
-    <div class="container" >
-    <div class="card">
-            <!-- isi1 -->
-        <div class="container-fluid">
-                <div class="row">
-                @if($cartItems)
-                    <div class="col-11 mt-3">        
-                        <!-- <div class="card-body"> -->
-                            <table class="table" id="table">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>subtotal</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                
-                                    @foreach ($cartItems as $item)
+        <section class="clean-block clean-cart">
+            <div class="container">
+                <div class="content">
+                    <div class="row no-gutters">
+                        <div class="col-md-12 col-lg-8">
+                            <div class="items">
+                            @if($cartItems)
+                                @foreach ($cartItems as $item)
+                                <div class="product">
 
-                                    <tr id="table{{$item['product_id']}}">
-                                        <td class="row">
-                                        <div class="col-md-6 ">
-                                            <img class="" src="{{ url('/data_file/'.$item['product_image']) }}" width="170PX" height="100%" alt="Card image cap">
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-md-3">
+                                            <div><img class="img-fluid" src="{{ url('/data_file/'.$item['product_image']) }}"></div>
                                         </div>
-                                        <div class="col-md-5">
-                                            {{ $item['product_name'] }}
+                                        <div class="col-md-3 product-info">
+                                            <p class="product-name" >{{ $item['product_name'] }}</p>
                                         </div>
-                                        
-                                        </td>
-                                        <td >
+                                        <!-- <div class="col-md-3 product-info">
                                             <span id="price{{ $item['product_id'] }}">{{ $item['product_price'] }}</span>
-                                        </td>
-                                        <td>
+                                        </div> -->
+                                        <div class=" col-md-3 quantity">
+                                            
                                             <div class="input-group row">
                                                 <div class="input-group-prepend">
                                                     <button type="button" class="btn btn-danger btn-number " data-quantity="minus" data-field="{{$item['product_id']}}">
@@ -80,60 +66,34 @@
                                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                                 </button>
                                             </div>
-                                            
-                                        </td>
-                                        <td>
-                                            <span id="sub{{ $item['product_id'] }}">{{ $item['qty']* $item['product_price'] }}</span> 
-                                        </td>
-                                        <td >
-                                            <a href="{{route('delete',$item['product_id'])}}"><i class="fa fa-trash  mr-4 float-right fa-2x"></i></a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                
-                            </tbody>
-                        </table>                       
-                    <!-- </div> -->
-                    
-                </div>
-                <div class="col-md-11">
-                    <div class="d-flex flex-row-reverse mt-2 mb-4">
-
-                        <div class="d-flex flex-column">
-                            <div class=" form-goup p-2">
-                                <h3 id = "total">
-                                    {{ $subtotal}}
-                                </h3>
-                            </div>
-                            
-                            <div class=" form-goup p-2">
-                                <a  class="btn btn-primary" href="{{route('checkout')}}" id="check" role="button">Proceed to checkout</a>   
+                                        </div>
+                                        <div class=" col-md-1 price">
+                                            <span id="price{{ $item['product_id'] }}">{{ $item['product_price'] }}</span>
+                                            <input type="text" hidden id="sub{{ $item['product_id'] }}" value="{{ $item['qty']* $item['product_price'] }}">
+                                            <!-- <span id="sub{{ $item['product_id'] }}">{{ $item['qty']* $item['product_price'] }}</span>  -->
+                                        </div>
+                                        <div class=" col-md-2 ">
+                                        <a href="{{route('delete',$item['product_id'])}}"><i class="fa fa-trash  mr-4 float-right fa-2x"></i></a>
+                                        </div>
+                                    </div>
+                                  </div>
+                                @endforeach
+                            @endif    
                             </div>
                         </div>
-                        
-                        
+                        <div class="col-md-12 col-lg-4">
+                            <div class="summary">
+                                <h3>Summary</h3>
+                                <h4><span class="text">Subtotal</span><span class="price" id="totall">{{ $subtotal}}</span></h4>
+                                <h4><span class="text">Total</span><span class="price" id="total">{{ $subtotal}}</span></h4>
+                                <a  class="btn btn-primary btn-block btn-lg" href="{{route('checkout')}}" id="check" role="button">Proceed to checkout</a>   
+                                <!-- <button class="btn btn-primary btn-block btn-lg" type="button">Checkout</button> -->
+                                </div>
+                        </div>
                     </div>
                 </div>
-                @else
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>subtotal</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                    </table>  
-                @endif
             </div>
-
-        </div> 
-
-    </div>
-    
-    </div>
+        </section>
 @endsection
 @push('scripts')
 	@include('layouts.partial.script')
@@ -181,17 +141,22 @@
                         },
                     success:function(response){
                         price = document.getElementById("price"+id).innerHTML;
-                        sub = document.getElementById("sub"+id).innerHTML;
-                        sub1= document.getElementById("sub"+id).innerHTML = price*n;
+                        sub = document.getElementById("sub"+id).value;
+                        console.log(sub);
+                        sub1= document.getElementById("sub"+id).setAttribute('value', price*n);
+                        sub1 = document.getElementById("sub"+id).value;
                         var total=document.getElementById("total").innerHTML  ;
+                        console.log(sub1);
                         if(parseInt(sub1)-parseInt(sub)<0){
                             cek = parseInt(sub)-parseInt(sub1);
-                            // console.log(cek);
+                            console.log(cek);
                             document.getElementById("total").innerHTML  =parseInt( total)-parseInt(cek) ;
+                            document.getElementById("totall").innerHTML  =parseInt( total)-parseInt(cek) ;
                         }else{
                             cek = parseInt(sub1)-parseInt(sub);
                             console.log(cek);
                             document.getElementById("total").innerHTML  =parseInt( total)+parseInt(cek) ;
+                            document.getElementById("totall").innerHTML  =parseInt( total)+parseInt(cek) ;
                         }
                     }    
                 });

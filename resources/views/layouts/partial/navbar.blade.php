@@ -15,12 +15,25 @@
                 <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="/catalog"><i class="fa fa-book"> Catalog</i></a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Kategori</a>
+                            <div class="dropdown-menu">
+                            <?php if(is_array($category) || is_object($category)){ ?>
+                                @foreach($category as $c)
+                                        <ul class="nav nav-pills" role="tablist">
+                                            <li class="nav-item">
+                                            <a href="{{ url('/category/'.$c->id) }}" class="dropdown-item" name="id_category" id="id_category">{{$c->nama}}</a>
+                                        </li>
+                                        </ul>
+                                @endforeach
+                            <?php }; ?>
+                        </div>
+                    </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php"><i class="fa fa-id-badge" aria-hidden="true"> About Us</i></a></li>
                     @if(Auth::check())
                         <li class="nav-item">
                             <a class="nav-link"href="{{ route('keranjang') }}">
-                                <i class="fa fa-shopping-basket" aria-hidden="true">
-                                 My Order</i>
+                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                  <div class="badge badge-danger">
                                         @auth
                                             @if(json_decode(app('request')->cookie('dw-carts'), true))
@@ -42,7 +55,11 @@
 
                                 <div class="dropdown-menu item-dropdown" aria-labelledby="dropdownMenuLink">
                                     <!-- dropdown profile -->
+<<<<<<< HEAD
                                     <a class="dropdown-item nav-link" href="{{route('profile')}}" >
+=======
+                                    <a class="dropdown-item nav-link" href="/profile" >
+>>>>>>> rey
 
                                                 <i class="fa fa-user-circle mr-3 ml-1"></i>Profile
 

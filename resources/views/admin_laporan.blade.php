@@ -69,13 +69,12 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    @foreach($data as $d)
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td>{{$d->id_pesanan}}</td>
+                                            <td>{{$d->jumlah_barang}}</td>
+                                            <td>{{$d->tanggal_pesanan}}</td>
+                                            x
                                             <td>
                                                 <div class="d-flex flex-row">
                                                     <div class="p-2"><button type="button" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></div>
@@ -83,22 +82,7 @@
                                                 </div>                
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

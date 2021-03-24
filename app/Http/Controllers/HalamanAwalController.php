@@ -32,8 +32,8 @@ class HalamanAwalController extends Controller
 	//catalog
 	public function catalog(){
 		$barang = barang::get();
-		
-		return view('halaman-katalog',['barangs' => $barang]);
+		$category = category::get();
+		return view('halaman-katalog',['barangs' => $barang,'category'=> $category]);
 	}
 
 	//pembayaran
@@ -52,23 +52,28 @@ class HalamanAwalController extends Controller
 		->where('pe.status','Belum dibayar')->where('tanggal_pesanan',date('Y-m-d'))
 		->get();
 		$bank = bank::get();
+		$category = category::get();
 		// dd($produk);
-		return view('halaman-pembayaran',['alamat'=>$alamat,'produk'=>$produk,'bank'=>$bank]);
+		return view('halaman-pembayaran',['alamat' => $alamat,'produk' => $produk,'bank' => $bank,'category'=>$category]);
 	}
 	public function code(){
 		$barang = barang::get();
-		return view('halaman-pembayaran2',['barangs' => $barang]);
+		$category = category::get();
+		return view('halaman-pembayaran2',['barangs' => $barang,'category' => $category]);
 	}
 	//keranjang
 	public function keranjang(){
 		$barang = barang::get();
-		return view('halaman-keranjang',['barangs' => $barang]);
+		$category = category::get();
+		return view('halaman-keranjang',['barangs' => $barang,'category' => $category]);
 	}
-	//profil
+	//profil	
 	public function profil(){
-		$user = pelanggan::where('id',Auth::user()->id)->get();
+		// $user = pelanggan::where('id',Auth::user()->id)->get();
 		
-		return view('halaman-profil');
+		// return view('halaman-profil');
+		$category = category::get();
+		return view('halaman-profil',['category' => $category]);
 	}
 	//produk
 	public function produk($id){
@@ -83,6 +88,7 @@ class HalamanAwalController extends Controller
 	}
 	
 	public function bayar(Request $request){
+		$category = category::get();
 		$bank = bank::where('id_bank',$request->bank)->get();
 		$produk=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
 		->where('p.id',Auth::user()->id )
@@ -101,7 +107,7 @@ class HalamanAwalController extends Controller
 					'status'=>'belum dibayar'
 				]
 				);
-		return view('halaman-pembayaran2',['bank'=>$bank]);
+		return view('halaman-pembayaran2',['bank'=>$bank,'category' => $category]);
 	}
 	public function upload(Request $request){
 		// $bank = bank::where('id_bank',$request->bank)->get();

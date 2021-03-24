@@ -2,7 +2,7 @@
 @push('style')
     <style>
 body {
-  background-color: #f7ebd3;
+  background-color: #FFFAFA;
 }
 </style>
 @endpush
@@ -48,29 +48,11 @@ body {
     
 	<br>
   
-	<div class="container">
-      <div class="card-body" align="right">
-      <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Kategori
-        </a>
-
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <?php if(is_array($category) || is_object($category)){ ?>
+	
             @foreach($category as $c)
-                      <ul class="nav nav-pills" role="tablist">
-                        <li class="nav-item">
-                        <a href="{{ url('/category/'.$c->id) }}" class="dropdown-item" name="id_category" id="id_category">{{$c->nama}}</a>
-                      </li>
-                      </ul>
+                      
             @endforeach
-          <?php }; ?>
-        </div>
-     
-      </div>           
-      </div>
-  
-  </div>
+       
  	<section>
   <div class="container">
   

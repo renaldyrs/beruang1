@@ -9,12 +9,12 @@ class bank extends Model
 {
     use HasFactory;
 
-    protected $table = 'bank';
+    protected $table = 'banks';
 
     protected $primaryKey = 'id_bank';
 
     protected $fillable = [
-        'kode_bank',
+        'no_rekening',
         'nama_bank'
     ];
 

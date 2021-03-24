@@ -24,14 +24,23 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-archive" aria-hidden="true"></i> Data</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
                     <a href="adminbarang"><i class="fa fa-archive" aria-hidden="true"></i> Produk</a>
-                </li>
-                <li>
-                    <a href="adminsupplier"><i class="fa fa-industry" aria-hidden="true"></i> Supplier</a>
-                </li>
-                <li>
-                    <a href="adminkurir"><i class="fa fa-industry" aria-hidden="true"></i> Kurir</a>
-                </li>
+                    </li>
+                    <li>
+                        <a href="adminsupplier"><i class="fa fa-industry" aria-hidden="true"></i> Supplier</a>
+                    </li>
+                    <li>
+                        <a href="adminkurir"><i class="fa fa-industry" aria-hidden="true"></i> Kurir</a>
+                    </li>
+                    <li>
+                        <a href="adminbank"><i class="fa fa-industry" aria-hidden="true"></i> Bank</a>
+                    </li>
+                        </ul>
+                    </li>
+               
                 <li>
                     <a href="laporan"><i class="fa fa-file-text-o" aria-hidden="true"></i> Laporan</a>
                 </li>
