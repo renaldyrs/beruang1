@@ -74,7 +74,7 @@
                                             <td>{{$d->id_pesanan}}</td>
                                             <td>{{$d->jumlah_barang}}</td>
                                             <td>{{$d->tanggal_pesanan}}</td>
-                                            
+                                            x
                                             <td>
                                                 <div class="d-flex flex-row">
                                                     <div class="p-2"><button type="button" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></div>

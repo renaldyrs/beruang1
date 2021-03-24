@@ -18,11 +18,15 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Kategori</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                                <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
+                            <?php if(is_array($category) || is_object($category)){ ?>
+                                @foreach($category as $c)
+                                        <ul class="nav nav-pills" role="tablist">
+                                            <li class="nav-item">
+                                            <a href="{{ url('/category/'.$c->id) }}" class="dropdown-item" name="id_category" id="id_category">{{$c->nama}}</a>
+                                        </li>
+                                        </ul>
+                                @endforeach
+                            <?php }; ?>
                         </div>
                     </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php"><i class="fa fa-id-badge" aria-hidden="true"> About Us</i></a></li>

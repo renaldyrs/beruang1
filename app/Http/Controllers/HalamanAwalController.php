@@ -31,8 +31,8 @@ class HalamanAwalController extends Controller
 	//catalog
 	public function catalog(){
 		$barang = barang::get();
-		
-		return view('halaman-katalog',['barangs' => $barang]);
+		$category = category::get();
+		return view('halaman-katalog',['barangs' => $barang,'category'=> $category]);
 	}
 
 	//pembayaran
