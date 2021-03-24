@@ -65,8 +65,8 @@ class HalamanAwalController extends Controller
 	}
 	//profil
 	public function profil(){
-		
-		return view('halaman-profil');
+		$category = category::get();
+		return view('halaman-profil',['category'=> $category]);
 	}
 	//produk
 	public function produk($id){
