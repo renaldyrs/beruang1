@@ -15,12 +15,21 @@
                 <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="/catalog"><i class="fa fa-book"> Catalog</i></a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Kategori</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php"><i class="fa fa-id-badge" aria-hidden="true"> About Us</i></a></li>
                     @if(Auth::check())
                         <li class="nav-item">
                             <a class="nav-link"href="{{ route('keranjang') }}">
-                                <i class="fa fa-shopping-basket" aria-hidden="true">
-                                 My Order</i>
+                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                  <div class="badge badge-danger">
                                         @auth
                                             @if(json_decode(app('request')->cookie('dw-carts'), true))
@@ -42,8 +51,7 @@
 
                                 <div class="dropdown-menu item-dropdown" aria-labelledby="dropdownMenuLink">
                                     <!-- dropdown profile -->
-                                    <a class="dropdown-item nav-link" href="profile" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();" >
+                                    <a class="dropdown-item nav-link" href="/profile" >
 
                                                 <i class="fa fa-user-circle mr-3 ml-1"></i>Profile
 
