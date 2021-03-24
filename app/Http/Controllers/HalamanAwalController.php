@@ -51,22 +51,25 @@ class HalamanAwalController extends Controller
 		->where('pe.status','Belum dibayar')
 		->get();
 		$bank = bank::get();
+		$category = category::get();
 		// dd($produk);
-		return view('halaman-pembayaran',['alamat'=>$alamat,'produk'=>$produk,'bank'=>$bank]);
+		return view('halaman-pembayaran',['alamat'=>$alamat,'produk'=>$produk,'bank'=>$bank,'category'=>$category]);
 	}
 	public function code(){
 		$barang = barang::get();
-		return view('halaman-pembayaran2',['barangs' => $barang]);
+		$category = category::get();
+		return view('halaman-pembayaran2',['barangs' => $barang,'category' => $category]);
 	}
 	//keranjang
 	public function keranjang(){
 		$barang = barang::get();
-		return view('halaman-keranjang',['barangs' => $barang]);
+		$category = category::get();
+		return view('halaman-keranjang',['barangs' => $barang,'category' => $category]);
 	}
-	//profil
+	//profil	
 	public function profil(){
 		$category = category::get();
-		return view('halaman-profil',['category'=> $category]);
+		return view('halaman-profil',['category' => $category]);
 	}
 	//produk
 	public function produk($id){
