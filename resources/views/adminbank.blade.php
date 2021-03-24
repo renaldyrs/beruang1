@@ -4,23 +4,23 @@
 @include('layouts.partial.sidebar_admin')
 <div class="container">
 <h4>Bank</h4>
-                <form action="/adminbank/tambah" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}            
-                    <div class="form-group row">
+        <form action="/adminbank/tambah" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}            
+            <div class="form-group row">
                     
-                    <div class="col-md">
-                    <label for="exampleFormControlFile1">Nama Bank</label>
-						<input class="form-control" type="text" name="nama" value="">
-                    </div>
+            <div class="col-md">
+            <label for="exampleFormControlFile1">Nama Bank</label>
+				<input class="form-control" type="text" name="nama" value="">
+            </div>
 
-                    <div class="col-md-3">
-                    <label for="exampleFormControlFile1">Kode Bank</label>
-						<input class="form-control" type="text" name="kode_bank" value="">
-                    </div>
+            <div class="col-md-3">
+            <label for="exampleFormControlFile1">No Rekening</label>
+				<input class="form-control" type="text" name="no_rekening" value="">
+            </div>
                     
-					</div>
-					<input type="submit" value="Tambah" class="btn btn-primary">
-				</form>
+			</div>
+			<input type="submit" value="Tambah" class="btn btn-primary">
+		</form>
 </div>
                 
                 
@@ -70,7 +70,7 @@
                                         <tr>
                                             <th>Id Bank</th>
                                             <th>Nama Bank</th>
-                                            <th>Kode Bank</th>
+                                            <th>No Rekening</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -78,20 +78,20 @@
                                         <tr>
                                             <th>Id Bank</th>
                                             <th>Nama Bank</th>
-                                            <th>Kode Bank</th>
+                                            <th>No Rekening</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    @foreach($bank as $b)
+                                    @foreach($banks as $b)
                                         <tr>
                                             <td>{{$b->id_bank}}</td>
                                             <td>{{$b->nama_bank}}</td>
-                                            <td>{{$b->kode_bank}}</td>
+                                            <td>{{$b->no_rekening}}</td>
                                             
                                             <td>
                                                 <div class="d-flex flex-row">
-                                                <div class="p-2"><a class="btn btn-info fa fa-pencil-square-o"  aria-hidden="true" href="/adminsupplier/update/"> EDIT</a></div>
+                                                <div class="p-2"><a class="btn btn-info fa fa-pencil-square-o"  aria-hidden="true" href="/adminbank/update/{{$b->id_bank}}"> EDIT</a></div>
                                                     
                                                 <div class="p-2"><a class="btn btn-danger fa fa-eraser"  aria-hidden="true" href="/adminbank/hapus/{{$b->id_bank}}"> HAPUS</a></div>    
                                                 </div>                
