@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="New/assets/font-awesome/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="New/assets/font-awesome/css/font-awesome.min.css"> -->
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
 
         <div class="container"><a class="navbar-brand logo" href="/">Gudang Beruang</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -15,12 +15,19 @@
                 <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="/catalog"><i class="fa fa-book"> Catalog</i></a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Kategori</a>
+                            <div class="dropdown-menu" id="category">
+                           
+                               
+                           
+                        </div>
+                    </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php"><i class="fa fa-id-badge" aria-hidden="true"> About Us</i></a></li>
                     @if(Auth::check())
                         <li class="nav-item">
                             <a class="nav-link"href="{{ route('keranjang') }}">
-                                <i class="fa fa-shopping-basket" aria-hidden="true">
-                                 My Order</i>
+                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                  <div class="badge badge-danger">
                                         @auth
                                             @if(json_decode(app('request')->cookie('dw-carts'), true))
@@ -29,7 +36,7 @@
                                                 0
                                             @endif
                                         @else
-                                        0
+                                        0   
                                         @endauth
                                     </div>
                             </a>
@@ -42,8 +49,7 @@
 
                                 <div class="dropdown-menu item-dropdown" aria-labelledby="dropdownMenuLink">
                                     <!-- dropdown profile -->
-                                    <a class="dropdown-item nav-link" href="profile" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();" >
+                                    <a class="dropdown-item nav-link" href="{{route('profile')}}" >
 
                                                 <i class="fa fa-user-circle mr-3 ml-1"></i>Profile
 

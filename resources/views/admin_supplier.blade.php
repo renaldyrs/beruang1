@@ -2,7 +2,38 @@
 
 @section('content')
 @include('layouts.partial.sidebar_admin')
-        
+<div class="container">
+<h4>Supplier</h4>
+                <form action="/adminkurir/tambah" method="POST" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                
+                                    <div class="form-group row">
+                    @foreach($suplier as $s)
+                    <div class="col-md">
+                    <label for="exampleFormControlFile1">Nama Supplier</label>
+						<input class="form-control" type="text" name="nama" value="{{$s->kode_kurir}}">
+
+                        <label for="exampleFormControlFile1">Alamat</label>
+						<input class="form-control" type="text" name="alamat" value="{{$s->nama_kurir}}">
+                    </div>
+
+                    <div class="col-md-3">
+                    <label for="exampleFormControlFile1">Kode Kota</label>
+						<input class="form-control" type="text" name="id_kota" value="{{$s->nama_kurir}}">
+                    
+                    <label for="exampleFormControlFile1">Kode Provinsi</label>
+						<input class="form-control" type="text" name="id_provinsi" value="{{$s->nama_kurir}}">
+                    
+                    
+                    </div>
+                    
+                    @endforeach
+					</div>
+					<input type="submit" value="Tambah" class="btn btn-primary">
+				</form>
+</div>
+                
+                
     <center><h4>Data Supplier</h4></center> 
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Begin Page Content -->
@@ -31,9 +62,7 @@
                                 </div>     
                                 <div class="col-sm-6 col-md-6">
                                     <div class="d-flex flex-row-reverse bd-highlight">
-                                        <div class="p-2 bd-highlight">
-                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>Tambah Data</button>
-                                        </div>
+                                        
                                         <div class="p-2 bd-highlight">
                                             <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
                                         </div>
@@ -49,57 +78,43 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                            <th>Action</th>
+                                            <th>Id Supplier</th>
+                                            <th>Nama Supplier</th>
+                                            <th>Id Kota</th>
+                                            <th>Id Provinsi</th>
+                                            <th>Alamat</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                            <th>Action</th>
+                                            <th>Id Supplier</th>
+                                            <th>Nama Supplier</th>
+                                            <th>Id Kota</th>
+                                            <th>Id Provinsi</th>
+                                            <th>Alamat</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    @foreach($suplier as $s)
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td>{{$s->id_suplier}}</td>
+                                            <td>{{$s->nama_suplier}}</td>
+                                            <td>{{$s->id_kota}}</td>
+                                            <td>{{$s->id_provinsi}}</td>
+                                            <td>{{$s->alamat}}</td>
+                                            
                                             <td>
                                                 <div class="d-flex flex-row">
-                                                    <div class="p-2"><button type="button" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Ubah</button></div>
-                                                    <div class="p-2"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-eraser" aria-hidden="true"></i>Hapus</button></div>
+                                                <div class="p-2"><a class="btn btn-info fa fa-pencil-square-o"  aria-hidden="true" href="/adminsupplier/update/{{ $s->id_suplier}}"> EDIT</a></div>
+                                                    
+                                                <div class="p-2"><a class="btn btn-danger fa fa-eraser"  aria-hidden="true" href="/adminsupplier/hapus/{{ $s->id_suplier }}"> HAPUS</a></div>    
                                                 </div>                
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
+                                        
+                                    @endforeach   
                                     </tbody>
                                 </table>
                             </div>

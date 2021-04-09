@@ -1,70 +1,56 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Gudang Beruang</title>
-    <link rel="stylesheet" href="New/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
-    <link rel="stylesheet" href="New/assets/fonts/simple-line-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
-    <link rel="stylesheet" href="New/assets/css/smoothproducts.css">
-    <link rel="stylesheet" href="New/assets/css/css.css">
-    <link rel="stylesheet" href="New/assets/css/css_carcoal.css">
-</head>
-
-<body>
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white  clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">Gudang Beruang</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                        <button type="button" class="btn btn-outline-primary">search</button>
-                    
+@extends('layouts.admin')
+@push('style')
+    <style>
+body {
+  background-color: #f7ebd3;
+}
+.sidebar-item {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	
+	/* Position the items */
+	// &:nth-child(2) { top: 25%; }
+	// &:nth-child(3) { top: 50%; }
+	// &:nth-child(4) { top: 75%; }
+}
+.make-me-sticky {
+  position: -webkit-sticky;
+	position: sticky;
+	top: 0;
     
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.php">Catalog</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="features.php">Category</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php">AboutUS</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="contact-us.php">Login</a></li>
-                    
-                </ul>
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.php">Catalog</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="features.php">Category</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php">AboutUS</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="contact-us.php">Login</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="features.php">Category</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php">AboutUS</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="contact-us.php">Login</a></li>
-                </ul>
-            </div>
-        </div>
-        </div>
-    </nav>
-    <main id="slider">
-            <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+  padding: 0 15px;
+}
+</style>
+@endpush
+@section('content')
+@include('layouts.partial.navbar')
+<br>
+<br>
+<div class="container" style="heigth=100px">
+<header>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
+        <br>
+        <br>
         <div class="carousel-inner">
             <div class="carousel-item active">
             <center>
-            <img class="d-block img-fluid" width="87%"src="New\assets\img\223.jpg" alt="First slide">
+            <img class="d-block" width="100%" height="400px" src="{{asset('New\assets\img\avatars\avatar1.jpg')}}"  alt="First slide">
             </center>
             </div>
 
             <div class="carousel-item"><center>
-            <img class="d-block " width="87%" src="New\assets\img\223.jpg" alt="Second slide"></center>
+            <img class="d-block " width="100%" height="400px" src="{{asset('new\assets\img\avatars\avatar2.jpg')}}"  alt="Second slide"></center>
             </div>
             <div class="carousel-item"><center>
-            <img class="d-block h-75" width="87%" src="New\assets\img\223.jpg" alt="Third slide"></center>
+            <img class="d-block" width="100%" height="400px" src="{{asset('new\assets\img\avatars\avatar2.jpg')}}"  alt="Third slide"></center>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -76,91 +62,79 @@
             <span class="sr-only">Next</span>
         </a>
         </div>
-</main>
+    </header>
+</div>
+    
 	<br>
-        <section>
-        <div class="row"><!-- 25%  awal-->
-            <div class="col-md-2 ">
-            <div class="card" style="height: 100%;">
-                <!-- <nav class="nav flex-column" id="navcate">  -->
-                <div class="card-body" align="right">
-                    <h4>Category</h4>
-                    <br>
-                    <ul>
-                    <li style="list-style:none;" class="nav-item" role="presentation"><a class="nav-link active" href="index.php">Catalog</a></li>
-                    <li style="list-style:none;" class="nav-item" role="presentation"><a class="nav-link" href="features.php">Category</a></li>
-                    <li style="list-style:none;" class="nav-item" role="presentation"><a class="nav-link" href="about-us.php">AboutUS</a></li>
-                    <li style="list-style:none;" class="nav-item" role="presentation"><a class="nav-link" href="contact-us.php">Login</a></li>
-                    </ul>  
-                </div>
-                <!-- </nav> -->
-            </div>
-            </div> <!-- 25% akhir -->
-            <div class="col-9"><!-- 75%  awal-->
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card" style="height: 98%;">
-                            <img src="{{ url('/data_file/1613623823_topi.jpg') }}" class="card-img-top" width="150px" height="150px" alt="...">
-                                <div class="card-body">
-                                <h5 class="card-title"><b>nama</b></h5>
-                                <p class="card-text" >keterangan</p>
-                                <p class="card-text"><small class="text-muted">harga</small></p>
-                                <p class="card-text"><small class="text-muted float-left">Stock Tersedia stock</small></p>
-                                <button type="button" class="btn btn-outline-primary float-right">Beli</button>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card" style="height: 98%;">
-                            <img src="{{ url('/data_file/1613623823_topi.jpg') }}" class="card-img-top" width="150px" height="150px" alt="...">
-                                <div class="card-body">
-                                <h5 class="card-title"><b>nama</b></h5>
-                                <p class="card-text" >keterangan</p>
-                                <p class="card-text"><small class="text-muted">harga</small></p>
-                                <p class="card-text"><small class="text-muted float-left">Stock Tersedia stock</small></p>
-                                <button type="button" class="btn btn-outline-primary float-right">Beli</button>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card" style="height: 98%;">
-                            <img src="{{ url('/data_file/1613623823_topi.jpg') }}" class="card-img-top" width="150px" height="150px" alt="...">
-                                <div class="card-body">
-                                <h5 class="card-title"><b>nama</b></h5>
-                                <p class="card-text" >keterangan</p>
-                                <p class="card-text"><small class="text-muted">harga</small></p>
-                                <p class="card-text"><small class="text-muted float-left">Stock Tersedia stock</small></p>
-                                <button type="button" class="btn btn-outline-primary float-right">Beli</button>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card" style="height: 98%;">
-                            <img src="{{ url('/data_file/1613623823_topi.jpg') }}" class="card-img-top" width="150px" height="150px" alt="...">
-                                <div class="card-body">
-                                <h5 class="card-title"><b>nama</b></h5>
-                                <p class="card-text" >keterangan</p>
-                                <p class="card-text"><small class="text-muted">harga</small></p>
-                                <p class="card-text"><small class="text-muted float-left">Stock Tersedia stock</small></p>
-                                <button type="button" class="btn btn-outline-primary float-right">Beli</button>
-                                </div>
-                        </div>
-                    </div>
+  
+	<div class="container">
+      <div class="card-body" align="right">
+      <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Kategori
+        </a>
 
-                    <div class="col-md-3">
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <?php if(is_array($category) || is_object($category)){ ?>
+            @foreach($category as $c)
+                      <ul class="nav nav-pills" role="tablist">
+                        <li class="nav-item">
+                        <a href="{{ url('/category/'.$c->id) }}" class="dropdown-item" name="id_category" id="id_category">{{$c->nama}}</a>
+                      </li>
+                      </ul>
+            @endforeach
+          <?php }; ?>
+        </div>
+     
+      </div>           
+      </div>
+  
+  </div>
+ 	<section>
+  <div class="container">
+  
+  
+  <div class="row">
+  <div class="col-2">
+    <div class="sidebar-item">
+    <div class="make-me-sticky">
+        <h3>sidebar</h3>
+    </div>
+    </div>
+</div>
 
-                </div>
-            
-           
-            </div> <!-- 75%  akhir-->
-        </div>      
-        </section>
-    </footer>
-    <script src="New/assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-    <script src="New/assets/js/smoothproducts.min.js"></script>
-    <script src="New/assets/js/theme.js"></script>
-</body>
 
-</html>
+  @foreach($barangs as $g)
+    
+    
+    <div id="{{ url('category/'.$c->id) }}" class="col-md-3 col-sm-3 col-xs-11" >
+              <div class="card" style="height: 98%;" href="/produk">
+                  <img src="{{ url('/data_file/'.$g->file) }}" class="card-img-top" width="150px" height="150px" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title"><b>{{$g->nama}}</b></h5>
+                      <p class="card-text" >{{$g->keterangan}}</p>
+                      <p class="card-text"><small class="text-muted">{{$g->harga}}</small></p>
+                      <p class="card-text"><small class="text-muted float-left">Stock Tersedia {{$g->stock}}</small></p>
+                      <br>   
+                    </div>
+                    <div class="card-footer d-flex justify-content-center">
+                       <a href="/produk/{{$g->id}}" class="btn btn-outline-primary ">Cek</a>
+                     
+                   </div>
+              </div>
+           </div> 
+    
+      
+      
+                    
+  @endforeach
+  
+  <br>
+	</div>		
+  </div> 
+		
+	</section>
+@endsection
+@push('scripts')
+	@include('layouts.partial.script')
+	@endpush

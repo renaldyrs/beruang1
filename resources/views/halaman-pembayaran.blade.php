@@ -83,7 +83,10 @@ body {
                             <h5><i class="fa fa-money" aria-hidden="true"></i>  Metode Pembayaran</h5>
                                <!-- <label for="inputState">State</label> -->
                                <form action="/bayar" method="get">
+                               @csrf
+                               <input type="hidden"  name="id_pesanan" value="{{$id_pesanan}}"> 
                                <div class="form-group">
+                                
                                 <select id="inputState" name="bank" class="form-control">
                                     @foreach($bank as $b)
                                         <option value="{{$b->id_bank}}">{{$b->nama_bank}} </option>

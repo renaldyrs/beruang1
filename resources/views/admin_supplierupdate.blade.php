@@ -3,26 +3,36 @@
 @section('content')
 @include('layouts.partial.sidebar_admin')
 
-                <h4>Supplier</h4>
-                <form action="/adminkurir/tambah" method="POST" enctype="multipart/form-data">
+<div class="container">
+<h4>Supplier</h4>
+                <form action="/adminsupplier/update/proses/{id_suplier}" method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     
                                     <div class="form-group row">
                     @foreach($suplier as $s)
-                    <div class="col-md-3">
-                    <label for="exampleFormControlFile1">Kode Kurir </label>
-						<input class="form-control" type="text" name="kode" value="{{$s->kode_kurir}}">
+                    <div class="col-md">
+                    <label for="exampleFormControlFile1">Nama Supplier</label>
+						<input class="form-control" type="text" name="nama" value="{{$s->nama_suplier}}">
+
+                        <label for="exampleFormControlFile1">Alamat</label>
+						<input class="form-control" type="text" name="alamat" value="{{$s->alamat}}">
                     </div>
 
-                    <div class="col-md">
-                    <label for="exampleFormControlFile1">Nama Kurir</label>
-						<input class="form-control" type="text" name="nama" value="{{$k->nama_kurir}}">
+                    <div class="col-md-3">
+                    <label for="exampleFormControlFile1">Kode Kota</label>
+						<input class="form-control" type="text" name="id_kota" value="{{$s->id_kota}}">
+                    
+                    <label for="exampleFormControlFile1">Kode Provinsi</label>
+						<input class="form-control" type="text" name="id_provinsi" value="{{$s->id_provinsi}}">
+                    
+                    
                     </div>
+                    
                     @endforeach
 					</div>
-					<input type="submit" value="Daftar" class="btn btn-primary">
+					<input type="submit" value="Ubah" class="btn btn-primary">
 				</form>
-                </div>
+</div>
     <center><h4>Data Supplier</h4></center> 
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Begin Page Content -->
@@ -51,9 +61,7 @@
                                 </div>     
                                 <div class="col-sm-6 col-md-6">
                                     <div class="d-flex flex-row-reverse bd-highlight">
-                                        <div class="p-2 bd-highlight">
-                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>Tambah Data</button>
-                                        </div>
+                                        
                                         <div class="p-2 bd-highlight">
                                             <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
                                         </div>
