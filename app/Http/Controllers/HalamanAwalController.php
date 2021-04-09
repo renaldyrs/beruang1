@@ -8,6 +8,7 @@ use App\Models\barang;
 use App\Models\category;
 use App\Models\pelanggan;
 use App\Models\pembayaran;
+use App\Models\pesanan;
 use App\Models\User;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -72,23 +73,32 @@ class HalamanAwalController extends Controller
 
 	//pembayaran
 	public function pembayaran(){
+		$cek = pesanan::orderBy('id_pesanan', 'desc')->Limit(1)->get();
+		// dd($cek);
+		$id_pesanan = 0;
+		foreach($cek as $c){
+			$id_pesanan = $c->id_pesanan;
+		}
+
 		$alamat = DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
 		->join('kota as k','pe.id_kota','=','k.id_kota')
 		->join('provinsi as pr','k.id_provinsi','=','pr.id_provinsi')
 		->select('alamat','nama_kota','nama_provinsi')
-		->where('p.id',Auth::user()->id )->where('tanggal_pesanan',date('Y-m-d'))
+		->where('p.id',Auth::user()->id )->where('pe.id_pesanan',$id_pesanan)
 		->get();
+
+
 		$produk=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
 		->join('pesanan_item as i','pe.id_pesanan','=','i.id_pesanan')
 		->join('barangs as b','i.id_barang','=','b.id')
 		->select('b.nama','i.jumlah_barang as qty','i.harga_barang as harga','b.file')
 		->where('p.id',Auth::user()->id )
-		->where('pe.status','Belum dibayar')->where('tanggal_pesanan',date('Y-m-d'))
+		->where('pe.status','Belum dibayar')->where('pe.id_pesanan',$id_pesanan)
 		->get();
 		$bank = bank::get();
 		$category = category::get();
 		// dd($produk);
-		return view('halaman-pembayaran',['alamat' => $alamat,'produk' => $produk,'bank' => $bank,'category'=>$category]);
+		return view('halaman-pembayaran',['alamat' => $alamat,'produk' => $produk,'bank' => $bank,'category'=>$category,'id_pesanan'=>$id_pesanan]);
 	}
 	public function code(){
 		$barang = barang::get();
@@ -104,10 +114,18 @@ class HalamanAwalController extends Controller
 	//profil	
 	public function profil(){
 		$user = pelanggan::where('id',Auth::user()->id)->get();
-		
+
+		$produk=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
+		->join('pesanan_item as i','pe.id_pesanan','=','i.id_pesanan')
+		->join('barangs as b','i.id_barang','=','b.id')
+		->join('pembayarans as ba', 'pe.id_pesanan','=','ba.id_pesanan')
+		->select('b.nama','i.jumlah_barang as qty','i.harga_barang as harga','b.file', 'pe.id_pesanan', 'ba.id_bank')
+		->where('p.id',Auth::user()->id )
+		->where('pe.status','Belum dibayar')
+		->get();
 		// return view('halaman-profil');
 		// $category = category::get();
-		return view('halaman-profil',['user' => $user]);
+		return view('halaman-profil',['user' => $user, 'produk'=>$produk]);
 	}
 	public function editprofil(Request $request){
 		$user = pelanggan::where('id',Auth::user()->id)->get();
@@ -152,33 +170,31 @@ class HalamanAwalController extends Controller
 	public function bayar(Request $request){
 		$category = category::get();
 		$bank = bank::where('id_bank',$request->bank)->get();
-		$produk=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
-		->where('p.id',Auth::user()->id )
-		->where('pe.status','Belum dibayar')
-		->get();
-		$id_pesanan = 0;
-		foreach($produk as $p){
-			$id_pesanan = $p->id_pesanan;
-		}
+		// return $request->id_pesanan;
+		$cek= pembayaran::where('id_pesanan', $request->id_pesanan)->get();
+		if(count($cek) >0){
+			return view('halaman-pembayaran2',['bank'=>$bank,'category' => $category, 'id_pesanan'=>$request->id_pesanan]);
+		}else{
 			pembayaran::insert(
 				[
 					'id_bank'=>$request->bank,
-					'id_pesanan'=>$id_pesanan,
+					'id_pesanan'=>$request->id_pesanan,
 					'tanggal_pembayaran'=>null,
 					'bukti_pembayaran' => null,
 					'status'=>'belum dibayar'
 				]
 				);
-		return view('halaman-pembayaran2',['bank'=>$bank,'category' => $category]);
+		return view('halaman-pembayaran2',['bank'=>$bank,'category' => $category, 'id_pesanan'=>$request->id_pesanan]);
+		}
 	}
 	public function upload(Request $request){
 		// $bank = bank::where('id_bank',$request->bank)->get();
-		$produk=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
-		->where('p.id',Auth::user()->id )
-		->where('pe.status','Belum dibayar')->where('pe.tanggal_pesanan',date('Y-m-d'))
-		->get();
+		// $produk=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
+		// ->where('p.id',Auth::user()->id )
+		// ->where('pe.status','Belum dibayar')->where('pe.tanggal_pesanan',date('Y-m-d'))
+		// ->get();
 		// dd($produk);
-		DB::table('pembayarans')->update([
+		DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->update([
 			'tanggal_pembayaran'=>date('Y-m-d'),
 			'bukti_pembayaran'=>$request->bukti
 		]);

@@ -144,8 +144,48 @@
                             </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    
-                                        
+                                    @foreach($produk as $p)
+                                    <div class="card mt-4">
+                                            <div class="card mb-3" style="max-width: 100%;">
+                                                <div class="row no-gutters">
+                                                    <div class="col-md-4">
+                                                    <img src="{{asset('data_file/'.$p->file)}}" class="card-img" alt="...">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body">
+                                                            <table class="table table-borderless">
+                                                                <thead>
+                                                                    <tr>
+                                                                    <th scope="col">Nama</th>
+                                                                    <th scope="col">Harga</th>
+                                                                    <th scope="col">Jumlah</th>
+                                                                    <th scope="col">Total</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                
+                                                                    <tr>
+                                                                    <td>{{$p->nama}}</td>
+                                                                    <td>{{$p->harga}}</td>
+                                                                    <td>{{$p->qty}}</td>
+                                                                    <td>{{$p->harga * $p->qty}}</td>
+                                                                    </tr>
+                                                                
+                                                                </tbody>
+                                                                </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <form action="/bayar" method="get">
+                                                @csrf
+                                                <input type="hidden"  name="id_pesanan" value="{{$p->id_pesanan}}"> 
+                                                <input type="hidden"  name="bank" value="{{$p->id_bank}}"> 
+                                                
+                                                    <button type="submit" class="btn btn-primary">Bayar</button>
+                                            </form>
+                                    </div>
+                                    @endforeach
 
                                     </div>
 
