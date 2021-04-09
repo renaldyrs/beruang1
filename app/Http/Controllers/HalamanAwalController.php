@@ -8,16 +8,23 @@ use App\Models\barang;
 use App\Models\category;
 use App\Models\pelanggan;
 use App\Models\pembayaran;
+use App\Models\User;
 use DB;
 use Illuminate\Support\Facades\Auth;
-
+use File;
 class HalamanAwalController extends Controller
 {
     //
+	public function getcategory(){
+		$category = category::get();
+		return $category;
+	// dd($category);
+	}
+
     public function viewawal(){
 		$barang = barang::get();
 		$category = category::get();
-		return view('halaman-awal',['barangs' => $barang, 'category' => $category]);
+		return view('halaman-awal',['barangs' => $barang,'category'=>$category]);
 	}
 	
 
@@ -28,7 +35,34 @@ class HalamanAwalController extends Controller
 		return view('halaman-awal',['barangs' => $barang, 'category' => $category]);
 		// dd($barang);
 	}
+	public function editfoto(Request $request){
+		// $this->validate($request, [
+		// 	'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+		// ]);
+ 
+		$file = $request->file('file');
+		$nama_file = Auth::user()->name."_".Auth::user()->id.".".$file->getClientOriginalExtension();
+		// echo $nama_file;
+		if(is_null(Auth::user()->foto)){
+			$tujuan_upload = 'data_file';
+			$file->move($tujuan_upload,$nama_file);
+			user::where('id',Auth::user()->id)->update([
+				'foto'=>$nama_file,
+			]);
+			return redirect()->back();
+		}else{
+			File::delete('data_file/'.Auth::user()->foto);
+			$tujuan_upload = 'data_file';
+			$file->move($tujuan_upload,$nama_file);
+			user::where('id',Auth::user()->id)->update([
+				'foto'=>$nama_file,
+			]);
+			return redirect()->back();
+		}
 
+		
+
+	}
 	//catalog
 	public function catalog(){
 		$barang = barang::get();
@@ -69,11 +103,39 @@ class HalamanAwalController extends Controller
 	}
 	//profil	
 	public function profil(){
-		// $user = pelanggan::where('id',Auth::user()->id)->get();
+		$user = pelanggan::where('id',Auth::user()->id)->get();
 		
 		// return view('halaman-profil');
-		$category = category::get();
-		return view('halaman-profil',['category' => $category]);
+		// $category = category::get();
+		return view('halaman-profil',['user' => $user]);
+	}
+	public function editprofil(Request $request){
+		$user = pelanggan::where('id',Auth::user()->id)->get();
+		$id = 0;
+		foreach($user as $u){
+			$id = $u->id_pelanggan;
+		}
+		if(count($user)==0){
+			$pelanggan = [
+                'id'=>Auth::user()->id,
+                'nama_lengkap'=>$request->nama,
+				'jenis_kelamin'=>$request->jk,
+                'tanggal_lahir'=>$request->tgl,
+                'no_hp'=>$request->no_hp
+            ];
+			pelanggan::insert($pelanggan);
+		}else{
+			pelanggan::where('id_pelanggan',$id)->update(
+				['nama_lengkap'=>$request->nama,
+				'jenis_kelamin'=>$request->jk,
+				'tanggal_lahir'=>$request->tgl,
+				'no_hp'=>$request->no_hp
+				]
+		);
+		}
+		// return view('halaman-profil');
+		// $category = category::get();
+		return redirect()->back();
 	}
 	//produk
 	public function produk($id){

@@ -29,10 +29,13 @@ Route::get('/catalog','App\HTTP\Controllers\HalamanAwalController@catalog' );
 Route::get('/keranjang','App\HTTP\Controllers\HalamanAwalController@keranjang' );
 Route::get('/produk/{id}','App\HTTP\Controllers\HalamanAwalController@produk' );
 Route::get('/profile','App\HTTP\Controllers\HalamanAwalController@profil' )->name('profile')->middleware('auth');
+Route::get('/profile/editprofile','App\HTTP\Controllers\HalamanAwalController@editprofil' )->name('editprofile')->middleware('auth');
 Route::get('/category/{id_category}', 'App\HTTP\Controllers\HalamanAwalController@category');
 Route::get('/pembayaran', 'App\HTTP\Controllers\HalamanAwalController@pembayaran')->middleware('auth');
 Route::get('/bayar', 'App\HTTP\Controllers\HalamanAwalController@bayar')->middleware('auth');
 Route::get('/bayar/upload', 'App\HTTP\Controllers\HalamanAwalController@upload')->middleware('auth');
+Route::get('/getcategory','App\HTTP\Controllers\HalamanAwalController@getcategory' );
+Route::post('/profile/editfoto','App\HTTP\Controllers\HalamanAwalController@editfoto' )->name('editfoto')->middleware('auth');
 
 Route::get('/pembayaran/code', 'App\HTTP\Controllers\HalamanAwalController@code');
 Route::post('/add-to-cart','App\HTTP\Controllers\CartController@add')->name('cart.add')->middleware('auth');
@@ -47,6 +50,7 @@ Route::get('/getProvince','App\HTTP\Controllers\LocationController@getProvince')
 Route::get('/getkota/{id}','App\HTTP\Controllers\LocationController@getkota')->name('kota');
 Route::post('/getService','App\HTTP\Controllers\LocationController@getService')->name('rajaongkir.service');
 Route::post('/getCost', 'App\HTTP\Controllers\LocationController@getCost')->name('rajaongkir.cost');
+
 // Route::get('/tes','App\HTTP\Controllers\LocationController@getService');
 
 //---------------------------------ADMIN------------------------------------------------------------------------------
