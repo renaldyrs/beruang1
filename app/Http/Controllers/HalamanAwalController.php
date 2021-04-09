@@ -194,11 +194,36 @@ class HalamanAwalController extends Controller
 		// ->where('pe.status','Belum dibayar')->where('pe.tanggal_pesanan',date('Y-m-d'))
 		// ->get();
 		// dd($produk);
-		DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->update([
-			'tanggal_pembayaran'=>date('Y-m-d'),
-			'bukti_pembayaran'=>$request->bukti
-		]);
-		return  redirect('');
+		$cek = DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->get();
+		$f ="";
+		foreach($cek as $c){
+			$f = $c->bukti_pembayaran;
+		}
+
+		$file = $request->file('bukti');
+		// return $file;
+		$nama_file = time()."_".$file->getClientOriginalName();
+		if(is_null($f)){
+			dd($cek);
+			$tujuan_upload = 'data_file';
+			$file->move($tujuan_upload,$nama_file);
+			DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->update([
+				'tanggal_pembayaran'=>date('Y-m-d'),
+				'bukti_pembayaran'=>$nama_file
+			]);
+			return  redirect('/profile');
+		}else{
+			// dd($f);
+			File::delete('data_file/'.$f);
+			$tujuan_upload = 'data_file';
+			$file->move($tujuan_upload,$nama_file);
+			DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->update([
+				'tanggal_pembayaran'=>date('Y-m-d'),
+				'bukti_pembayaran'=>$nama_file
+			]);
+			return  redirect('/profile');
+		}
+		
 	}
 
 }

@@ -33,7 +33,7 @@ Route::get('/profile/editprofile','App\HTTP\Controllers\HalamanAwalController@ed
 Route::get('/category/{id_category}', 'App\HTTP\Controllers\HalamanAwalController@category');
 Route::get('/pembayaran', 'App\HTTP\Controllers\HalamanAwalController@pembayaran')->middleware('auth');
 Route::get('/bayar', 'App\HTTP\Controllers\HalamanAwalController@bayar')->middleware('auth');
-Route::get('/bayar/upload', 'App\HTTP\Controllers\HalamanAwalController@upload')->middleware('auth');
+Route::post('/bayar/upload', 'App\HTTP\Controllers\HalamanAwalController@upload')->middleware('auth');
 Route::get('/getcategory','App\HTTP\Controllers\HalamanAwalController@getcategory' );
 Route::post('/profile/editfoto','App\HTTP\Controllers\HalamanAwalController@editfoto' )->name('editfoto')->middleware('auth');
 
