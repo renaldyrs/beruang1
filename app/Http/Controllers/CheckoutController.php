@@ -29,7 +29,15 @@ class CheckoutController extends Controller
             foreach($pela as $a){
                 $id = $a->id_pelanggan;
             }
-            echo "c";
+            // echo "c";
+            pelanggan::where('id_pelanggan',$id)->update(
+                    ['nama_lengkap'=>$request->nama_pelanggan,
+                    'tanggal_lahir'=>$request->tanggal_lahir,
+                    'kode_pos'=>$request->kode_pos,
+                    'no_hp'=>$request->no_hp
+                    ]
+            );
+
             $cartItems = json_decode($request->cookie('dw-carts'), true); 
             $pesanan = [
                 'id_kota'=>$request->kota,
@@ -58,7 +66,7 @@ class CheckoutController extends Controller
             $cookie = \Cookie::forget('dw-carts');
             Cookie::queue($cookie);
             
-            return redirect('/');
+            return redirect('/pembayaran');
         }else{
             // return($cek);
             $pelanggan = [

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="New/assets/font-awesome/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="New/assets/font-awesome/css/font-awesome.min.css"> -->
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
 
         <div class="container"><a class="navbar-brand logo" href="/">Gudang Beruang</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -17,16 +17,10 @@
                     <li class="nav-item"><a class="nav-link" href="/catalog"><i class="fa fa-book"> Catalog</i></a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Kategori</a>
-                            <div class="dropdown-menu">
-                            <?php if(is_array($category) || is_object($category)){ ?>
-                                @foreach($category as $c)
-                                        <ul class="nav nav-pills" role="tablist">
-                                            <li class="nav-item">
-                                            <a href="{{ url('/category/'.$c->id) }}" class="dropdown-item" name="id_category" id="id_category">{{$c->nama}}</a>
-                                        </li>
-                                        </ul>
-                                @endforeach
-                            <?php }; ?>
+                            <div class="dropdown-menu" id="category">
+                           
+                               
+                           
                         </div>
                     </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php"><i class="fa fa-id-badge" aria-hidden="true"> About Us</i></a></li>
@@ -42,7 +36,7 @@
                                                 0
                                             @endif
                                         @else
-                                        0
+                                        0   
                                         @endauth
                                     </div>
                             </a>
@@ -55,7 +49,7 @@
 
                                 <div class="dropdown-menu item-dropdown" aria-labelledby="dropdownMenuLink">
                                     <!-- dropdown profile -->
-                                    <a class="dropdown-item nav-link" href="/profile" >
+                                    <a class="dropdown-item nav-link" href="{{route('profile')}}" >
 
                                                 <i class="fa fa-user-circle mr-3 ml-1"></i>Profile
 

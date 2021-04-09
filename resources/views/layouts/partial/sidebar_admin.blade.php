@@ -10,16 +10,16 @@
                     <a href="adminhome"><i class="fa fa-area-chart" aria-hidden="true"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-envelope" aria-hidden="true"></i> Pesanan</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-envelope" aria-hidden="true"></i> Pesanan</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu1">
                         <li>
                             <a href="#">Informasi Pesanan</a>
                         </li>
                         <li>
-                            <a href="#">pesanan dikirim</a>
+                            <a href="#">Pesanan Diterima</a>
                         </li>
                         <li>
-                            <a href="#">Pesanan Diterima</a>
+                            <a href="#">Pesanan Dikirim</a>
                         </li>
                     </ul>
                 </li>

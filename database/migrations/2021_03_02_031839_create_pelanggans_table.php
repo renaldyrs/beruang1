@@ -17,8 +17,9 @@ class CreatePelanggansTable extends Migration
             $table->increments('id_pelanggan');
             $table->integer('id')->unsigned();
             $table->string('nama_lengkap');
+            $table->string('jenis_kelamin')->nullable();
             $table->date('tanggal_lahir');
-            $table->string('kode_pos');
+            $table->string('kode_pos')->nullable();
             $table->string('no_hp');
             $table->timestamps();
             $table->foreign('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
