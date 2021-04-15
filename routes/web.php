@@ -83,9 +83,7 @@ Route::get('/adminbank/update/{id_bank}', 'App\HTTP\Controllers\AdminController@
 Route::post('/adminbank/update/prosesbank/{id_bank}', 'App\HTTP\Controllers\AdminController@prosesbank');
 
 Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->middleware(['role','auth']);
-
 Route::get('/laporan', 'App\HTTP\Controllers\AdminController@laporan')->middleware(['role','auth']);
-
 Route::get('/testing', function () {
     return view ('testing');
 });
