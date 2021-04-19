@@ -123,9 +123,25 @@ class HalamanAwalController extends Controller
 		->where('p.id',Auth::user()->id )
 		->where('pe.status','Belum dibayar')
 		->get();
+		$pebatal=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
+		->join('pesanan_item as i','pe.id_pesanan','=','i.id_pesanan')
+		->join('barangs as b','i.id_barang','=','b.id')
+		->join('pembayarans as ba', 'pe.id_pesanan','=','ba.id_pesanan')
+		->select('b.nama','pe.status','i.jumlah_barang as qty','i.harga_barang as harga','b.file', 'pe.id_pesanan', 'ba.id_bank')
+		->where('p.id',Auth::user()->id )
+		->where('pe.status','Batal')
+		->get();
+		$pesditerima=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
+		->join('pesanan_item as i','pe.id_pesanan','=','i.id_pesanan')
+		->join('barangs as b','i.id_barang','=','b.id')
+		->join('pembayarans as ba', 'pe.id_pesanan','=','ba.id_pesanan')
+		->select('b.nama','pe.status','i.jumlah_barang as qty','i.harga_barang as harga','b.file', 'pe.id_pesanan', 'ba.id_bank')
+		->where('p.id',Auth::user()->id )
+		->where('pe.status','Sudah dibayar')
+		->get();
 		// return view('halaman-profil');
 		// $category = category::get();
-		return view('halaman-profil',['user' => $user, 'produk'=>$produk]);
+		return view('halaman-profil',['user' => $user,'batal'=>$pebatal,'diterima'=>$pesditerima ,'produk'=>$produk]);
 	}
 	public function editprofil(Request $request){
 		$user = pelanggan::where('id',Auth::user()->id)->get();

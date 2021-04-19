@@ -6,13 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\supplier;
 use App\Models\Kurir;
 use App\Models\bank;
+use App\Models\pesanan;
+use App\Models\User;
 use DB;
 
 class AdminController extends Controller
 {
     //
     public function viewadminhome(){
-		return view('adminhome');
+      $jumpesan = pesanan::get();
+      $jumuser=User::where('id_role',2)->get();
+      $pesbayar = pesanan::where('status','Sudah dibayar')->get();
+      $pesbatal = pesanan::where('status','Batal')->get();
+		  return view('adminhome', ['jumpesan'=>$jumpesan, 'jumuser'=>$jumuser,'pesbayar'=>$pesbayar,'pesbatal'=>$pesbatal]);
 	  }
 
   //supplier
