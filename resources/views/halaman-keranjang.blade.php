@@ -127,8 +127,6 @@
         }
             
             
-        
-        
         function tambah(id,n){
             $.get({
                     url:"{{url('/keranjang/change')}}"+"/"+id+"/"+n,

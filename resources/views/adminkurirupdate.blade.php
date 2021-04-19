@@ -9,7 +9,7 @@
 					{{ csrf_field() }}
                     
                     <div class="form-group row">
-                    
+                    <input type="hidden" name="id" value="{{$kurirs->id_kurir}}">
                     <div class="col-md-3">
                     <label for="exampleFormControlFile1">Kode Kurir </label>
 						<input class="form-control" type="text" name="kode_kurir" value="{{$kurirs->kode_kurir}}">

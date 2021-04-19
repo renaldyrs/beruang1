@@ -7,15 +7,15 @@
                 <form action="/adminbank/update/prosesbank/{id_bank}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}            
                     <div class="form-group row">
-                    
+                    <input type="hidden" name="id" value="{{$bank->id_bank}}">
                     <div class="col-md">
                     <label for="exampleFormControlFile1">Nama Bank</label>
-						<input class="form-control" type="text" name="nama" value="{{$banks->nama_bank}}">
+						<input class="form-control" type="text" name="nama" value="{{$bank->nama_bank}}">
                     </div>
 
                     <div class="col-md-3">
                     <label for="exampleFormControlFile1">No Rekening</label>
-						<input class="form-control" type="text" name="no_rekening" value="{{$banks->no_rekening}}">
+						<input class="form-control" type="text" name="no_rekening" value="{{$bank->no_rekening}}">
                     </div>
                     
 					</div>

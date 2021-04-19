@@ -10,13 +10,16 @@
                     <a href="adminhome"><i class="fa fa-area-chart" aria-hidden="true"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-envelope" aria-hidden="true"></i> Pesanan</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu1">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-envelope" aria-hidden="true"></i> Pesanan</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">Informasi Pesanan</a>
+                            <a href="/adminpesanan">Informasi Pesanan</a>
                         </li>
                         <li>
-                            <a href="#">Pesanan Diterima</a>
+                            <a href="/adminpesanan/diterima">Pesanan Diterima</a>
+                        </li>
+                        <li>
+                            <a href="/adminpesanan/dibatalkan">Pesanan Dibatalkan</a>
                         </li>
                         <li>
                             <a href="#">Pesanan Dikirim</a>
@@ -24,8 +27,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-archive" aria-hidden="true"></i> Data</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-archive" aria-hidden="true"></i> Data</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu1">
                     <li>
                     <a href="adminbarang"><i class="fa fa-archive" aria-hidden="true"></i> Produk</a>
                     </li>

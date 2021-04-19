@@ -17,6 +17,7 @@ class CreateBarangsTable extends Migration
             $table->increments('id');
             $table->integer('id_category')->unsigned();
             $table->integer('id_suplier')->unsigned();
+            
             $table->string('nama');
             $table->string('harga');
             $table->string('file');
@@ -25,6 +26,7 @@ class CreateBarangsTable extends Migration
             $table->timestamps();
             $table->foreign('id_category')->references('id')->on('category')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_suplier')->references('id_suplier')->on('suplier')->onUpdate('cascade')->onDelete('restrict');
+            
             
         });
     }

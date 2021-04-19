@@ -55,8 +55,7 @@ body {
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-              <br>
-              <p>Peraturan :</p>
+            
         </div>
       </div>
     </div>
