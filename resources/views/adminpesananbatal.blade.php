@@ -68,7 +68,7 @@
                                             <td>{{$p->jumlah_barang}}</td>
                                             <td>{{$p->harga_barang}}</td>
                                             <td>{{$p->total}}</td>
-                                            <td>{{$p->alamat}}</td>
+                                            <td>{{'Provinsi '.$p->nama_provinsi.', Kota '.$p->nama_kota.', '. $p->alamat}}</td>
                                             <td>{{$p->tanggal_pesanan}}</td>
                                             <td>{{$p->status}}</td>
                                             
