@@ -57,8 +57,8 @@ class AdminBarangController extends Controller
 
 	public function update($id){
 		$barang = barang::find($id);
-		
-		return view('adminbarangupdate',['barangs' => $barang]);
+		$category = category::get();
+		return view('adminbarangupdate',['barangs' => $barang,'category'=> $category]);
 	}
 	
 }

@@ -75,12 +75,7 @@
                                         </tr>
                                     </thead>
                                     <tfoot>
-                                        <tr>
-                                            <th>Id Kurir</th>
-                                            <th>Nama Kurir</th>
-                                            <th>Kode Kurir</th>
-                                            <th>Actions</th>
-                                        </tr>
+                                        
                                     </tfoot>
                                     <tbody>
                                     @foreach($kurirs as $k)

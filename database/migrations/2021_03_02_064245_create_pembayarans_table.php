@@ -22,7 +22,7 @@ class CreatePembayaransTable extends Migration
             $table->string('bukti_pembayaran')->nullable();
             $table->timestamps();
             $table->foreign('id_pesanan')->references('id_pesanan')->on('pesanan')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('id_bank')->references('id_bank')->on('banks')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('id_bank')->references('id_bank')->on('bank')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 

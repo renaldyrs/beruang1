@@ -50,7 +50,6 @@ Route::get('/getProvince','App\HTTP\Controllers\LocationController@getProvince')
 Route::get('/getkota/{id}','App\HTTP\Controllers\LocationController@getkota')->name('kota');
 Route::post('/getService','App\HTTP\Controllers\LocationController@getService')->name('rajaongkir.service');
 Route::post('/getCost', 'App\HTTP\Controllers\LocationController@getCost')->name('rajaongkir.cost');
-
 // Route::get('/tes','App\HTTP\Controllers\LocationController@getService');
 
 //---------------------------------ADMIN------------------------------------------------------------------------------
@@ -82,9 +81,19 @@ Route::post('/adminbank/tambah', 'App\HTTP\Controllers\AdminController@tambahban
 Route::get('/adminbank/update/{id_bank}', 'App\HTTP\Controllers\AdminController@updatebank');
 Route::post('/adminbank/update/prosesbank/{id_bank}', 'App\HTTP\Controllers\AdminController@prosesbank');
 
+//pesanan
+Route::get('/adminpesanan', 'App\HTTP\Controllers\AdminController@viewpesanan')->middleware(['role','auth']);
+Route::get('/adminpesanan/diterima', 'App\HTTP\Controllers\AdminController@viewpesananditerima')->middleware(['role','auth']);
+Route::get('/adminpesanan/dibatalkan', 'App\HTTP\Controllers\AdminController@viewpesananbatal')->middleware(['role','auth']);
+
+Route::get('/adminpesanan/update/{id_pesanan}','App\HTTP\Controllers\AdminController@statusbayar');
+Route::get('/adminpesanan/batal/{id_pesanan}','App\HTTP\Controllers\AdminController@statusbatal');
+
 Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->middleware(['role','auth']);
 
+//laporan
 Route::get('/laporan', 'App\HTTP\Controllers\AdminController@laporan')->middleware(['role','auth']);
+Route::get('/laporan/cetak','App\HTTP\Controllers\AdminController@cetak');
 
 Route::get('/testing', function () {
     return view ('testing');
