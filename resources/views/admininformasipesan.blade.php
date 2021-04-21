@@ -47,6 +47,7 @@
                                     <thead>
                                         <tr>
                                             <th>Id Pesanan</th>
+                                            <th>Bukti Pembayaran</th>
                                             <th>Nama Barang</th>
                                             <th>Jumlah</th>
                                             <th>Harga</th>
@@ -64,6 +65,13 @@
                                     @foreach($pesanan as $p)
                                         <tr>
                                             <td>{{$p->id_pesanan}}</td>
+                                            <td>
+                                                @if(is_null($p->bukti_pembayaran)) 
+                                                 -
+                                                @else
+                                                    <img src="{{asset('data_file/bayar/'.$p->bukti_pembayaran)}}" class="card-img-top" alt="...">  
+                                                @endif
+                                            </td>
                                             <td>{{$p->nama}}</td>
                                             <td>{{$p->jumlah_barang}}</td>
                                             <td>{{$p->harga_barang}}</td>

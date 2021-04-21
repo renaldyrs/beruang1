@@ -85,6 +85,7 @@ Route::post('/adminbank/update/prosesbank/{id_bank}', 'App\HTTP\Controllers\Admi
 Route::get('/adminpesanan', 'App\HTTP\Controllers\AdminController@viewpesanan')->middleware(['role','auth']);
 Route::get('/adminpesanan/diterima', 'App\HTTP\Controllers\AdminController@viewpesananditerima')->middleware(['role','auth']);
 Route::get('/adminpesanan/dibatalkan', 'App\HTTP\Controllers\AdminController@viewpesananbatal')->middleware(['role','auth']);
+Route::post('/adminpesanan/kirim', 'App\HTTP\Controllers\AdminController@kirim')->name('kirim')->middleware(['role','auth']);
 
 Route::get('/adminpesanan/update/{id_pesanan}','App\HTTP\Controllers\AdminController@statusbayar');
 Route::get('/adminpesanan/batal/{id_pesanan}','App\HTTP\Controllers\AdminController@statusbatal');

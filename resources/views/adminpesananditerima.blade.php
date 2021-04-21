@@ -2,7 +2,36 @@
 
 @section('content')
 @include('layouts.partial.sidebar_admin')
-        
+    <div class="modal fade" id="inputresi" tabindex="-1" role="dialog" aria-labelledby="inputresi" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editD">No Resi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+            <form action="{{route('editfoto')}}" method="post"  enctype="multipart/form-data">
+            @csrf
+                <div class="modal-body">
+                    <div class="form-group row">
+                            <label for="nama" class="col-sm-4 col-form-label">No Resi</label>
+                            <div class="col-8">
+                            <input type="text" class="form-control" id="nama" name="no_resi" placeholder="no resi">
+                            </div>
+                        </div>
+            
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                        <button  class="btn btn-success" id="submit">Kirim</button>
+                    </div>
+                </div>    
+            </form>
+            
+            </div>
+        </div>
+    </div>
     <center><h4>Pesanan</h4></center> 
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Begin Page Content -->
@@ -54,7 +83,7 @@
                                             <th>Alamat</th>
                                             <th>Tanggal Pesanan</th>
                                             <th>Status</th>
-                                            
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -71,7 +100,40 @@
                                             <td>{{'Provinsi '.$p->nama_provinsi.', Kota '.$p->nama_kota.', '. $p->alamat}}</td>
                                             <td>{{$p->tanggal_pesanan}}</td>
                                             <td>{{$p->status}}</td>
-                                            
+                                            <td>
+                                                <div class="modal fade" id="inputresi{{$p->id_pesanan}}" tabindex="-1" role="dialog" aria-labelledby="inputresi" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="editD">No Resi</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        
+                                                        <form action="{{route('kirim')}}" method="post" >
+                                                        @csrf
+                                                            <input type="hidden" value="{{$p->id_pesanan}}" name="id_pesanan"> 
+                                                            <div class="modal-body">
+                                                                <div class="form-group row">
+                                                                        <label for="nama" class="col-sm-4 col-form-label">No Resi</label>
+                                                                        <div class="col-8">
+                                                                        <input type="text" class="form-control" id="nama" name="no_resi" placeholder="no resi">
+                                                                        </div>
+                                                                </div>
+                                                        
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                                                                    <button  class="btn btn-success" id="submit">Kirim</button>
+                                                                </div>
+                                                            </div>    
+                                                        </form>
+                                                        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inputresi{{$p->id_pesanan}}" >Kirim</button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

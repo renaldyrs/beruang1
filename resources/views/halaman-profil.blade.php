@@ -118,7 +118,7 @@
                             @if( is_null(Auth::user()->foto))
                                                 <img src="New/assets/img/avatars/avatar1.jpg" class="card-img-top" alt="...">
                                             @else
-                                                <img src="{{asset('data_file/'.Auth::user()->foto)}}" class="card-img-top" alt="...">
+                                                <img src="{{asset('data_file/foto_users/'.Auth::user()->foto)}}" class="card-img-top" alt="...">
                                             @endif
                                 <br><hr>
                                 <p>{{Auth::user()->name}}</p>
@@ -203,7 +203,7 @@
                                             @if( is_null(Auth::user()->foto))
                                                 <img src="New/assets/img/avatars/avatar1.jpg" class="card-img-top" alt="...">
                                             @else
-                                                <img src="{{asset('data_file/'.Auth::user()->foto)}}" class="card-img-top" alt="...">
+                                                <img src="{{asset('data_file/foto_users/'.Auth::user()->foto)}}" class="card-img-top" alt="...">
                                             @endif
                                                 <div class="card-body">
                                                     <button type="button" class="btn btn-outline-secondary btn-block" data-toggle="modal" data-target="#editfoto" >Ganti Foto</button>

@@ -45,15 +45,15 @@ class HalamanAwalController extends Controller
 		$nama_file = Auth::user()->name."_".Auth::user()->id.".".$file->getClientOriginalExtension();
 		// echo $nama_file;
 		if(is_null(Auth::user()->foto)){
-			$tujuan_upload = 'data_file';
+			$tujuan_upload = 'data_file/foto_users';
 			$file->move($tujuan_upload,$nama_file);
 			user::where('id',Auth::user()->id)->update([
 				'foto'=>$nama_file,
 			]);
 			return redirect()->back();
 		}else{
-			File::delete('data_file/'.Auth::user()->foto);
-			$tujuan_upload = 'data_file';
+			File::delete('data_file/foto_users/'.Auth::user()->foto);
+			$tujuan_upload = 'data_file/foto_users';
 			$file->move($tujuan_upload,$nama_file);
 			user::where('id',Auth::user()->id)->update([
 				'foto'=>$nama_file,
@@ -220,8 +220,8 @@ class HalamanAwalController extends Controller
 		// return $file;
 		$nama_file = time()."_".$file->getClientOriginalName();
 		if(is_null($f)){
-			dd($cek);
-			$tujuan_upload = 'data_file';
+			// dd($cek);
+			$tujuan_upload = 'data_file/bayar';
 			$file->move($tujuan_upload,$nama_file);
 			DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->update([
 				'tanggal_pembayaran'=>date('Y-m-d'),
@@ -229,9 +229,9 @@ class HalamanAwalController extends Controller
 			]);
 			return  redirect('/profile');
 		}else{
+			$tujuan_upload = 'data_file/bayar';
 			// dd($f);
-			File::delete('data_file/'.$f);
-			$tujuan_upload = 'data_file';
+			File::delete('data_file/bayar'.$f);
 			$file->move($tujuan_upload,$nama_file);
 			DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->update([
 				'tanggal_pembayaran'=>date('Y-m-d'),
