@@ -172,9 +172,41 @@ class AdminController extends Controller
     ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status')
     ->get();
 
-    $pdf = PDF::loadview('admin_laporan',compact('laporan'));
-    	return $pdf->download('laporan.pdf');
+    return view('cetaklaporan',compact('laporan'));
+    	
   }
+  public function prosescetak(){
+
+    
+    $laporan = DB::table('pesanan_item')
+    ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
+    ->join('barangs','pesanan_item.id_barang','=','barangs.id')
+    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status')
+    // ->selectRaw('count(*) as total')
+    // ->selectRaw("count(case when status = 'Sudah bayar' then 1 end) as sudah")
+    // ->selectRaw("count(case when status = 'Belum bayar' then 1 end) as belum")
+    // ->selectRaw("count(case when status = 'Batal' then 1 end) as batal")
+    ->get();
+
+    
+
+    $pdf = \PDF::loadview('cetaklaporan',compact('laporan'));
+    	return $pdf->download('laporan-pdf.pdf');
+  }
+
+  // public function countpesan(){
+   
+  //   $totals = DB::table('pesanan_item')
+  //   ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
+  //   ->join('barangs','pesanan_item.id_barang','=','barangs.id')
+  //   ->selectRaw('count(*) as total')
+  //   ->selectRaw("count(case when status = 'Sudah bayar' then 1 end) as sudah")
+  //   ->selectRaw("count(case when status = 'Belum bayar' then 1 end) as belum")
+  //   ->selectRaw("count(case when status = 'Batal' then 1 end) as batal")
+  //   ->first();
+
+  //   return view('cetaklaporan',compact('laporan'));
+  // }
 
   //pesanan
   public function viewpesanan(){
