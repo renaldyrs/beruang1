@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    <center><h4>Pesanan</h4></center> 
+    <center><h4>Pesanan Diterima</h4></center> 
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Begin Page Content -->
                 <div class="container-fluid">

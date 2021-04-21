@@ -185,7 +185,6 @@ class AdminController extends Controller
     ->join('kota', 'pesanan.id_kota','=', 'kota.id_kota')
     ->join('barangs','pesanan_item.id_barang','=','barangs.id')
     ->select('pesanan.id_pesanan','p.bukti_pembayaran','pesanan.grantotal','barangs.nama','provinsi.nama_provinsi','kota.nama_kota','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.alamat','pesanan.total')
-    ->where('pesanan.status','=','Belum dibayar')
     ->get();
     return view('admininformasipesan',compact('pesanan'));
 

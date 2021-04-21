@@ -3,7 +3,7 @@
 @section('content')
 @include('layouts.partial.sidebar_admin')
         
-    <center><h4>Pesanan</h4></center> 
+    <center><h4>Informasi Pesanan</h4></center> 
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -81,13 +81,20 @@
                                             <td>{{$p->status}}</td>
                                             
                                             <td>
-            
+                                            
                                             <form action="" method="post">
-                                                <div class="d-flex flex-row">
-                                                <div class="p-1"><a class="btn btn-info "  aria-hidden="true" href="/adminpesanan/update/{{$p->id_pesanan}}"> Sudah Bayar</a></div>
+                                            
+                                                <!-- <div class="d-flex flex-row">
+                                                <div class="p-1"><a class="btn btn-info btn-lg disabled"  aria-hidden="true" href="/adminpesanan/update/{{$p->id_pesanan}}" > Sudah Bayar</a></div>
                                                 
-                                                <div class="p-1"><a class="btn btn-danger "  aria-hidden="true" href="/adminpesanan/batal/{{$p->id_pesanan}}"> Batal</a></div>
-                                                </div>  
+                                                <div class="p-1"><a class="btn btn-danger btn-lg disabled"  aria-hidden="true"  href="/adminpesanan/batal/{{$p->id_pesanan}}"> Batal</a></div>
+                                                </div>   -->
+                                            
+                                                <div class="d-flex flex-row">
+                                                    <div class="p-1"><a class="btn btn-info "  aria-hidden="true" href="/adminpesanan/update/{{$p->id_pesanan}}"> Sudah Bayar</a></div>
+                                                    
+                                                    <div class="p-1"><a class="btn btn-danger"  aria-hidden="true" href="/adminpesanan/batal/{{$p->id_pesanan}}"> Batal</a></div>
+                                                </div> 
                                             </form>
                                             </td>
                                         </tr>
