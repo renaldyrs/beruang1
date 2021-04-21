@@ -54,6 +54,7 @@
                                             <th>Jumlah Barang</th>
                                             <th>Harga Barang</th>
                                             <th>Tanggal Pesanan</th>
+                                            <th>Total</th>
                                             <th>Status</th>
                                            
                                         </tr>
@@ -72,6 +73,7 @@
                                             <td>{{$l->harga_barang}}</td>
                                             <td>{{$l->tanggal_pesanan}}</td>
                                             <td>{{$l->status}}</td>
+                                            <td>{{$l->total}}</td>
                                             
                                             
                                         </tr>

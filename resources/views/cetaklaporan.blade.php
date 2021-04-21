@@ -55,6 +55,7 @@ table, td, th {
                         <th>Status</th>
                         <th>Jumlah Barang</th>
                         <th>Harga Barang</th>
+                        <th>Total</th>
                                            
                         </tr>
                     </thead>
@@ -71,9 +72,8 @@ table, td, th {
                             <td>{{$l->status}}</td>
                             <td>{{$l->jumlah_barang}}</td>
                             <td>{{$l->harga_barang}}</td>
-                            <?php
-                            $jum = count($i);
-                            ?>             
+                            <td>{{$l->total}}</td>
+                                      
                         </tr>
                         @endforeach
                     </tbody>
@@ -87,11 +87,11 @@ table, td, th {
                         <tbody>
                         <tr>
                             <td>Total Penjualan</td>
-                            <td>Rp. </td>
+                            <td>Rp. {{$gran}}</td>
                         </tr>
                         <tr>
                             <td>Total Transaksi</td>
-                            <td></td>
+                            <td>{{count($laporan)}}</td>
                         </tr>
                         </tbody>
                     </table>

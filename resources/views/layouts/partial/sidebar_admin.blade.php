@@ -45,7 +45,7 @@
                     </li>
                
                 <li>
-                    <a href="laporan"><i class="fa fa-file-text-o" aria-hidden="true"></i> Laporan</a>
+                    <a href="/laporan"><i class="fa fa-file-text-o" aria-hidden="true"></i> Laporan</a>
                 </li>
             </ul>
         </nav>

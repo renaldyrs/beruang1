@@ -170,9 +170,14 @@ class AdminController extends Controller
     ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
     ->join('barangs','pesanan_item.id_barang','=','barangs.id')
     ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status')
+    ->where('status','Sudah bayar')
     ->get();
-
-    return view('cetaklaporan',compact('laporan'));
+    $total = pesanan::where('status','Sudah bayar')->get();
+    $grantotal = 0;
+    foreach($total as $a){
+      $grantotal += $a->total;
+    }
+    return view('cetaklaporan',['laporan'=>$laporan,'gran'=>$grantotal]);
     	
   }
   public function prosescetak(){
@@ -181,32 +186,22 @@ class AdminController extends Controller
     $laporan = DB::table('pesanan_item')
     ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
     ->join('barangs','pesanan_item.id_barang','=','barangs.id')
-    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status')
-    // ->selectRaw('count(*) as total')
-    // ->selectRaw("count(case when status = 'Sudah bayar' then 1 end) as sudah")
-    // ->selectRaw("count(case when status = 'Belum bayar' then 1 end) as belum")
-    // ->selectRaw("count(case when status = 'Batal' then 1 end) as batal")
+    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total')
+  
+    ->where('status','Sudah bayar')
     ->get();
-
+    $total = pesanan::where('status','Sudah bayar')->get();
+    $grantotal = 0;
+    foreach($total as $a){
+      $grantotal += $a->total;
+    }
     
 
-    $pdf = \PDF::loadview('cetaklaporan',compact('laporan'));
+    $pdf = \PDF::loadview('cetaklaporan',['laporan'=>$laporan,'gran'=>$grantotal]);
     	return $pdf->download('laporan-pdf.pdf');
   }
 
-  // public function countpesan(){
-   
-  //   $totals = DB::table('pesanan_item')
-  //   ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
-  //   ->join('barangs','pesanan_item.id_barang','=','barangs.id')
-  //   ->selectRaw('count(*) as total')
-  //   ->selectRaw("count(case when status = 'Sudah bayar' then 1 end) as sudah")
-  //   ->selectRaw("count(case when status = 'Belum bayar' then 1 end) as belum")
-  //   ->selectRaw("count(case when status = 'Batal' then 1 end) as batal")
-  //   ->first();
-
-  //   return view('cetaklaporan',compact('laporan'));
-  // }
+ 
 
   //pesanan
   public function viewpesanan(){
