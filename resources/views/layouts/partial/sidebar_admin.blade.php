@@ -22,7 +22,7 @@
                             <a href="/adminpesanan/dibatalkan">Pesanan Dibatalkan</a>
                         </li>
                         <li>
-                            <a href="#">Pesanan Dikirim</a>
+                            <a href="/adminpesanan/pengiriman">Pesanan Dikirim</a>
                         </li>
                     </ul>
                 </li>

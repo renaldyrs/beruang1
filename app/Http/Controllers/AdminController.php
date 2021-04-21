@@ -261,6 +261,19 @@ class AdminController extends Controller
       return redirect()->back();
     }
   }
- 
+  public function viewpesanandikirim(){
+    $pesanan = DB::table('pesanan_item')
+    ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
+    ->join('barangs','pesanan_item.id_barang','=','barangs.id')
+    ->join('provinsi', 'pesanan.id_provinsi','=', 'provinsi.id_provinsi')
+    ->join('pengiriman','pesanan.id_pesanan','=','pengiriman.id_pesanan')
+    ->join('kurirs','pengiriman.id_kurir','=','kurirs.id_kurir')
+    ->join('kota', 'pesanan.id_kota','=', 'kota.id_kota')
+    ->select('pesanan.id_pesanan','barangs.nama','grantotal','kurirs.nama_kurir','pengiriman.no_resi','provinsi.nama_provinsi','kota.nama_kota','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.alamat','pesanan.total')
+    ->where('pesanan.status','=','Sudah bayar')
+    ->whereNotNull('no_resi')
+    ->get();
+    return view('adminpengiriman',compact('pesanan'));
+  }
 
 }
