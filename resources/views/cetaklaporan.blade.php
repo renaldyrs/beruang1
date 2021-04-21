@@ -97,7 +97,7 @@ table, td, th {
                     </table>
                     </div>
                 <div>
-                <a href="/laporan/cetak/proses">cetak</a>
+    
                 </div>
 
            </div>

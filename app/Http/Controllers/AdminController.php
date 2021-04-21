@@ -157,7 +157,7 @@ class AdminController extends Controller
     $laporan = DB::table('pesanan_item')
     ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
     ->join('barangs','pesanan_item.id_barang','=','barangs.id')
-    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status')
+    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total')
     ->get();
      
     return view('admin_laporan',compact('laporan'));
@@ -169,7 +169,7 @@ class AdminController extends Controller
     $laporan = DB::table('pesanan_item')
     ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
     ->join('barangs','pesanan_item.id_barang','=','barangs.id')
-    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status')
+    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total')
     ->where('status','Sudah bayar')
     ->get();
     $total = pesanan::where('status','Sudah bayar')->get();
