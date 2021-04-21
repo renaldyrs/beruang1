@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\kurir;
 use App\Models\pelanggan;
+use App\Models\pengiriman;
 use App\Models\pesanan;
 use App\Models\pesanan_items;
 use Illuminate\Http\Request;
@@ -37,6 +38,7 @@ class CheckoutController extends Controller
                     'no_hp'=>$request->no_hp
                     ]
             );
+            
 
             $cartItems = json_decode($request->cookie('dw-carts'), true); 
             $pesanan = [
@@ -51,6 +53,11 @@ class CheckoutController extends Controller
             ];
             pesanan::insert($pesanan);
             $pesan = pesanan::where('id_pelanggan',$id)->select('id_pesanan')->get();
+            $kurir = kurir::where('kode_kurir',$request->kurir)->select('id_kurir')->get();
+            $id_kurir=0;
+            foreach($kurir as $k){
+                $id_kurir = $k->id_kurir;
+            }
             $id_pesan=0;
             foreach($pesan as $a){
                 $id_pesan= $a->id_pesanan;
@@ -63,6 +70,16 @@ class CheckoutController extends Controller
                     'harga_barang'=>$a['product_price']
                 ]);
             }
+
+            pengiriman::insert([
+                'id_kurir' => $id_kurir,
+                'id_pesanan'=>$id_pesan,
+                'nama_penerima'=>$request->nama_pelanggan,
+                'no_hp'=>$request->no_hp,
+                'kode_pos'=>$request->kode_pos,
+                'Jenis_pengiriman'=>$request->jenis_pengiriman,
+                'biaya_pengiriman'=>$request->biaya_pengiriman
+            ]);
             $cookie = \Cookie::forget('dw-carts');
             Cookie::queue($cookie);
             
@@ -98,6 +115,11 @@ class CheckoutController extends Controller
             ];
             pesanan::insert($pesanan);
             $pesan = pesanan::where('id_pelanggan',$id)->select('id_pesanan')->get();
+            $kurir = kurir::where('kode_kurir',$request->kurir)->select('id_kurir')->get();
+            $id_kurir=0;
+            foreach($kurir as $k){
+                $id_kurir = $k->id_kurir;
+            }
             $id_pesan=0;
             foreach($pesan as $a){
                 $id_pesan= $a->id_pesanan;
@@ -110,6 +132,15 @@ class CheckoutController extends Controller
                     'harga_barang'=>$a['product_price']
                 ]);
             }
+            pengiriman::insert([
+                'id_kurir' => $id_kurir,
+                'id_pesanan'=>$id_pesan,
+                'nama_penerima'=>$request->nama_pelanggan,
+                'no_hp'=>$request->no_hp,
+                'kode_pos'=>$request->kode_pos,
+                'Jenis_pengiriman'=>$request->jenis_pengiriman,
+                'biaya_pengiriman'=>$request->biaya_pengiriman
+            ]);
             $cookie = \Cookie::forget('dw-carts');
             Cookie::queue($cookie);
             return redirect('/pembayaran');

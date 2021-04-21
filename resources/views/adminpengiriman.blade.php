@@ -2,15 +2,44 @@
 
 @section('content')
 @include('layouts.partial.sidebar_admin')
-        
-    <center><h4>Pesanan Batal</h4></center> 
+    <div class="modal fade" id="inputresi" tabindex="-1" role="dialog" aria-labelledby="inputresi" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editD">No Resi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+            <form action="{{route('editfoto')}}" method="post"  enctype="multipart/form-data">
+            @csrf
+                <div class="modal-body">
+                    <div class="form-group row">
+                            <label for="nama" class="col-sm-4 col-form-label">No Resi</label>
+                            <div class="col-8">
+                            <input type="text" class="form-control" id="nama" name="no_resi" placeholder="no resi">
+                            </div>
+                        </div>
+            
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                        <button  class="btn btn-success" id="submit">Kirim</button>
+                    </div>
+                </div>    
+            </form>
+            
+            </div>
+        </div>
+    </div>
+    <center><h4>Pengiriman</h4></center> 
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Pesanan Dibatalkan</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Pesanan Diterima</h6>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -48,13 +77,15 @@
                                         <tr>
                                             <th>Id Pesanan</th>
                                             <th>Nama Barang</th>
+                                            <th>Nama Kurir</th>
                                             <th>Jumlah</th>
                                             <th>Harga</th>
                                             <th>Total</th>
+                                            <th>Grand Total</th>
                                             <th>Alamat</th>
                                             <th>Tanggal Pesanan</th>
+                                            <th>No Resi</th>
                                             <th>Status</th>
-                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -65,11 +96,14 @@
                                         <tr>
                                             <td>{{$p->id_pesanan}}</td>
                                             <td>{{$p->nama}}</td>
+                                            <td>{{$p->nama_kurir}}</td>
                                             <td>{{$p->jumlah_barang}}</td>
                                             <td>{{$p->harga_barang}}</td>
                                             <td>{{$p->total}}</td>
+                                            <td>{{$p->grantotal}}</td>
                                             <td>{{'Provinsi '.$p->nama_provinsi.', Kota '.$p->nama_kota.', '. $p->alamat}}</td>
                                             <td>{{$p->tanggal_pesanan}}</td>
+                                            <td>{{$p->no_resi}}</td>
                                             <td>{{$p->status}}</td>
                                             
                                         </tr>

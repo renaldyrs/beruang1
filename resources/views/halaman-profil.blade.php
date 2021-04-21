@@ -118,7 +118,7 @@
                             @if( is_null(Auth::user()->foto))
                                                 <img src="New/assets/img/avatars/avatar1.jpg" class="card-img-top" alt="...">
                                             @else
-                                                <img src="{{asset('data_file/'.Auth::user()->foto)}}" class="card-img-top" alt="...">
+                                                <img src="{{asset('data_file/foto_users/'.Auth::user()->foto)}}" class="card-img-top" alt="...">
                                             @endif
                                 <br><hr>
                                 <p>{{Auth::user()->name}}</p>
@@ -133,17 +133,21 @@
                         <div class=profil-tabs>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pesanan</a>
+                                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                                    <a class="nav-link " id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Pesanan</a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Pesanan Batal</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                                    <a class="nav-link" id="diterima-tab" data-toggle="tab" href="#diterima" role="tab" aria-controls="diterima" aria-selected="false">Pesanan Diterima</a>
                                 </li>
                             </ul>
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     @foreach($produk as $p)
                                     <div class="card mt-4">
                                             <div class="card mb-3" style="max-width: 100%;">
@@ -187,11 +191,9 @@
                                     </div>
                                     @endforeach
 
-                                    </div>
+                                </div>
 
-
-
-                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="tab-pane fade  show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <br>
                                         <div class="container">   
                                         <div class="row">
@@ -201,7 +203,7 @@
                                             @if( is_null(Auth::user()->foto))
                                                 <img src="New/assets/img/avatars/avatar1.jpg" class="card-img-top" alt="...">
                                             @else
-                                                <img src="{{asset('data_file/'.Auth::user()->foto)}}" class="card-img-top" alt="...">
+                                                <img src="{{asset('data_file/foto_users/'.Auth::user()->foto)}}" class="card-img-top" alt="...">
                                             @endif
                                                 <div class="card-body">
                                                     <button type="button" class="btn btn-outline-secondary btn-block" data-toggle="modal" data-target="#editfoto" >Ganti Foto</button>
@@ -273,14 +275,91 @@
                                     </div>
                                     </div>
                                         
-                                    </div>
+                                </div>
 
 
                                     
-                                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                        <p>Keamanan</p>
+                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                    @foreach($diterima as $p)
+                                    <div class="card mt-4">
+                                            <div class="card mb-3" style="max-width: 100%;">
+                                                <div class="row no-gutters">
+                                                    <div class="col-md-4">
+                                                    <img src="{{asset('data_file/'.$p->file)}}" class="card-img" alt="...">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body">
+                                                            <table class="table table-borderless">
+                                                                <thead>
+                                                                    <tr>
+                                                                    <th scope="col">Nama</th>
+                                                                    <th scope="col">Harga</th>
+                                                                    <th scope="col">Jumlah</th>
+                                                                    <th scope="col">Total</th>
+                                                                    <th scope="col">Status</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                
+                                                                    <tr>
+                                                                    <td>{{$p->nama}}</td>
+                                                                    <td>{{$p->harga}}</td>
+                                                                    <td>{{$p->qty}}</td>
+                                                                    <td>{{$p->harga * $p->qty}}</td>
+                                                                    <td>{{$p->status}}</td>
+                                                                    </tr>
+                                                                
+                                                                </tbody>
+                                                                </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
                                     </div>
+                                    @endforeach
                                 </div>
+                                <div class="tab-pane fade" id="diterima" role="tabpanel" aria-labelledby="deterima-tab">
+                                    @foreach($batal as $p)
+                                    <div class="card mt-4">
+                                            <div class="card mb-3" style="max-width: 100%;">
+                                                <div class="row no-gutters">
+                                                    <div class="col-md-4">
+                                                    <img src="{{asset('data_file/'.$p->file)}}" class="card-img" alt="...">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body">
+                                                            <table class="table table-borderless">
+                                                                <thead>
+                                                                    <tr>
+                                                                    <th scope="col">Nama</th>
+                                                                    <th scope="col">Harga</th>
+                                                                    <th scope="col">Jumlah</th>
+                                                                    <th scope="col">Total</th>
+                                                                    <th scope="col">Status</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                
+                                                                    <tr>
+                                                                    <td>{{$p->nama}}</td>
+                                                                    <td>{{$p->harga}}</td>
+                                                                    <td>{{$p->qty}}</td>
+                                                                    <td>{{$p->harga * $p->qty}}</td>
+                                                                    <td>{{$p->status}}</td>
+                                                                    </tr>
+                                                                
+                                                                </tbody>
+                                                                </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                         </div>
                         </div>

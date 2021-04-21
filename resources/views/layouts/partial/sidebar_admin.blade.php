@@ -7,7 +7,7 @@
 
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="adminhome"><i class="fa fa-area-chart" aria-hidden="true"></i> Dashboard</a>
+                    <a href="/adminhome"><i class="fa fa-area-chart" aria-hidden="true"></i> Dashboard</a>
                 </li>
                 <li>
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-envelope" aria-hidden="true"></i> Pesanan</a>
@@ -22,7 +22,7 @@
                             <a href="/adminpesanan/dibatalkan">Pesanan Dibatalkan</a>
                         </li>
                         <li>
-                            <a href="#">Pesanan Dikirim</a>
+                            <a href="/adminpesanan/pengiriman">Pesanan Dikirim</a>
                         </li>
                     </ul>
                 </li>
@@ -30,16 +30,16 @@
                     <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-archive" aria-hidden="true"></i> Data</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu1">
                     <li>
-                    <a href="adminbarang"><i class="fa fa-archive" aria-hidden="true"></i> Produk</a>
+                    <a href="/adminbarang"><i class="fa fa-archive" aria-hidden="true"></i> Produk</a>
                     </li>
                     <li>
-                        <a href="adminsupplier"><i class="fa fa-industry" aria-hidden="true"></i> Supplier</a>
+                        <a href="/adminsupplier"><i class="fa fa-industry" aria-hidden="true"></i> Supplier</a>
                     </li>
                     <li>
-                        <a href="adminkurir"><i class="fa fa-industry" aria-hidden="true"></i> Kurir</a>
+                        <a href="/adminkurir"><i class="fa fa-industry" aria-hidden="true"></i> Kurir</a>
                     </li>
                     <li>
-                        <a href="adminbank"><i class="fa fa-industry" aria-hidden="true"></i> Bank</a>
+                        <a href="/adminbank"><i class="fa fa-industry" aria-hidden="true"></i> Bank</a>
                     </li>
                         </ul>
                     </li>

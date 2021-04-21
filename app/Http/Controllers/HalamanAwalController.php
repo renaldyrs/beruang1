@@ -45,15 +45,15 @@ class HalamanAwalController extends Controller
 		$nama_file = Auth::user()->name."_".Auth::user()->id.".".$file->getClientOriginalExtension();
 		// echo $nama_file;
 		if(is_null(Auth::user()->foto)){
-			$tujuan_upload = 'data_file';
+			$tujuan_upload = 'data_file/foto_users';
 			$file->move($tujuan_upload,$nama_file);
 			user::where('id',Auth::user()->id)->update([
 				'foto'=>$nama_file,
 			]);
 			return redirect()->back();
 		}else{
-			File::delete('data_file/'.Auth::user()->foto);
-			$tujuan_upload = 'data_file';
+			File::delete('data_file/foto_users/'.Auth::user()->foto);
+			$tujuan_upload = 'data_file/foto_users';
 			$file->move($tujuan_upload,$nama_file);
 			user::where('id',Auth::user()->id)->update([
 				'foto'=>$nama_file,
@@ -123,9 +123,25 @@ class HalamanAwalController extends Controller
 		->where('p.id',Auth::user()->id )
 		->where('pe.status','Belum dibayar')
 		->get();
+		$pebatal=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
+		->join('pesanan_item as i','pe.id_pesanan','=','i.id_pesanan')
+		->join('barangs as b','i.id_barang','=','b.id')
+		->join('pembayarans as ba', 'pe.id_pesanan','=','ba.id_pesanan')
+		->select('b.nama','pe.status','i.jumlah_barang as qty','i.harga_barang as harga','b.file', 'pe.id_pesanan', 'ba.id_bank')
+		->where('p.id',Auth::user()->id )
+		->where('pe.status','Batal')
+		->get();
+		$pesditerima=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
+		->join('pesanan_item as i','pe.id_pesanan','=','i.id_pesanan')
+		->join('barangs as b','i.id_barang','=','b.id')
+		->join('pembayarans as ba', 'pe.id_pesanan','=','ba.id_pesanan')
+		->select('b.nama','pe.status','i.jumlah_barang as qty','i.harga_barang as harga','b.file', 'pe.id_pesanan', 'ba.id_bank')
+		->where('p.id',Auth::user()->id )
+		->where('pe.status','Sudah dibayar')
+		->get();
 		// return view('halaman-profil');
 		// $category = category::get();
-		return view('halaman-profil',['user' => $user, 'produk'=>$produk]);
+		return view('halaman-profil',['user' => $user,'batal'=>$pebatal,'diterima'=>$pesditerima ,'produk'=>$produk]);
 	}
 	public function editprofil(Request $request){
 		$user = pelanggan::where('id',Auth::user()->id)->get();
@@ -194,11 +210,36 @@ class HalamanAwalController extends Controller
 		// ->where('pe.status','Belum dibayar')->where('pe.tanggal_pesanan',date('Y-m-d'))
 		// ->get();
 		// dd($produk);
-		DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->update([
-			'tanggal_pembayaran'=>date('Y-m-d'),
-			'bukti_pembayaran'=>$request->bukti
-		]);
-		return  redirect('');
+		$cek = DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->get();
+		$f ="";
+		foreach($cek as $c){
+			$f = $c->bukti_pembayaran;
+		}
+
+		$file = $request->file('bukti');
+		// return $file;
+		$nama_file = time()."_".$file->getClientOriginalName();
+		if(is_null($f)){
+			// dd($cek);
+			$tujuan_upload = 'data_file/bayar';
+			$file->move($tujuan_upload,$nama_file);
+			DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->update([
+				'tanggal_pembayaran'=>date('Y-m-d'),
+				'bukti_pembayaran'=>$nama_file
+			]);
+			return  redirect('/profile');
+		}else{
+			$tujuan_upload = 'data_file/bayar';
+			// dd($f);
+			File::delete('data_file/bayar'.$f);
+			$file->move($tujuan_upload,$nama_file);
+			DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->update([
+				'tanggal_pembayaran'=>date('Y-m-d'),
+				'bukti_pembayaran'=>$nama_file
+			]);
+			return  redirect('/profile');
+		}
+		
 	}
 
 }

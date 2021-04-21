@@ -21,8 +21,8 @@ class CreatePengirimansTable extends Migration
             $table->string('no_hp');
             $table->string('kode_pos');
             $table->string('jenis_pengiriman');
-            $table->string('bianya_pengiriman');
-            $table->string('no_resi');
+            $table->string('biaya_pengiriman');
+            $table->string('no_resi')->nullable();
             $table->timestamps();
             $table->foreign('id_kurir')->references('id_kurir')->on('kurirs')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_pesanan')->references('id_pesanan')->on('pesanan')->onUpdate('cascade')->onDelete('restrict');

@@ -46,12 +46,13 @@ body {
                 </div>
               </div>
               <br>
-                <form method="get" action="/bayar/upload">
-                  <div class="form-group">
-                  @csrf
+                <form method="post"  action="/bayar/upload" enctype="multipart/form-data">
+                @csrf
                   <input type="hidden"  name="id_pesanan" value="{{$id_pesanan}}">
+                  <div class="form-group">
+                  
                     <label for="exampleFormControlFile1">Bukti Pembayaran</label>
-                    <input type="file" class="form-control-file" name="bukti" id="exampleFormControlFile1">
+                    <input type="file" class="form-control-file" name="bukti">
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

@@ -3,7 +3,7 @@
 @section('content')
 @include('layouts.partial.sidebar_admin')
         
-    <center><h4>Pesanan</h4></center> 
+    <center><h4>Informasi Pesanan</h4></center> 
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -47,6 +47,7 @@
                                     <thead>
                                         <tr>
                                             <th>Id Pesanan</th>
+                                            <th>Bukti Pembayaran</th>
                                             <th>Nama Barang</th>
                                             <th>Jumlah</th>
                                             <th>Harga</th>
@@ -64,22 +65,36 @@
                                     @foreach($pesanan as $p)
                                         <tr>
                                             <td>{{$p->id_pesanan}}</td>
+                                            <td>
+                                                @if(is_null($p->bukti_pembayaran)) 
+                                                 -
+                                                @else
+                                                    <img src="{{asset('data_file/bayar/'.$p->bukti_pembayaran)}}" class="card-img-top" alt="...">  
+                                                @endif
+                                            </td>
                                             <td>{{$p->nama}}</td>
                                             <td>{{$p->jumlah_barang}}</td>
                                             <td>{{$p->harga_barang}}</td>
                                             <td>{{$p->total}}</td>
-                                            <td>{{$p->alamat}}</td>
+                                            <td>{{'Provinsi '.$p->nama_provinsi.', Kota '.$p->nama_kota.', '. $p->alamat}}</td>
                                             <td>{{$p->tanggal_pesanan}}</td>
                                             <td>{{$p->status}}</td>
                                             
                                             <td>
-            
+                                            
                                             <form action="" method="post">
-                                                <div class="d-flex flex-row">
-                                                <div class="p-1"><a class="btn btn-info "  aria-hidden="true" href="/adminpesanan/update/{{$p->id_pesanan}}"> Sudah Bayar</a></div>
+                                            
+                                                <!-- <div class="d-flex flex-row">
+                                                <div class="p-1"><a class="btn btn-info btn-lg disabled"  aria-hidden="true" href="/adminpesanan/update/{{$p->id_pesanan}}" > Sudah Bayar</a></div>
                                                 
-                                                <div class="p-1"><a class="btn btn-danger "  aria-hidden="true" href="/adminpesanan/batal/{{$p->id_pesanan}}"> Batal</a></div>
-                                                </div>  
+                                                <div class="p-1"><a class="btn btn-danger btn-lg disabled"  aria-hidden="true"  href="/adminpesanan/batal/{{$p->id_pesanan}}"> Batal</a></div>
+                                                </div>   -->
+                                            
+                                                <div class="d-flex flex-row">
+                                                    <div class="p-1"><a class="btn btn-info "  aria-hidden="true" href="/adminpesanan/update/{{$p->id_pesanan}}"> Sudah Bayar</a></div>
+                                                    
+                                                    <div class="p-1"><a class="btn btn-danger"  aria-hidden="true" href="/adminpesanan/batal/{{$p->id_pesanan}}"> Batal</a></div>
+                                                </div> 
                                             </form>
                                             </td>
                                         </tr>
