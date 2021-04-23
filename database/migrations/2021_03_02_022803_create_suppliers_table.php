@@ -19,6 +19,7 @@ class CreateSuppliersTable extends Migration
             $table->integer('id_kota')->unsigned();
             $table->integer('id_provinsi')->unsigned();
             $table->string('alamat');
+            $table->string('no');
             $table->timestamps();
             $table->foreign('id_kota')->references('id_kota')->on('kota')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_provinsi')->references('id_provinsi')->on('provinsi')->onUpdate('cascade')->onDelete('restrict');

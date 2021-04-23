@@ -18,6 +18,7 @@ class suplier extends Seeder
             'id_provinsi'=>11,
             'id_kota'=>444,
             'alamat'=>'surabaya',
+            'no'=>'085843220898',
         ]);
     }
 }
