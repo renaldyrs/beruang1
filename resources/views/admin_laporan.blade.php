@@ -72,8 +72,9 @@
                                             <td>{{$l->jumlah_barang}}</td>
                                             <td>{{$l->harga_barang}}</td>
                                             <td>{{$l->tanggal_pesanan}}</td>
-                                            <td>{{$l->status}}</td>
+                                            
                                             <td>{{$l->total}}</td>
+                                            <td>{{$l->status}}</td>
                                             
                                             
                                         </tr>

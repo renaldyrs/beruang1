@@ -4,27 +4,32 @@
 @include('layouts.partial.sidebar_admin')
 <div class="container">
 <h4>Supplier</h4>
-                <form action="/adminkurir/tambah" method="POST" enctype="multipart/form-data">
+                <form action="/adminsupplier/tambah" method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                 
                                     <div class="form-group row">
                     @foreach($suplier as $s)
                     <div class="col-md">
-                    <label for="exampleFormControlFile1">Nama Supplier</label>
-						<input class="form-control" type="text" name="nama" value="{{$s->kode_kurir}}">
+                        <div class="col-md">
+                        <label for="exampleFormControlFile1">Nama Supplier</label>
+						<input class="form-control" type="text" name="nama" >
 
                         <label for="exampleFormControlFile1">Alamat</label>
-						<input class="form-control" type="text" name="alamat" value="{{$s->nama_kurir}}">
+						<input class="form-control" type="text" name="alamat" >
+                        </div>
+
+                        <div class="col-md-6">
+                        <label for="exampleFormControlFile1">No Telepon</label>
+						<input class="form-control" type="text" name="notel" >
+                        </div>
                     </div>
 
                     <div class="col-md-3">
-                    <label for="exampleFormControlFile1">Kode Kota</label>
-						<input class="form-control" type="text" name="id_kota" value="{{$s->nama_kurir}}">
+                        <label for="exampleFormControlFile1">Kode Kota</label>
+						<input class="form-control" type="text" name="id_kota" >
                     
-                    <label for="exampleFormControlFile1">Kode Provinsi</label>
-						<input class="form-control" type="text" name="id_provinsi" value="{{$s->nama_kurir}}">
-                    
-                    
+                        <label for="exampleFormControlFile1">Kode Provinsi</label>
+						<input class="form-control" type="text" name="id_provinsi" >
                     </div>
                     
                     @endforeach
@@ -83,18 +88,12 @@
                                             <th>Id Kota</th>
                                             <th>Id Provinsi</th>
                                             <th>Alamat</th>
+                                            <th>No Telepon</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
-                                        <tr>
-                                            <th>Id Supplier</th>
-                                            <th>Nama Supplier</th>
-                                            <th>Id Kota</th>
-                                            <th>Id Provinsi</th>
-                                            <th>Alamat</th>
-                                            <th>Actions</th>
-                                        </tr>
+                                        
                                     </tfoot>
                                     <tbody>
                                     @foreach($suplier as $s)
@@ -104,6 +103,7 @@
                                             <td>{{$s->id_kota}}</td>
                                             <td>{{$s->id_provinsi}}</td>
                                             <td>{{$s->alamat}}</td>
+                                            <td>{{$s->no}}</td>
                                             
                                             <td>
                                                 <div class="d-flex flex-row">

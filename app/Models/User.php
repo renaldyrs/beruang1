@@ -22,7 +22,7 @@ class User extends Authenticatable
         'id_role',
         'password',
     ];
-    protected $primaryKey = 'id_role';
+    
 
     /**
      * The attributes that should be hidden for arrays.
