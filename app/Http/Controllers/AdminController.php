@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\supplier;
 use App\Models\Kurir;
 use App\Models\bank;
+use App\Models\barang;
 use App\Models\pembayaran;
 use App\Models\pengiriman;
 use App\Models\User;
 use App\Models\pesanan;
-use App\Models\pesanan_item;
+use App\Models\pesanan_items;
 use App\Models\provinsi;
 use PDF;
 use DB;
@@ -245,12 +246,28 @@ class AdminController extends Controller
   public function statusbayar(Request $request,$id_pesanan){
     $cek = pembayaran::where('id_pesanan',$id_pesanan)->get();
     $file = null;
+    $bar = pesanan_items::where('id_pesanan',$id_pesanan)->get();
+    $status = "";
+    
+    
     foreach($cek as $c){
       $file = $c->bukti_pembayaran;
+      $status=$c->status;
     }
-    if(is_null($file)){
+    // dd($status);
+    if(is_null($file) || $status=="Sudah bayar"){
       return redirect()->back();
     }else{
+      foreach($bar as $b){
+      
+        $barang = barang::where('id',$b->id_barang)->get();
+        foreach($barang as $ba){
+          $stok = $ba->stock - $b->jumlah_barang;
+          barang::where('id',$b->id_barang)->update([
+            'stock' => $stok,
+          ]);
+        }
+      }
       $id = pesanan::find($id_pesanan);
       $status="Sudah bayar";
       pembayaran::where('id_pesanan',$request->id_pesanan)
@@ -278,11 +295,11 @@ class AdminController extends Controller
 
   }
   public function kirim(Request $request){
-    if(is_null($request->no_resi)){
+    if(is_null($request->tanggal)){
       return redirect()->back();
     }else{
       pengiriman::where('id_pesanan',$request->id_pesanan)->update([
-        'tanggal_pengiriman'=>date('Y-m-d H:i:s'),
+        'tanggal_pengiriman'=>$request->tanggal,
         'no_resi'=>$request->no_resi,
       ]);
       return redirect()->back();
@@ -298,7 +315,7 @@ class AdminController extends Controller
     ->join('kota', 'pesanan.id_kota','=', 'kota.id_kota')
     ->select('pesanan.id_pesanan','pengiriman.tanggal_pengiriman','barangs.nama','grantotal','kurirs.nama_kurir','pengiriman.no_resi','provinsi.nama_provinsi','kota.nama_kota','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.alamat','pesanan.total')
     ->where('pesanan.status','=','Sudah bayar')
-    ->whereNotNull('no_resi')
+    ->whereNotNull('tanggal_pengiriman')
     ->get();
     return view('adminpengiriman',compact('pesanan'));
   }

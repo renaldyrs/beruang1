@@ -118,7 +118,13 @@
                                                                 <div class="form-group row">
                                                                         <label for="nama" class="col-sm-4 col-form-label">No Resi</label>
                                                                         <div class="col-8">
-                                                                        <input type="text" class="form-control" id="nama" name="no_resi" placeholder="no resi">
+                                                                            <input type="text" class="form-control" id="nama" name="no_resi" placeholder="no resi">
+                                                                        </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                        <label for="nama" class="col-sm-4 col-form-label">Tanggal Kirim</label>
+                                                                        <div class="col-8">
+                                                                            <input type="date" class="form-control" id="tanggal" name="tanggal" >
                                                                         </div>
                                                                 </div>
                                                         
