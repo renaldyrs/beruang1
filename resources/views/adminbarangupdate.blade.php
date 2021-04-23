@@ -18,9 +18,10 @@
 				</div>
 				@endif
 
-				<form action="/adminbarang/proses" method="POST" enctype="multipart/form-data">
+				<form action="/adminbarang/update/proses/{id}" method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
 
+					<input type="hidden" name="id" value="{{$barangs->id}}">
 					<div class="form-group">
 						<label for="exampleFormControlFile1"> File Gambar</label>
 						<input class="form-control-file" type="file" name="file">
