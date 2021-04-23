@@ -32,14 +32,14 @@
             </div>
         </div>
     </div>
-    <center><h4>Pengiriman</h4></center> 
+    <center><h4>Pesanan Dkirim</h4></center> 
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Pesanan Diterima</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Pesanan Dkirim</h6>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -79,8 +79,8 @@
                                             <th>Nama Barang</th>
                                             <th>Nama Kurir</th>
                                             <th>Jumlah</th>
-                                            <th>Harga</th>
-                                            <th>Total</th>
+                                            <th>Harga (pcs)</th>
+                                            <th>Ongkos Kirim</th>
                                             <th>Grand Total</th>
                                             <th>Alamat</th>
                                             <th>Tanggal Pengiriman</th>
@@ -100,7 +100,7 @@
                                             <td>{{$p->nama_kurir}}</td>
                                             <td>{{$p->jumlah_barang}}</td>
                                             <td>{{$p->harga_barang}}</td>
-                                            <td>{{$p->total}}</td>
+                                            <td>{{$p->biaya_pengiriman}}</td>
                                             <td>{{$p->grantotal}}</td>
                                             <td>{{'Provinsi '.$p->nama_provinsi.', Kota '.$p->nama_kota.', '. $p->alamat}}</td>
                                             <td>{{$p->tanggal_pengiriman}}</td>

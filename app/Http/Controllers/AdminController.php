@@ -27,40 +27,7 @@ class AdminController extends Controller
 		  return view('adminhome', ['jumpesan'=>$jumpesan, 'jumuser'=>$jumuser,'pesbayar'=>$pesbayar,'pesbatal'=>$pesbatal]);
 	  }
 
-  //supplier
-    public function viewadminsup(){
-    $suplier = supplier::get();
-
-    return view('admin_supplier',['suplier' => $suplier]);
-    
-    }
-
-    public function delete($id_suplier){
-      $suplier = supplier::find($id_suplier);
-      $suplier->delete();
-      return redirect()->back();
-
-    }
-
-    public function update($id_suplier){
-    $suplier = supplier::all();
-
-    return view('admin_supplierupdate',['suplier' => $suplier]);
-
-    }
-
-    public function proses(Request $request){
-      // update data pegawai
-      DB::table('suplier')->where('id_suplier',$request->id_suplier)->update([
-        'nama_suplier' => $request->nama,
-        'alamat' => $request->alamat,
-        'id_kota' => $request->id_kota,
-        'id_provinsi' => $request->id_provinsi
-      ]);
-      // alihkan halaman ke halaman pegawai
-      return redirect('/adminsupplier');
-
-    }
+  
 
   //kurir
     public function viewadminkurir(){
@@ -158,7 +125,8 @@ class AdminController extends Controller
     $laporan = DB::table('pesanan_item')
     ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
     ->join('barangs','pesanan_item.id_barang','=','barangs.id')
-    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total')
+    ->join('pengiriman','pengiriman.id_pesanan','=','pesanan.id_pesanan')
+    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total','pengiriman.jenis_pengiriman','pengiriman.biaya_pengiriman')
     ->get();
      
     return view('admin_laporan',compact('laporan'));
@@ -217,7 +185,7 @@ class AdminController extends Controller
     return view('admininformasipesan',compact('pesanan'));
 
   }
-
+// pesanan diterima
   public function viewpesananditerima(){
     $pesanan = DB::table('pesanan_item')
     ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
@@ -230,6 +198,19 @@ class AdminController extends Controller
     return view('adminpesananditerima',compact('pesanan'));
 
   }
+
+  public function kirim(Request $request){
+    if(is_null($request->no_resi)){
+      return redirect()->back();
+    }else{
+      pengiriman::where('id_pesanan',$request->id_pesanan)->update([
+        'tanggal_pengiriman'=>$request->tanggal_kirim,
+        'no_resi'=>$request->no_resi,
+      ]);
+      return redirect()->back();
+    }
+  }
+// pesanan batal
   public function viewpesananbatal(){
     $pesanan = DB::table('pesanan_item')
     ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
@@ -305,6 +286,7 @@ class AdminController extends Controller
       return redirect()->back();
     }
   }
+
   public function viewpesanandikirim(){
     $pesanan = DB::table('pesanan_item')
     ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
@@ -313,7 +295,7 @@ class AdminController extends Controller
     ->join('pengiriman','pesanan.id_pesanan','=','pengiriman.id_pesanan')
     ->join('kurirs','pengiriman.id_kurir','=','kurirs.id_kurir')
     ->join('kota', 'pesanan.id_kota','=', 'kota.id_kota')
-    ->select('pesanan.id_pesanan','pengiriman.tanggal_pengiriman','barangs.nama','grantotal','kurirs.nama_kurir','pengiriman.no_resi','provinsi.nama_provinsi','kota.nama_kota','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.alamat','pesanan.total')
+    ->select('pesanan.id_pesanan','pengiriman.tanggal_pengiriman','barangs.nama','grantotal','kurirs.nama_kurir','pengiriman.no_resi','pengiriman.biaya_pengiriman','provinsi.nama_provinsi','kota.nama_kota','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.alamat','pesanan.total')
     ->where('pesanan.status','=','Sudah bayar')
     ->whereNotNull('tanggal_pengiriman')
     ->get();
