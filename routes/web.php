@@ -61,25 +61,25 @@ Route::get('/adminbarang/update/{id}', 'App\HTTP\Controllers\AdminBarangControll
 Route::post('/adminbarang/update/proses/{id}', 'App\HTTP\Controllers\AdminBarangController@proses_update');
 
 //kurir
-Route::get('/adminkurir', 'App\HTTP\Controllers\AdminController@viewadminkurir');
-Route::get('/adminkurir/hapus/{id_kurir}', 'App\HTTP\Controllers\AdminController@deletekurir');
-Route::get('/adminkurir/update/{id_kurir}', 'App\HTTP\Controllers\AdminController@updatekurir');
-Route::post('/adminkurir/tambah', 'App\HTTP\Controllers\AdminController@tambah');
-Route::post('/adminkurir/update/proseskurir/{id}', 'App\HTTP\Controllers\AdminController@proseskurir');
+Route::get('/adminkurir', 'App\HTTP\Controllers\DataController@viewadminkurir');
+Route::get('/adminkurir/hapus/{id_kurir}', 'App\HTTP\Controllers\DataController@deletekurir');
+Route::get('/adminkurir/update/{id_kurir}', 'App\HTTP\Controllers\DataController@updatekurir');
+Route::post('/adminkurir/tambah', 'App\HTTP\Controllers\DataController@tambah');
+Route::post('/adminkurir/update/proseskurir/{id}', 'App\HTTP\Controllers\DataController@proseskurir');
 
 //suplier
-Route::get('/adminsupplier', 'App\HTTP\Controllers\AdminController@viewadminsup')->middleware(['role','auth']);
-Route::get('/adminsupplier/hapus/{id_suplier}', 'App\HTTP\Controllers\AdminController@delete');
-Route::get('/adminsupplier/update/{id_suplier}', 'App\HTTP\Controllers\AdminController@update');
-Route::post('/adminsupplier/tambah', 'App\HTTP\Controllers\AdminController@proses');
-Route::post('/adminsupplier/update/proses/{id}', 'App\HTTP\Controllers\AdminController@proses_update');
+Route::get('/adminsupplier', 'App\HTTP\Controllers\DataController@viewadminsup')->middleware(['role','auth']);
+Route::get('/adminsupplier/hapus/{id_suplier}', 'App\HTTP\Controllers\DataController@delete');
+Route::get('/adminsupplier/update/{id_suplier}', 'App\HTTP\Controllers\DataController@update');
+Route::post('/adminsupplier/tambah', 'App\HTTP\Controllers\DataController@proses');
+Route::post('/adminsupplier/update/proses/{id}', 'App\HTTP\Controllers\DataController@proses_update');
 
 //bank
-Route::get('/adminbank', 'App\HTTP\Controllers\AdminController@viewadminbank')->middleware(['role','auth']);
-Route::get('/adminbank/hapus/{id_bank}', 'App\HTTP\Controllers\AdminController@deletebank');
-Route::post('/adminbank/tambah', 'App\HTTP\Controllers\AdminController@tambahbank');
-Route::get('/adminbank/update/{id_bank}', 'App\HTTP\Controllers\AdminController@updatebank');
-Route::post('/adminbank/update/prosesbank/{id_bank}', 'App\HTTP\Controllers\AdminController@prosesbank');
+Route::get('/adminbank', 'App\HTTP\Controllers\DataController@viewadminbank')->middleware(['role','auth']);
+Route::get('/adminbank/hapus/{id_bank}', 'App\HTTP\Controllers\DataController@deletebank');
+Route::post('/adminbank/tambah', 'App\HTTP\Controllers\DataController@tambahbank');
+Route::get('/adminbank/update/{id_bank}', 'App\HTTP\Controllers\DataController@updatebank');
+Route::post('/adminbank/update/prosesbank/{id_bank}', 'App\HTTP\Controllers\DataController@prosesbank');
 
 //pesanan
 Route::get('/adminpesanan', 'App\HTTP\Controllers\AdminController@viewpesanan')->middleware(['role','auth']);

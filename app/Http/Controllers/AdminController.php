@@ -28,96 +28,7 @@ class AdminController extends Controller
 
   
 
-  //kurir
-    public function viewadminkurir(){
-    $kurir = kurir::get();
-
-    return view('adminkurir',['kurirs' => $kurir]);
-
-    }
-
-    public function tambah(Request $request){
-    DB::table('kurirs')->insert([
-
-    'kode_kurir' => $request->kode,
-    'nama_kurir' => $request->nama
-    ]);
-    // alihkan halaman ke halaman pegawai
-    return redirect('/adminkurir');
-
-    }
-      
-    public function deletekurir($id_kurir){
-          $kurir = kurir::find($id_kurir);
-          $kurir->delete();
-          return redirect()->back();
-
-    }
-
-    public function updatekurir($id_kurir){
-    $kurir = kurir::find($id_kurir);
-    return view('adminkurirupdate',['kurirs' => $kurir]);
-
-    }
-
-    public function proseskurir(Request $request){
-      // update data pegawai
-      DB::table('kurirs')
-      ->where('id_kurir',$request->id)
-      ->update([
-        'nama_kurir' => $request->nama,
-        'kode_kurir' => $request->kode_kurir
-        
-      ]);
-      // alihkan halaman ke halaman pegawai
-      return redirect('/adminkurir');
-
-    }
-    
-  //bank
-    public function viewadminbank(){
-    $bank = bank::get();
-	
-    return view('adminbank',['banks' => $bank]);
-
-    }
-
-    public function tambahbank(Request $request){
-      DB::table('banks')->insert([
-     
-      'no_rekening' => $request->no_rekening,
-      'nama_bank' => $request->nama
-      ]);
-      // alihkan halaman ke halaman pegawai
-      return redirect('/adminbank');
-      
-      }
-
-    public function deletebank($id_bank){
-        $bank = bank::find($id_bank);
-        $bank->delete();
-        return redirect()->back();
-
-      }
-
-    public function updatebank($id_bank){
-        $bank = bank::find($id_bank);
-        return view('adminbankupdate',['bank' => $bank]);
-
-      }
-
-    public function prosesbank(Request $request){
-        // update data pegawai
-        DB::table('bank')->where('id_bank',$request->id)
-        ->update([
-          'nama_bank' => $request->nama,
-          'no_rekening' => $request->no_rekening
-          
-        ]);
-        // alihkan halaman ke halaman pegawai
-        return redirect('/adminbank');
-
-      }
+  
 
   //laporan
   public function laporan(){
@@ -169,8 +80,6 @@ class AdminController extends Controller
     	return $pdf->download('laporan-pdf.pdf');
   }
 
- 
-
   //pesanan
   public function viewpesanan(){
     $pesanan = DB::table('pesanan_item')
@@ -184,6 +93,7 @@ class AdminController extends Controller
     return view('admininformasipesan',compact('pesanan'));
 
   }
+  
 // pesanan diterima
   public function viewpesananditerima(){
     $pesanan = DB::table('pesanan_item')
