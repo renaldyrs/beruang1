@@ -33,7 +33,6 @@ class CheckoutController extends Controller
             // echo "c";
             pelanggan::where('id_pelanggan',$id)->update(
                     ['nama_lengkap'=>$request->nama_pelanggan,
-                    'tanggal_lahir'=>$request->tanggal_lahir,
                     'kode_pos'=>$request->kode_pos,
                     'no_hp'=>$request->no_hp
                     ]
@@ -89,7 +88,6 @@ class CheckoutController extends Controller
             $pelanggan = [
                 'id'=>Auth::user()->id,
                 'nama_lengkap'=>$request->nama_pelanggan,
-                'tanggal_lahir'=>$request->tanggal_lahir,
                 'kode_pos'=>$request->kode_pos,
                 'no_hp'=>$request->no_hp
             ];

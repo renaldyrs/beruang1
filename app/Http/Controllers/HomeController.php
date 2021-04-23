@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\barang;
+use App\Models\category;
 class HomeController extends Controller
 {
     /**
@@ -26,7 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         $barang = barang::get();
-		return view('halaman-awal',['barangs' => $barang]);
+		$category = category::get();
+		return view('halaman-awal',['barangs' => $barang,'category'=>$category]);
     }
 
     

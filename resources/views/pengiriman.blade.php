@@ -23,11 +23,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="control-label col-sm-3">Tanggal Lahir <span class="text-danger">*</span>:</label>
-                            <input type="date" class="form-control col-sm-9" name="tanggal_lahir"  value="2000-01-01">
-                        </div>
-
-                        <div class="form-group row">
                             <label class="control-label col-sm-3">No Hp <span class="text-danger">*</span>:</label>
                             <input type="text" class="form-control col-sm-9" name="no_hp" value="">
                         </div>
