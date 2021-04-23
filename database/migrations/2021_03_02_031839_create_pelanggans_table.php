@@ -18,7 +18,7 @@ class CreatePelanggansTable extends Migration
             $table->integer('id')->unsigned();
             $table->string('nama_lengkap');
             $table->string('jenis_kelamin')->nullable();
-            $table->date('tanggal_lahir');
+            $table->date('tanggal_lahir')->nullable();
             $table->string('kode_pos')->nullable();
             $table->string('no_hp');
             $table->timestamps();
