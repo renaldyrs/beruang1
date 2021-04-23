@@ -2,7 +2,7 @@
 @push('style')
     <style>
 body {
-  background-color: #FFFAFA;
+  background-color: #DCDCDC;
 }
 </style>
 @endpush
@@ -91,4 +91,5 @@ body {
 @endsection
 @push('scripts')
 	@include('layouts.partial.script')
+  @include('layouts.partial.footer_admin')
 	@endpush

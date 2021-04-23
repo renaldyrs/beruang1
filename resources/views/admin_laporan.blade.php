@@ -32,8 +32,7 @@
                                 <div class="col-sm-6 col-md-6">
                                     <div class="d-flex flex-row-reverse bd-highlight">
                                         <div class="p-2 bd-highlight">
-                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-download" aria-hidden="true" href="/laporan/cetak"></i>Download Laporan</button>
-                                            <div class="p-2"><a class="btn btn-info fa fa-download"  aria-hidden="true" href="/laporan/cetak">Download Laporan</a></div>
+                                            <div ><a class="btn btn-success btn-sm fa fa-download"  aria-hidden="true" href="/laporan/cetak" > Download Laporan</a></div>
                                         </div>
                                         <div class="p-2 bd-highlight">
                                             <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
@@ -49,35 +48,32 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>Id Pesanan</th>
                                             <th>Nama Barang</th>
                                             <th>Jumlah Barang</th>
                                             <th>Harga Barang</th>
                                             <th>Tanggal Pesanan</th>
+                                            <th>Total</th>
                                             <th>Status</th>
                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
-                                        <tr>
-                                            <th>Id Pesanan</th>
-                                            <th>Nama Barang</th>
-                                            <th>Jumlah Pesanan</th>
-                                            <th>Harga Barang</th>
-                                            <th>Tanggal Pesanan</th>
-                                            <th>Status</th>
-                                            
-                                        </tr>
+                                        
                                     </tfoot>
                                     <tbody>
+                                    @php $i=1 @endphp   
                                     @foreach($laporan as $l)
                                         <tr>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{$l->id_pesanan}}</td>
                                             <td>{{$l->nama}}</td>
                                             <td>{{$l->jumlah_barang}}</td>
                                             <td>{{$l->harga_barang}}</td>
                                             <td>{{$l->tanggal_pesanan}}</td>
                                             <td>{{$l->status}}</td>
+                                            <td>{{$l->total}}</td>
                                             
                                             
                                         </tr>

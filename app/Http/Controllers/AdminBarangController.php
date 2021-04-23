@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\category;
+use DB;
 use File;
 class AdminBarangController extends Controller
 {
@@ -12,7 +13,7 @@ class AdminBarangController extends Controller
     public function adminbarang(){
 		$barang = barang::get();
 		$category = category::get();
-		return view('adminbarang',['barangs' => $barang, 'category' => $category]);
+		return view('/adminbarang',['barangs' => $barang, 'category' => $category]);
 	}
  
 	public function proses_upload(Request $request){
@@ -58,7 +59,46 @@ class AdminBarangController extends Controller
 	public function update($id){
 		$barang = barang::find($id);
 		$category = category::get();
-		return view('adminbarangupdate',['barangs' => $barang,'category'=> $category]);
+		return view('/adminbarangupdate',['barangs' => $barang,'category'=> $category]);
 	}
 	
+	public function proses_update(Request $request){
+		$this->validate($request, [
+			'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+            'nama' => 'required',
+            'harga' => 'required',
+			'stock' => 'required',
+			'keterangan' => 'required',
+		]);
+		$f = "";
+		$barang = barang::where('id',$request->id)->get();
+		foreach($barang as $b){
+			$f = $b->file;
+		}
+		// menyimpan data file yang diupload ke variabel $file
+		$file = $request->file('file');
+		File::delete('data_file/'.$f);
+		$nama_file = time()."_".$file->getClientOriginalName();
+		DB::table('barangs')->where('id',$request->id)
+        ->update([
+			'id_category' => $request->category,
+			'file' => $nama_file,
+			
+            'nama' => $request->nama,
+            'harga' => $request->harga,
+			'stock' => $request->stock,
+			
+			'keterangan' => $request->keterangan,
+		]);
+ 
+
+		// isi dengan nama folder tempat kemana file diupload
+		$tujuan_upload = 'data_file';
+		$file->move($tujuan_upload,$nama_file);
+
+		$barang = barang::get();
+		$category = category::get();
+		return view('/adminbarang',['barangs' => $barang, 'category' => $category]);
+		
+	}
 }

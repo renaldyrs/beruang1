@@ -157,7 +157,7 @@ class AdminController extends Controller
     $laporan = DB::table('pesanan_item')
     ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
     ->join('barangs','pesanan_item.id_barang','=','barangs.id')
-    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status')
+    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total')
     ->get();
      
     return view('admin_laporan',compact('laporan'));
@@ -169,12 +169,39 @@ class AdminController extends Controller
     $laporan = DB::table('pesanan_item')
     ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
     ->join('barangs','pesanan_item.id_barang','=','barangs.id')
-    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status')
+    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total')
+    ->where('status','Sudah bayar')
     ->get();
-
-    $pdf = PDF::loadview('admin_laporan',compact('laporan'));
-    	return $pdf->download('laporan.pdf');
+    $total = pesanan::where('status','Sudah bayar')->get();
+    $grantotal = 0;
+    foreach($total as $a){
+      $grantotal += $a->total;
+    }
+    return view('cetaklaporan',['laporan'=>$laporan,'gran'=>$grantotal]);
+    	
   }
+  public function prosescetak(){
+
+    
+    $laporan = DB::table('pesanan_item')
+    ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
+    ->join('barangs','pesanan_item.id_barang','=','barangs.id')
+    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total')
+  
+    ->where('status','Sudah bayar')
+    ->get();
+    $total = pesanan::where('status','Sudah bayar')->get();
+    $grantotal = 0;
+    foreach($total as $a){
+      $grantotal += $a->total;
+    }
+    
+
+    $pdf = \PDF::loadview('cetaklaporan',['laporan'=>$laporan,'gran'=>$grantotal]);
+    	return $pdf->download('laporan-pdf.pdf');
+  }
+
+ 
 
   //pesanan
   public function viewpesanan(){
