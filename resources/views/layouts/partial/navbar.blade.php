@@ -23,7 +23,6 @@
                            
                         </div>
                     </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.php"><i class="fa fa-id-badge" aria-hidden="true"> About Us</i></a></li>
                     @if(Auth::check())
                         <li class="nav-item">
                             <a class="nav-link"href="{{ route('keranjang') }}">

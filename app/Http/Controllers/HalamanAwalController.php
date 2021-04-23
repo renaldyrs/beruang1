@@ -133,11 +133,12 @@ class HalamanAwalController extends Controller
 		->get();
 		$pesditerima=DB::table('pelanggan as p')->join('pesanan as pe', 'p.id_pelanggan','=','pe.id_pelanggan')
 		->join('pesanan_item as i','pe.id_pesanan','=','i.id_pesanan')
+		->join('pengiriman','pe.id_pesanan','=','pengiriman.id_pesanan')
 		->join('barangs as b','i.id_barang','=','b.id')
 		->join('pembayarans as ba', 'pe.id_pesanan','=','ba.id_pesanan')
-		->select('b.nama','pe.status','i.jumlah_barang as qty','i.harga_barang as harga','b.file', 'pe.id_pesanan', 'ba.id_bank')
+		->select('b.nama','pe.status','i.jumlah_barang as qty','pengiriman.tanggal_pengiriman','pengiriman.no_resi','i.harga_barang as harga','b.file', 'pe.id_pesanan', 'ba.id_bank')
 		->where('p.id',Auth::user()->id )
-		->where('pe.status','Sudah dibayar')
+		->where('pe.status','Sudah bayar')
 		->get();
 		// return view('halaman-profil');
 		// $category = category::get();
