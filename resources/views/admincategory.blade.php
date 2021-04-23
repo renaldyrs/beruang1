@@ -4,32 +4,18 @@
 @include('layouts.partial.sidebar_admin')
 <div class="container">
 <h4>Supplier</h4>
-                <form action="/adminsupplier/tambah" method="POST" enctype="multipart/form-data">
+                <form action="/admincategory/tambah" method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                 
                                     <div class="form-group row">
                     
                     <div class="col-md">
                         <div class="col-md">
-                        <label for="exampleFormControlFile1">Nama Supplier</label>
+
+                        <label for="exampleFormControlFile1">Nama Category</label>
 						<input class="form-control" type="text" name="nama" >
-
-                        <label for="exampleFormControlFile1">Alamat</label>
-						<input class="form-control" type="text" name="alamat" >
                         </div>
 
-                        <div class="col-md-6">
-                        <label for="exampleFormControlFile1">No Telepon</label>
-						<input class="form-control" type="text" name="notel" >
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="exampleFormControlFile1">Kode Kota</label>
-						<input class="form-control" type="text" name="id_kota" >
-                    
-                        <label for="exampleFormControlFile1">Kode Provinsi</label>
-						<input class="form-control" type="text" name="id_provinsi" >
                     </div>
                    
 					</div>
@@ -38,14 +24,14 @@
 </div>
                 
                 
-    <center><h4>Data Supplier</h4></center> 
+    <center><h4>Data Category</h4></center> 
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Tabel Supplier</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Tabel Category</h6>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -82,33 +68,22 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Id Supplier</th>
-                                            <th>Nama Supplier</th>
-                                            <th>Id Kota</th>
-                                            <th>Id Provinsi</th>
-                                            <th>Alamat</th>
-                                            <th>No Telepon</th>
+                                            <th>Id Category</th>
+                                            <th>Category</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        
-                                    </tfoot>
+                
                                     <tbody>
-                                    @foreach($suplier as $s)
+                                    @foreach($category as $c)
                                         <tr>
-                                            <td>{{$s->id_suplier}}</td>
-                                            <td>{{$s->nama_suplier}}</td>
-                                            <td>{{$s->id_kota}}</td>
-                                            <td>{{$s->id_provinsi}}</td>
-                                            <td>{{$s->alamat}}</td>
-                                            <td>{{$s->no}}</td>
+                                            <td>{{$c->id}}</td>
+                                            <td>{{$c->nama}}</td>
+                                            
                                             
                                             <td>
-                                                <div class="d-flex flex-row">
-                                                <div class="p-2"><a class="btn btn-info fa fa-pencil-square-o"  aria-hidden="true" href="/adminsupplier/update/{{ $s->id_suplier}}"> EDIT</a></div>
-                                                    
-                                                <div class="p-2"><a class="btn btn-danger fa fa-eraser"  aria-hidden="true" href="/adminsupplier/hapus/{{ $s->id_suplier }}"> HAPUS</a></div>    
+                                                <div class="d-flex flex-row">    
+                                                <div class="p-2"><a class="btn btn-danger fa fa-eraser"  aria-hidden="true" href="/admincategory/hapus/{{ $c->id}}"> HAPUS</a></div>    
                                                 </div>                
                                             </td>
                                         </tr>

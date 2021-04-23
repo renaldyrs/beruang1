@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\pesanan;
 use App\Models\pesanan_items;
 use App\Models\provinsi;
+
 use PDF;
 use DB;
 
@@ -37,7 +38,9 @@ class AdminController extends Controller
     ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
     ->join('barangs','pesanan_item.id_barang','=','barangs.id')
     ->join('pengiriman','pengiriman.id_pesanan','=','pesanan.id_pesanan')
-    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total','pengiriman.jenis_pengiriman','pengiriman.biaya_pengiriman')
+    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang',
+    'pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status',
+    'pesanan.total','pengiriman.jenis_pengiriman','pengiriman.biaya_pengiriman')
     ->get();
      
     return view('admin_laporan',compact('laporan'));
@@ -49,7 +52,8 @@ class AdminController extends Controller
     $laporan = DB::table('pesanan_item')
     ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
     ->join('barangs','pesanan_item.id_barang','=','barangs.id')
-    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total')
+    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang',
+    'pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total')
     ->where('status','Sudah bayar')
     ->get();
     $total = pesanan::where('status','Sudah bayar')->get();
@@ -64,11 +68,26 @@ class AdminController extends Controller
 
     
     $laporan = DB::table('pesanan_item')
-    ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
+    ->join('pesanan', 'pesanan_item.id_pesanan', '=','pesanan.id_pesanan')
+    ->join('pelanggan', 'pelanggan.id_pelanggan', '=','pesanan.id_pelanggan')
+    ->join('pengiriman','pengiriman.id_pesanan','=','pesanan.id_pesanan')
     ->join('barangs','pesanan_item.id_barang','=','barangs.id')
-    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total')
-  
+    ->join('kota', 'pesanan.id_kota','=', 'kota.id_kota')
+    ->select(
+      'pesanan.id_pesanan',
+      'barangs.nama',
+      'pelanggan.nama_lengkap',
+      'pengiriman.no_resi',
+      'pengiriman.biaya_pengiriman',
+      'kota.nama_kota',
+      'pesanan_item.jumlah_barang',
+      'pesanan_item.harga_barang',
+      'pesanan.tanggal_pesanan',
+      'pesanan.status',
+      'pesanan.total')
+       
     ->where('status','Sudah bayar')
+    
     ->get();
     $total = pesanan::where('status','Sudah bayar')->get();
     $grantotal = 0;
@@ -76,8 +95,16 @@ class AdminController extends Controller
       $grantotal += $a->total;
     }
     
+    $ongkir = pengiriman::join('pesanan', 'pengiriman.id_pesanan', '=', 'pesanan.id_pesanan')
+    ->join('pesanan_item', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
+    ->select(DB::raw('sum(pengiriman.biaya_pengiriman) as total_ongkir'),
+             DB::raw('sum(pesanan_item.jumlah_barang) as jumbarang'))
+    ->where('pesanan.status','Sudah bayar')
+    ->get();
+    
+    
 
-    $pdf = \PDF::loadview('cetaklaporan',['laporan'=>$laporan,'gran'=>$grantotal]);
+    $pdf = \PDF::loadview('cetaklaporan',['laporan'=>$laporan,'gran'=>$grantotal,'ongkir'=>$ongkir]);
     	return $pdf->download('laporan-pdf.pdf');
   }
 
@@ -114,12 +141,13 @@ class AdminController extends Controller
       return redirect()->back();
     }else{
       pengiriman::where('id_pesanan',$request->id_pesanan)->update([
-        'tanggal_pengiriman'=>$request->tanggal_kirim,
+        'tanggal_pengiriman'=>$request->tanggal,
         'no_resi'=>$request->no_resi,
       ]);
       return redirect()->back();
     }
   }
+
 // pesanan batal
   public function viewpesananbatal(){
     $pesanan = DB::table('pesanan_item')
@@ -185,17 +213,7 @@ class AdminController extends Controller
     return redirect()->back();
 
   }
-  public function kirim(Request $request){
-    if(is_null($request->tanggal)){
-      return redirect()->back();
-    }else{
-      pengiriman::where('id_pesanan',$request->id_pesanan)->update([
-        'tanggal_pengiriman'=>$request->tanggal,
-        'no_resi'=>$request->no_resi,
-      ]);
-      return redirect()->back();
-    }
-  }
+  
 
   public function viewpesanandikirim(){
     $pesanan = DB::table('pesanan_item')

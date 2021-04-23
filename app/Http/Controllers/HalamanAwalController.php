@@ -218,6 +218,11 @@ class HalamanAwalController extends Controller
 		}
 
 		$file = $request->file('bukti');
+		if(is_null($file)){
+			return  redirect('/profile');
+		}else{
+
+		
 		// return $file;
 		$nama_file = time()."_".$file->getClientOriginalName();
 		if(is_null($f)){
@@ -239,6 +244,8 @@ class HalamanAwalController extends Controller
 				'bukti_pembayaran'=>$nama_file
 			]);
 			return  redirect('/profile');
+		}
+		
 		}
 		
 	}

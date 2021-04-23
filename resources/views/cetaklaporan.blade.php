@@ -39,7 +39,7 @@ table, td, th {
                 <!-- Begin Page Content -->
                 
                     <!-- DataTales Example -->
-                <center><h3 >Data Tabel Laporan</h3>
+                <center><h3 >Laporan</h3>
                                         
                 <div class="row">
                           
@@ -51,6 +51,10 @@ table, td, th {
                         <th>No</th>
                         <th>Id Pesanan</th>
                         <th>Nama Barang</th>
+                        <th>Nama Customer</th>
+                        <th>No Resi</th>
+                        <th>kota</th>
+                        <th>Ongkos Kirim</th>
                         <th>Tanggal Pesanan</th>
                         <th>Status</th>
                         <th>Jumlah Barang</th>
@@ -67,7 +71,10 @@ table, td, th {
                             <td>{{ $i++ }}</td>
                             <td>{{$l->id_pesanan}}</td>
                             <td>{{$l->nama}}</td>
-                                            
+                            <td>{{$l->nama_lengkap}}</td>
+                            <td>{{$l->no_resi}}</td>  
+                            <td>{{$l->nama_kota}}</td>
+                            <td>{{$l->biaya_pengiriman}}</td>             
                             <td>{{$l->tanggal_pesanan}}</td>
                             <td>{{$l->status}}</td>
                             <td>{{$l->jumlah_barang}}</td>
@@ -90,8 +97,20 @@ table, td, th {
                             <td>Rp. {{$gran}}</td>
                         </tr>
                         <tr>
-                            <td>Total Transaksi</td>
+                            <td>Jumlah Transaksi</td>
                             <td>{{count($laporan)}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total ongkir</td>
+                            @foreach($ongkir as $o)
+                            <td>{{$o->total_ongkir}}</td>
+                            @endforeach
+                        </tr>
+                        <tr>
+                            <td>Total barang yang terjual</td>
+                            @foreach($ongkir as $o)
+                            <td>{{$o->jumbarang}}</td>
+                            @endforeach
                         </tr>
                         </tbody>
                     </table>

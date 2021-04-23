@@ -91,6 +91,13 @@ Route::post('/adminpesanan/kirim', 'App\HTTP\Controllers\AdminController@kirim')
 Route::get('/adminpesanan/update/{id_pesanan}','App\HTTP\Controllers\AdminController@statusbayar');
 Route::get('/adminpesanan/batal/{id_pesanan}','App\HTTP\Controllers\AdminController@statusbatal');
 
+//category
+Route::get('/admincategory', 'App\HTTP\Controllers\DataController@viewadmincategory');
+Route::get('/admincategory/hapus/{id}', 'App\HTTP\Controllers\DataController@deletecategory');
+Route::get('/admincategory/update/{id}', 'App\HTTP\Controllers\DataController@updatecategory');
+Route::post('/admincategory/tambah', 'App\HTTP\Controllers\DataController@tambahcategory');
+Route::post('/admincategory/update/prosescategory/{id}', 'App\HTTP\Controllers\DataController@prosescategory');
+
 Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->middleware(['role','auth']);
 
 //laporan

@@ -41,6 +41,9 @@
                     <li>
                         <a href="/adminbank"><i class="fa fa-industry" aria-hidden="true"></i> Bank</a>
                     </li>
+                    <li>
+                        <a href="/admincategory"><i class="fa fa-industry" aria-hidden="true"></i> Category</a>
+                    </li>
                         </ul>
                     </li>
                
