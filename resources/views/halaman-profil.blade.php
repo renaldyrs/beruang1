@@ -280,7 +280,7 @@
 
                                     
                                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                    @foreach($diterima as $p)
+                                    @foreach($batal as $p)
                                     <div class="card mt-4">
                                             <div class="card mb-3" style="max-width: 100%;">
                                                 <div class="row no-gutters">
@@ -320,32 +320,48 @@
                                     @endforeach
                                 </div>
                                 <div class="tab-pane fade" id="diterima" role="tabpanel" aria-labelledby="deterima-tab">
-                                    @foreach($batal as $p)
+                                    @foreach($diterima as $p)
                                     <div class="card mt-4">
                                             <div class="card mb-3" style="max-width: 100%;">
                                                 <div class="row no-gutters">
-                                                    <div class="col-md-4">
-                                                    <img src="{{asset('data_file/'.$p->file)}}" class="card-img" alt="...">
-                                                    </div>
-                                                    <div class="col-md-8">
+                                                   
+                                                    <div class="col-md-12">
                                                         <div class="card-body">
                                                             <table class="table table-borderless">
                                                                 <thead>
                                                                     <tr>
+                                                                    <th></th>
                                                                     <th scope="col">Nama</th>
                                                                     <th scope="col">Harga</th>
                                                                     <th scope="col">Jumlah</th>
                                                                     <th scope="col">Total</th>
+                                                                    <th>Pengiriman</th>
+                                                                    <th>No Resi</th>
                                                                     <th scope="col">Status</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                 
                                                                     <tr>
+                                                                    <td><img src="{{asset('data_file/'.$p->file)}}" class="card-img" alt="..."></td>
                                                                     <td>{{$p->nama}}</td>
                                                                     <td>{{$p->harga}}</td>
                                                                     <td>{{$p->qty}}</td>
                                                                     <td>{{$p->harga * $p->qty}}</td>
+                                                                    <td>
+                                                                        @if(is_null($p->tanggal_pengiriman))
+                                                                            -
+                                                                        @else
+                                                                            {{$p->tanggal_pengiriman}}
+                                                                        @endif
+                                                                    </td>
+                                                                    <td>
+                                                                        @if(is_null($p->no_resi))
+                                                                            -
+                                                                        @else
+                                                                            {{$p->no_resi}}
+                                                                        @endif
+                                                                    </td>
                                                                     <td>{{$p->status}}</td>
                                                                     </tr>
                                                                 

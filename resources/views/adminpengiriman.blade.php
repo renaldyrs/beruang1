@@ -83,6 +83,7 @@
                                             <th>Total</th>
                                             <th>Grand Total</th>
                                             <th>Alamat</th>
+                                            <th>Tanggal Pengiriman</th>
                                             <th>Tanggal Pesanan</th>
                                             <th>No Resi</th>
                                             <th>Status</th>
@@ -102,6 +103,7 @@
                                             <td>{{$p->total}}</td>
                                             <td>{{$p->grantotal}}</td>
                                             <td>{{'Provinsi '.$p->nama_provinsi.', Kota '.$p->nama_kota.', '. $p->alamat}}</td>
+                                            <td>{{$p->tanggal_pengiriman}}</td>
                                             <td>{{$p->tanggal_pesanan}}</td>
                                             <td>{{$p->no_resi}}</td>
                                             <td>{{$p->status}}</td>
