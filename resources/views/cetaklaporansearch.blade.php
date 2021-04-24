@@ -31,16 +31,21 @@ table, td, th {
     .text-center {
         text-align: center;
     }
+    h3{
+        text-align:center;
+    }
 </style>
 </head>
 <body>
     <div class="container">
-    
+            <h3 >Laporan</h3>
                 <!-- Begin Page Content -->
                 
+                <h4>Periode</h4>
+                <p>{{$dateform}} - {{$dateto}}</p>  
                     <!-- DataTales Example -->
-                <center><h3 >Laporan</h3>
-                <p>{{$dateform}} - {{$dateto}}</p>                
+                
+                <center>            
                 <div class="row">
                           
                     <div  style="overflow-x:auto;">
