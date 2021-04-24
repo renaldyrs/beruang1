@@ -29,7 +29,7 @@
                                          <label>entries</label></div>
                                     </div> -->
                                     <div class="p-2 bd-highlight">
-                                    <form action="" method="get">
+                                    <form action="/laporan/cetak/search/proses" method="get">
                                         <input type="text" hidden value="{{$dateform}}" name="dateform">
                                         <input type="text" hidden value="{{$dateto}}" name="dateto">
                                         <div ><button class="btn btn-success btn-sm fa fa-download"  aria-hidden="true" > Download Laporan</button></div>

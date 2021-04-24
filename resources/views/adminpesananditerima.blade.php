@@ -127,17 +127,11 @@
                                                                         <div class="col-8">
                                                                             <input type="date" class="form-control" id="tanggal" name="tanggal" >
 
-                                                                        <input type="text" class="form-control" id="nama" name="no_resi" placeholder="No Resi">
+                                                                        
                                                                         </div>
                                                                         
                                                                 </div>
-                                                                <div class="form-group row">
-                                                                <label for="nama" class="col-sm-4 col-form-label">Tanggal Pengiriman</label>
-                                                                        <div class="col-8">
-                                                                        <input type="date" class="form-control" id="tanggal_kirim" name="tanggal_kirim">
-
-                                                                        </div>
-                                                                </div>
+                                                                
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
                                                                     <button  class="btn btn-success" id="submit">Kirim</button>

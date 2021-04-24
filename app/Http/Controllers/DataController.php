@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\pesanan;
 use App\Models\pesanan_item;
 use App\Models\provinsi;
+use App\Models\category;
 use PDF;
 use DB;
 
@@ -144,4 +145,48 @@ class DataController extends Controller
             return redirect('/adminbank');
     
           }
+          //Category
+          public function viewadmincategory(){
+            $category = category::get();
+        
+            return view('admincategory',['category' => $category]);
+        
+            }
+        
+            public function tambahcategory(Request $request){
+            DB::table('category')->insert([
+        
+            'nama' => $request->nama
+            ]);
+            // alihkan halaman ke halaman pegawai
+            return redirect('/admincategory');
+        
+            }
+              
+            public function deletecategory($id){
+                  $category = category::find($id);
+                  $category->delete();
+                  return redirect()->back();
+        
+            }
+        
+            public function updatecategory($id_kurir){
+            $kurir = kurir::find($id_kurir);
+            return view('adminkurirupdate',['kurirs' => $kurir]);
+        
+            }
+        
+            public function prosescategory(Request $request){
+              // update data pegawai
+              DB::table('kurirs')
+              ->where('id_kurir',$request->id)
+              ->update([
+                'nama_kurir' => $request->nama,
+                'kode_kurir' => $request->kode_kurir
+                
+              ]);
+              // alihkan halaman ke halaman pegawai
+              return redirect('/adminkurir');
+        
+            }
 }
