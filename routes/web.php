@@ -103,8 +103,10 @@ Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@viewadminhome')->
 //laporan
 Route::get('/laporan', 'App\HTTP\Controllers\AdminController@laporan')->middleware(['role','auth']);
 
-Route::get('/laporan/cetak','App\HTTP\Controllers\AdminController@prosescetak');
-Route::get('/laporan/cetak/proses','App\HTTP\Controllers\AdminController@prosescetak');
+Route::get('/laporan/cetak','App\HTTP\Controllers\AdminController@prosescetak')->middleware(['role','auth']);
+Route::get('/laporan/cetak/proses','App\HTTP\Controllers\AdminController@prosescetak')->middleware(['role','auth']);
+Route::get('/laporan/cetak/search/proses','App\HTTP\Controllers\AdminController@prosescetaksearch')->middleware(['role','auth']);
+Route::get('/laporan/search','App\HTTP\Controllers\AdminController@search')->middleware(['role','auth']);
 
 
 
