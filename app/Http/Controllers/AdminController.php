@@ -109,17 +109,7 @@ class AdminController extends Controller
 
   }
 
-  public function kirim(Request $request){
-    if(is_null($request->no_resi)){
-      return redirect()->back();
-    }else{
-      pengiriman::where('id_pesanan',$request->id_pesanan)->update([
-        'tanggal_pengiriman'=>$request->tanggal_kirim,
-        'no_resi'=>$request->no_resi,
-      ]);
-      return redirect()->back();
-    }
-  }
+  
 // pesanan batal
   public function viewpesananbatal(){
     $pesanan = DB::table('pesanan_item')
@@ -186,6 +176,7 @@ class AdminController extends Controller
 
   }
   public function kirim(Request $request){
+    
     if(is_null($request->tanggal)){
       return redirect()->back();
     }else{
@@ -210,6 +201,41 @@ class AdminController extends Controller
     ->whereNotNull('tanggal_pengiriman')
     ->get();
     return view('adminpengiriman',compact('pesanan'));
+  }
+  public function search(Request $request){
+    $dateform = $request->dateform;
+    $dateto = $request->dateto;
+    $laporan = DB::table('pesanan_item')
+    ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
+    ->join('barangs','pesanan_item.id_barang','=','barangs.id')
+    ->join('pengiriman','pengiriman.id_pesanan','=','pesanan.id_pesanan')
+    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total','pengiriman.jenis_pengiriman','pengiriman.biaya_pengiriman')
+    ->whereBetween('pesanan.tanggal_pesanan',array($dateform,$dateto))
+    ->get();
+     
+    return view('admin_laporan_search',compact('laporan','dateform','dateto'));
+  }
+
+  public function prosescetaksearch(Request $request){
+
+    $dateform = $request->dateform;
+    $dateto = $request->dateto;
+    $laporan = DB::table('pesanan_item')
+    ->join('pesanan', 'pesanan_item.id_pesanan', '=', 'pesanan.id_pesanan')
+    ->join('barangs','pesanan_item.id_barang','=','barangs.id')
+    ->select('pesanan.id_pesanan','barangs.nama','pesanan_item.jumlah_barang','pesanan_item.harga_barang', 'pesanan.tanggal_pesanan','pesanan.status','pesanan.total')
+    ->whereBetween('pesanan.tanggal_pesanan',array($dateform,$dateto))
+    ->where('status','Sudah bayar')
+    ->get();
+    $total = pesanan::where('status','Sudah bayar')->get();
+    $grantotal = 0;
+    foreach($total as $a){
+      $grantotal += $a->total;
+    }
+    
+
+    $pdf = \PDF::loadview('cetaklaporan',['laporan'=>$laporan,'gran'=>$grantotal]);
+    	return $pdf->download('laporan-pdf.pdf');
   }
 
 }

@@ -29,7 +29,12 @@
                                          <label>entries</label></div>
                                     </div> -->
                                     <div class="p-2 bd-highlight">
-                                        <div ><a class="btn btn-success btn-sm fa fa-download"  aria-hidden="true" href="/laporan/cetak" > Download Laporan</a></div>
+                                    <form action="" method="get">
+                                        <input type="text" hidden value="{{$dateform}}" name="dateform">
+                                        <input type="text" hidden value="{{$dateto}}" name="dateto">
+                                        <div ><button class="btn btn-success btn-sm fa fa-download"  aria-hidden="true" > Download Laporan</button></div>
+                                    </form>
+                                        
                                      </div>
                                     
                                 </div>     
@@ -41,13 +46,13 @@
                                                 <div ><button type="submit" class="btn btn-primary">Search</button></div>
                                             </div>
                                             <div class="p-2 bd-highlight">
-                                                <div ><input type="date" class="form-control" id="exampleInputEmail1" name="dateto" aria-describedby="emailHelp"></div>
+                                                <div ><input type="date" class="form-control" id="exampleInputEmail1" value="{{$dateto}}" name="dateto" aria-describedby="emailHelp"></div>
                                             </div>
                                             <div class="p-2 bd-highlight">
                                                 <div >_ </div>
                                             </div>
                                             <div class="p-2 bd-highlight">
-                                                <input type="date" class="form-control" name="dateform" placeholder="" aria-controls="dataTable">
+                                                <input type="date" class="form-control" name="dateform" value="{{$dateform}}" placeholder="" aria-controls="dataTable">
                                             </div>
                                            
                                             
